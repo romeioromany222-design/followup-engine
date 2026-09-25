@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Follow-Up Priority Calculator | Know Who to Contact Today</title>
+
+  <meta name="description" content="Free follow-up priority calculator for freelancers, consultants and small businesses. Find out which lead deserves attention today and what to do next.">
+
+  <meta name="robots" content="index,follow">
+
+  <link rel="canonical" href="https://romeioromany222-design.github.io/followup-engine/">
+
+  <meta property="og:title" content="Follow-Up Priority Calculator">
+  <meta property="og:description" content="Find out which sales lead deserves your attention today.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://romeioromany222-design.github.io/followup-engine/">
+
+  <style>
+    :root {
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#667085;
+      --border:#e5e7eb;
+      --dark:#111827;
+      --green:#087f5b;
+      --green-bg:#e9f8f2;
+      --blue:#2457a6;
+      --blue-bg:#eef4ff;
+      --orange:#b45309;
+      --orange-bg:#fff7ed;
+    }
+
+    * {
+      box-sizing:border-box;
+    }
+
+    html {
+      scroll-behavior:smooth;
+    }
+
+    body {
+      margin:0;
+      font-family:Inter,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a {
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container {
+      width:min(1120px,calc(100% - 32px));
+      margin:auto;
+    }
+
+    header {
+      background:rgba(255,255,255,.95);
+      border-bottom:1px solid var(--border);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .nav {
+      min-height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .brand {
+      font-size:19px;
+      font-weight:800;
+    }
+
+    .nav-links {
+      display:flex;
+      gap:22px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .hero {
+      padding:82px 0 60px;
+    }
+
+    .hero-grid {
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:55px;
+      align-items:center;
+    }
+
+    .eyebrow {
+      display:inline-block;
+      background:var(--blue-bg);
+      color:var(--blue);
+      padding:7px 12px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    h1 {
+      font-size:clamp(42px,6vw,68px);
+      line-height:1.02;
+      letter-spacing:-3px;
+      margin:0 0 22px;
+    }
+
+    .hero-text {
+      color:var(--muted);
+      font-size:19px;
+      max-width:650px;
+      margin-bottom:25px;
+    }
+
+    .buttons {
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn {
+      border:0;
+      border-radius:10px;
+      padding:13px 18px;
+      font-size:15px;
+      font-weight:750;
+      cursor:pointer;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .primary {
+      background:var(--dark);
+      color:#fff;
+    }
+
+    .secondary {
+      background:#fff;
+      border:1px solid var(--border);
+    }
+
+    .note {
+      margin-top:18px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .tool {
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:28px;
+      box-shadow:0 20px 60px rgba(16,24,40,.08);
+    }
+
+    .tool h2 {
+      margin:0 0 5px;
+      font-size:24px;
+    }
+
+    .tool-sub {
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:22px;
+    }
+
+    .field {
+      margin-bottom:16px;
+    }
+
+    label {
+      display:block;
+      font-size:13px;
+      font-weight:750;
+      margin-bottom:7px;
+    }
+
+    input,
+    select {
+      width:100%;
+      padding:12px;
+      border:1px solid #d9dde5;
+      border-radius:9px;
+      background:#fff;
+      font-size:15px;
+    }
+
+    input:focus,
+    select:focus {
+      outline:none;
+      border-color:#687386;
+      box-shadow:0 0 0 3px rgba(17,24,39,.06);
+    }
+
+    .result {
+      display:none;
+      margin-top:20px;
+      padding:20px;
+      border-radius:14px;
+      background:var(--green-bg);
+      border:1px solid #c8ecdf;
+    }
+
+    .score {
+      font-size:46px;
+      font-weight:850;
+      line-height:1;
+    }
+
+    .priority {
+      font-weight:850;
+      margin:7px 0 12px;
+    }
+
+    .result-text {
+      color:#344054;
+      font-size:14px;
+    }
+
+    .action {
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      padding:13px;
+      border-radius:10px;
+      margin-top:14px;
+    }
+
+    .section {
+      padding:75px 0;
+    }
+
+    .white {
+      background:#fff;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+    }
+
+    .heading {
+      max-width:720px;
+      margin-bottom:38px;
+    }
+
+    .heading h2 {
+      font-size:clamp(30px,4vw,44px);
+      line-height:1.1;
+      letter-spacing:-1.5px;
+      margin:0 0 14px;
+    }
+
+    .heading p {
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .features {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .feature {
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:24px;
+    }
+
+    .feature h3 {
+      margin-top:0;
+    }
+
+    .feature p {
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .dark-section {
+      background:#111827;
+      color:#fff;
+      border-radius:20px;
+      padding:45px;
+    }
+
+    .dark-section p {
+      color:#c8ced8;
+    }
+
+    .dark-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+    }
+
+    .list {
+      list-style:none;
+      padding:0;
+    }
+
+    .list li {
+      margin:12px 0;
+      color:#e5e7eb;
+    }
+
+    .list li:before {
+      content:"✓";
+      color:#8de1bf;
+      font-weight:800;
+      margin-right:9px;
+    }
+
+    .pricing {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+      max-width:850px;
+      margin:auto;
+    }
+
+    .price-card {
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:30px;
+    }
+
+    .price-card.pro {
+      border:2px solid var(--dark);
+    }
+
+    .price {
+      font-size:42px;
+      font-weight:850;
+      margin:8px 0;
+    }
+
+    .price-card p,
+    .price-card li {
+      color:var(--muted);
+    }
+
+    .price-card ul {
+      padding-left:20px;
+    }
+
+    .faq {
+      max-width:800px;
+      margin:auto;
+    }
+
+    details {
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:17px;
+      margin-bottom:10px;
+    }
+
+    summary {
+      cursor:pointer;
+      font-weight:750;
+    }
+
+    footer {
+      padding:40px 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    @media(max-width:850px) {
+      .hero-grid,
+      .dark-grid,
+      .pricing,
+      .features {
+        grid-template-columns:1fr;
+      }
+
+      .nav-links {
+        display:none;
+      }
+
+      .hero {
+        padding-top:55px;
+      }
+
+      h1 {
+        letter-spacing:-2px;
+      }
+
+      .dark-section {
+        padding:28px;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Follow-Up Priority Calculator",
+    "applicationCategory":"BusinessApplication",
+    "operatingSystem":"Web",
+    "description":"A free calculator that helps freelancers and small businesses prioritize sales follow-ups.",
+    "offers":{
+      "@type":"Offer",
+      "price":"0",
+      "priceCurrency":"USD"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#">FollowUp Engine</a>
+
+    <nav class="nav-links">
+      <a href="#calculator">Free Tool</a>
+      <a href="#how">How It Works</a>
+      <a href="#product">Product</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+
+  <div class="container hero-grid">
+
+    <div>
+
+      <div class="eyebrow">
+        Free sales follow-up tool
+      </div>
+
+      <h1>
+        Know who to follow up with today.
+      </h1>
+
+      <p class="hero-text">
+        Stop guessing which lead deserves your attention.
+        Enter a few details and get a simple priority score,
+        the reason behind it, and your recommended next action.
+      </p>
+
+      <div class="buttons">
+        <a href="#calculator" class="btn primary">
+          Calculate My Priority
+        </a>
+
+        <a href="#how" class="btn secondary">
+          See How It Works
+        </a>
+      </div>
+
+      <div class="note">
+        Free. No account required. Your calculator inputs stay in your browser.
+      </div>
+
+    </div>
+
+
+    <div class="tool" id="calculator">
+
+      <h2>
+        Follow-Up Priority Calculator
+      </h2>
+
+      <div class="tool-sub">
+        Test one opportunity in less than a minute.
+      </div>
+
+      <div class="field">
+        <label for="dealValue">
+          Potential deal value ($)
+        </label>
+
+        <input
+          id="dealValue"
+          type="number"
+          min="0"
+          value="1500"
+        >
+      </div>
+
+      <div class="field">
+        <label for="days">
+          Days since last contact
+        </label>
+
+        <input
+          id="days"
+          type="number"
+          min="0"
+          value="7"
+        >
+      </div>
+
+      <div class="field">
+        <label for="temperature">
+          Lead temperature
+        </label>
+
+        <select id="temperature">
+          <option value="1">Cold</option>
+          <option value="2" selected>Warm</option>
+          <option value="3">Hot</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="reply">
+          Current buying signal
+        </label>
+
+        <select id="reply">
+          <option value="1">No reply</option>
+          <option value="2">They replied</option>
+          <option value="3">Asked for details</option>
+          <option value="4">Asked about price / proposal</option>
+          <option value="5">Ready to decide</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="deadline">
+          Deadline pressure
+        </label>
+
+        <select id="deadline">
+          <option value="0">No known deadline</option>
+          <option value="1">Within 30 days</option>
+          <option value="2">Within 14 days</option>
+          <option value="3">Within 7 days</option>
+        </select>
+      </div>
+
+      <button
+        class="btn primary"
+        style="width:100%;"
+        onclick="calculatePriority()"
+      >
+        Calculate Priority
+      </button>
+
+      <div class="result" id="result">
+
+        <div class="score" id="score">
+          0/100
+        </div>
+
+        <div class="priority" id="priority">
+          —
+        </div>
+
+        <div class="result-text" id="reason">
+          —
+        </div>
+
+        <div class="action">
+          <strong>Recommended next action</strong>
+
+          <div
+            class="result-text"
+            id="action"
+            style="margin-top:6px;"
+          >
+            —
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section white" id="how">
+
+  <div class="container">
+
+    <div class="heading">
+
+      <h2>
+        Your CRM stores the lead.
+        This helps you decide what to do next.
+      </h2>
+
+      <p>
+        The tool focuses on one practical question:
+        which opportunity deserves your attention right now?
+      </p>
+
+    </div>
+
+    <div class="features">
+
+      <article class="feature">
+        <h3>01. Prioritize</h3>
+
+        <p>
+          Combine deal value, time since contact,
+          buying signals and deadline pressure.
+        </p>
+      </article>
+
+      <article class="feature">
+        <h3>02. Decide</h3>
+
+        <p>
+          Turn the score into a practical next action
+          instead of staring at a long lead list.
+        </p>
+      </article>
+
+      <article class="feature">
+        <h3>03. Protect Revenue</h3>
+
+        <p>
+          Identify valuable opportunities that may be
+          losing momentum because nobody followed up.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="dark-section">
+
+      <div class="dark-grid">
+
+        <div>
+
+          <div class="eyebrow">
+            The future paid product
+          </div>
+
+          <h2>
+            Turn your pipeline into a daily action queue.
+          </h2>
+
+          <p>
+            The paid version will only expand after we prove
+            that people actually want the free workflow.
+          </p>
+
+        </div>
+
+        <div>
+
+          <ul class="list">
+
+            <li>Lead inbox</li>
+            <li>Follow-up priority engine</li>
+            <li>Daily action queue</li>
+            <li>Ghosted lead recovery</li>
+            <li>Revenue-at-risk view</li>
+            <li>Follow-up message prompts</li>
+            <li>Simple sales dashboard</li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section white" id="product">
+
+  <div class="container">
+
+    <div class="heading">
+
+      <h2>
+        Start free. Pay only if the workflow proves useful.
+      </h2>
+
+      <p>
+        We are deliberately keeping the free calculator available
+        so visitors can experience the core idea before buying anything.
+      </p>
+
+    </div>
+
+    <div class="pricing">
+
+      <div class="price-card">
+
+        <h3>Free Calculator</h3>
+
+        <div class="price">$0</div>
+
+        <p>
+          Try the core decision engine.
+        </p>
+
+        <ul>
+          <li>Priority score</li>
+          <li>Reason for priority</li>
+          <li>Recommended action</li>
+          <li>No signup</li>
+        </ul>
+
+        <a
+          href="#calculator"
+          class="btn secondary"
+          style="width:100%;"
+        >
+          Use Free Tool
+        </a>
+
+      </div>
+
+
+      <div class="price-card pro">
+
+        <h3>FollowUp Engine Pro</h3>
+
+        <div class="price">$19</div>
+
+        <p>
+          Planned one-time product.
+        </p>
+
+        <ul>
+          <li>Lead tracker</li>
+          <li>Priority engine</li>
+          <li>Daily follow-up queue</li>
+          <li>Ghosted lead recovery</li>
+          <li>Message prompts</li>
+          <li>Revenue dashboard</li>
+        </ul>
+
+        <button
+          class="btn primary"
+          style="width:100%;"
+          onclick="showComingSoon()"
+        >
+          Join the Launch List
+        </button>
+
+        <div
+          id="comingSoon"
+          style="display:none;margin-top:12px;font-size:13px;color:#667085;"
+        >
+          The paid product is being validated before checkout is enabled.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="faq">
+
+  <div class="container">
+
+    <div class="heading">
+
+      <h2>
+        Frequently asked questions
+      </h2>
+
+    </div>
+
+    <div class="faq">
+
+      <details>
+        <summary>Is the calculator free?</summary>
+
+        <p>
+          Yes. The core calculator is free and does not require an account.
+        </p>
+      </details>
+
+      <details>
+        <summary>Does this replace a CRM?</summary>
+
+        <p>
+          No. It is intentionally focused on follow-up prioritization
+          rather than trying to replace a full CRM.
+        </p>
+      </details>
+
+      <details>
+        <summary>Who is it for?</summary>
+
+        <p>
+          Freelancers, consultants, agencies, coaches and small
+          service businesses managing sales opportunities.
+        </p>
+      </details>
+
+      <details>
+        <summary>Is my calculator data uploaded?</summary>
+
+        <p>
+          No. This first version calculates the result locally
+          in your browser.
+        </p>
+      </details>
+
+      <details>
+        <summary>Why is the paid checkout not active yet?</summary>
+
+        <p>
+          Because the product should be validated before asking
+          users to pay. The free tool is the first market test.
+        </p>
+      </details>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+
+    <strong>FollowUp Engine</strong>
+
+    <p>
+      A simple decision tool for sales follow-ups.
+    </p>
+
+    <p>
+      © 2026 FollowUp Engine.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+function calculatePriority() {
+
+  const deal =
+    Number(document.getElementById("dealValue").value) || 0;
+
+  const days =
+    Number(document.getElementById("days").value) || 0;
+
+  const temperature =
+    Number(document.getElementById("temperature").value);
+
+  const reply =
+    Number(document.getElementById("reply").value);
+
+  const deadline =
+    Number(document.getElementById("deadline").value);
+
+
+  let score = 0;
+
+
+  // Deal value: 0–25
+
+  if (deal >= 10000) {
+    score += 25;
+  } else if (deal >= 5000) {
+    score += 20;
+  } else if (deal >= 2500) {
+    score += 15;
+  } else if (deal >= 1000) {
+    score += 10;
+  } else if (deal > 0) {
+    score += 5;
+  }
+
+
+  // Days since contact: 0–25
+
+  if (days >= 30) {
+    score += 25;
+  } else if (days >= 14) {
+    score += 21;
+  } else if (days >= 7) {
+    score += 16;
+  } else if (days >= 3) {
+    score += 10;
+  } else {
+    score += 4;
+  }
+
+
+  // Temperature: 5–15
+
+  score += temperature * 5;
+
+
+  // Buying signal: 3–20
+
+  if (reply === 5) {
+    score += 20;
+  } else if (reply === 4) {
+    score += 17;
+  } else if (reply === 3) {
+    score += 14;
+  } else if (reply === 2) {
+    score += 9;
+  } else {
+    score += 3;
+  }
+
+
+  // Deadline: 0–15
+
+  score += deadline * 5;
+
+
+  if (score > 100) {
+    score = 100;
+  }
+
+
+  let priority;
+  let reason;
+  let action;
+
+
+  if (score >= 75) {
+
+    priority = "FOLLOW UP TODAY";
+
+    reason =
+      "This opportunity has strong value, buying intent, inactivity, or deadline pressure.";
+
+    action =
+      "Send a short and specific follow-up today. Reference the previous conversation and give one clear next step.";
+
+  } else if (score >= 50) {
+
+    priority = "HIGH PRIORITY";
+
+    reason =
+      "The opportunity has enough potential that delaying the next contact may reduce momentum.";
+
+    action =
+      "Follow up within 24–48 hours and add something useful: clarification, recommendation, example, or next step.";
+
+  } else if (score >= 30) {
+
+    priority = "MEDIUM PRIORITY";
+
+    reason =
+      "There is potential, but the current signals do not make this an urgent opportunity.";
+
+    action =
+      "Schedule the next follow-up and avoid repeatedly contacting the lead without providing new value.";
+
+  } else {
+
+    priority = "LOW PRIORITY";
+
+    reason =
+      "Current signals are weak or the opportunity is not currently urgent.";
+
+    action =
+      "Keep the lead in your pipeline and spend your immediate selling time on higher-priority opportunities.";
+
+  }
+
+
+  document.getElementById("score").textContent =
+    score + "/100";
+
+  document.getElementById("priority").textContent =
+    priority;
+
+  document.getElementById("reason").textContent =
+    reason;
+
+  document.getElementById("action").textContent =
+    action;
+
+  document.getElementById("result").style.display =
+    "block";
+
+}
+
+
+function showComingSoon() {
+
+  document.getElementById("comingSoon").style.display =
+    "block";
+
+}
+
+</script>
+
+</body>
+</html>
