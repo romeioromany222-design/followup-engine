@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="1Pma6aOW4EKEB0zqRpRe1he1kobQOPCsN7NjbQSHVig" />
+  <meta name="google-site-verification" content="1Pma6aOW4EKEB0zqRpRe1he1kobQOPCsN7NjbQSHVig">
 
   <title>Follow-Up Priority Calculator | Know Who to Contact Today</title>
 
@@ -461,6 +461,14 @@
     }
   </style>
 
+  <!-- Google Forms submission target -->
+  <iframe
+    name="feedbackFrame"
+    id="feedbackFrame"
+    style="display:none;"
+    title="Feedback submission"
+  ></iframe>
+
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -480,9 +488,33 @@
 
 <body>
 
+<!-- Hidden Google Form -->
+<form
+  id="feedbackForm"
+  action="https://docs.google.com/forms/d/e/1FAIpQLSdmIJ1pZ4y7ZP3EZSYHB63WxoYi2UXEmiWFryxdjNbpf5ZddA/formResponse"
+  method="POST"
+  target="feedbackFrame"
+  style="display:none;"
+>
+  <input
+    type="hidden"
+    name="entry.1064220020"
+    id="feedbackUsefulness"
+  >
+
+  <input
+    type="hidden"
+    name="entry.1802400793"
+    id="feedbackNextNeed"
+  >
+</form>
+
 <header>
   <div class="container nav">
-    <a class="brand" href="#">FollowUp Engine</a>
+
+    <a class="brand" href="#">
+      FollowUp Engine
+    </a>
 
     <nav class="nav-links">
       <a href="#calculator">Free Tool</a>
@@ -490,6 +522,7 @@
       <a href="#product">Product</a>
       <a href="#faq">FAQ</a>
     </nav>
+
   </div>
 </header>
 
@@ -516,6 +549,7 @@
       </p>
 
       <div class="buttons">
+
         <a href="#calculator" class="btn primary">
           Calculate My Priority
         </a>
@@ -523,6 +557,7 @@
         <a href="#how" class="btn secondary">
           See How It Works
         </a>
+
       </div>
 
       <div class="note">
@@ -542,6 +577,7 @@
       </div>
 
       <div class="field">
+
         <label for="dealValue">
           Potential deal value ($)
         </label>
@@ -552,9 +588,11 @@
           min="0"
           value="1500"
         >
+
       </div>
 
       <div class="field">
+
         <label for="days">
           Days since last contact
         </label>
@@ -565,9 +603,11 @@
           min="0"
           value="7"
         >
+
       </div>
 
       <div class="field">
+
         <label for="temperature">
           Lead temperature
         </label>
@@ -577,33 +617,67 @@
           <option value="2" selected>Warm</option>
           <option value="3">Hot</option>
         </select>
+
       </div>
 
       <div class="field">
+
         <label for="reply">
           Current buying signal
         </label>
 
         <select id="reply">
-          <option value="1">No reply</option>
-          <option value="2">They replied</option>
-          <option value="3">Asked for details</option>
-          <option value="4">Asked about price / proposal</option>
-          <option value="5">Ready to decide</option>
+
+          <option value="1">
+            No reply
+          </option>
+
+          <option value="2">
+            They replied
+          </option>
+
+          <option value="3">
+            Asked for details
+          </option>
+
+          <option value="4">
+            Asked about price / proposal
+          </option>
+
+          <option value="5">
+            Ready to decide
+          </option>
+
         </select>
+
       </div>
 
       <div class="field">
+
         <label for="deadline">
           Deadline pressure
         </label>
 
         <select id="deadline">
-          <option value="0">No known deadline</option>
-          <option value="1">Within 30 days</option>
-          <option value="2">Within 14 days</option>
-          <option value="3">Within 7 days</option>
+
+          <option value="0">
+            No known deadline
+          </option>
+
+          <option value="1">
+            Within 30 days
+          </option>
+
+          <option value="2">
+            Within 14 days
+          </option>
+
+          <option value="3">
+            Within 7 days
+          </option>
+
         </select>
+
       </div>
 
       <button
@@ -629,7 +703,10 @@
         </div>
 
         <div class="action">
-          <strong>Recommended next action</strong>
+
+          <strong>
+            Recommended next action
+          </strong>
 
           <div
             class="result-text"
@@ -638,6 +715,7 @@
           >
             —
           </div>
+
         </div>
 
         <div class="feedback-box">
@@ -668,13 +746,19 @@
 
           </div>
 
-          <div class="next-question" id="nextQuestion">
+          <div
+            class="next-question"
+            id="nextQuestion"
+          >
 
             <label for="nextNeed">
               What would you want next?
             </label>
 
-            <select id="nextNeed" onchange="saveNextNeed()">
+            <select
+              id="nextNeed"
+              onchange="saveNextNeed()"
+            >
 
               <option value="">
                 Select one
@@ -739,30 +823,42 @@
     <div class="features">
 
       <article class="feature">
-        <h3>01. Prioritize</h3>
+
+        <h3>
+          01. Prioritize
+        </h3>
 
         <p>
           Combine deal value, time since contact,
           buying signals and deadline pressure.
         </p>
+
       </article>
 
       <article class="feature">
-        <h3>02. Decide</h3>
+
+        <h3>
+          02. Decide
+        </h3>
 
         <p>
           Turn the score into a practical next action
           instead of staring at a long lead list.
         </p>
+
       </article>
 
       <article class="feature">
-        <h3>03. Protect Revenue</h3>
+
+        <h3>
+          03. Protect Revenue
+        </h3>
 
         <p>
           Identify valuable opportunities that may be
           losing momentum because nobody followed up.
         </p>
+
       </article>
 
     </div>
@@ -843,19 +939,25 @@
 
       <div class="price-card">
 
-        <h3>Free Calculator</h3>
+        <h3>
+          Free Calculator
+        </h3>
 
-        <div class="price">$0</div>
+        <div class="price">
+          $0
+        </div>
 
         <p>
           Try the core decision engine.
         </p>
 
         <ul>
+
           <li>Priority score</li>
           <li>Reason for priority</li>
           <li>Recommended action</li>
           <li>No signup</li>
+
         </ul>
 
         <a
@@ -871,21 +973,27 @@
 
       <div class="price-card pro">
 
-        <h3>FollowUp Engine Pro</h3>
+        <h3>
+          FollowUp Engine Pro
+        </h3>
 
-        <div class="price">$19</div>
+        <div class="price">
+          $19
+        </div>
 
         <p>
           Planned one-time product.
         </p>
 
         <ul>
+
           <li>Lead tracker</li>
           <li>Priority engine</li>
           <li>Daily follow-up queue</li>
           <li>Ghosted lead recovery</li>
           <li>Message prompts</li>
           <li>Revenue dashboard</li>
+
         </ul>
 
         <button
@@ -927,48 +1035,68 @@
     <div class="faq">
 
       <details>
-        <summary>Is the calculator free?</summary>
+
+        <summary>
+          Is the calculator free?
+        </summary>
 
         <p>
           Yes. The core calculator is free and does not require an account.
         </p>
+
       </details>
 
       <details>
-        <summary>Does this replace a CRM?</summary>
+
+        <summary>
+          Does this replace a CRM?
+        </summary>
 
         <p>
           No. It is intentionally focused on follow-up prioritization
           rather than trying to replace a full CRM.
         </p>
+
       </details>
 
       <details>
-        <summary>Who is it for?</summary>
+
+        <summary>
+          Who is it for?
+        </summary>
 
         <p>
           Freelancers, consultants, agencies, coaches and small
           service businesses managing sales opportunities.
         </p>
+
       </details>
 
       <details>
-        <summary>Is my calculator data uploaded?</summary>
+
+        <summary>
+          Is my calculator data uploaded?
+        </summary>
 
         <p>
           No. Your calculator inputs and score are calculated locally
           in your browser. Feedback choices are sent separately
           when you submit feedback.
         </p>
+
       </details>
 
       <details>
-        <summary>Why is the paid checkout not active yet?</summary>
+
+        <summary>
+          Why is the paid checkout not active yet?
+        </summary>
 
         <p>
           Because the product should be validated before asking
           users to pay. The free tool is the first market test.
         </p>
+
       </details>
 
     </div>
@@ -984,7 +1112,9 @@
 
   <div class="container">
 
-    <strong>FollowUp Engine</strong>
+    <strong>
+      FollowUp Engine
+    </strong>
 
     <p>
       A simple decision tool for sales follow-ups.
@@ -1022,57 +1152,87 @@ function calculatePriority() {
   let score = 0;
 
 
-  // Deal value: 0–25
+  /* Deal value: 0–25 */
 
   if (deal >= 10000) {
+
     score += 25;
+
   } else if (deal >= 5000) {
+
     score += 20;
+
   } else if (deal >= 2500) {
+
     score += 15;
+
   } else if (deal >= 1000) {
+
     score += 10;
+
   } else if (deal > 0) {
+
     score += 5;
+
   }
 
 
-  // Days since contact: 0–25
+  /* Days since contact: 0–25 */
 
   if (days >= 30) {
+
     score += 25;
+
   } else if (days >= 14) {
+
     score += 21;
+
   } else if (days >= 7) {
+
     score += 16;
+
   } else if (days >= 3) {
+
     score += 10;
+
   } else {
+
     score += 4;
+
   }
 
 
-  // Temperature: 5–15
+  /* Temperature: 5–15 */
 
   score += temperature * 5;
 
 
-  // Buying signal: 3–20
+  /* Buying signal: 3–20 */
 
   if (reply === 5) {
+
     score += 20;
+
   } else if (reply === 4) {
+
     score += 17;
+
   } else if (reply === 3) {
+
     score += 14;
+
   } else if (reply === 2) {
+
     score += 9;
+
   } else {
+
     score += 3;
+
   }
 
 
-  // Deadline: 0–15
+  /* Deadline: 0–15 */
 
   score += deadline * 5;
 
@@ -1146,30 +1306,50 @@ function calculatePriority() {
     "block";
 
 
-  // Reset feedback for each new calculation
+  /* Reset feedback for each new calculation */
 
-  document.getElementById("feedbackYes").classList.remove("selected");
-  document.getElementById("feedbackNo").classList.remove("selected");
+  document
+    .getElementById("feedbackYes")
+    .classList
+    .remove("selected");
 
-  document.getElementById("nextQuestion").style.display = "none";
-  document.getElementById("feedbackStatus").style.display = "none";
-  document.getElementById("nextNeed").value = "";
+  document
+    .getElementById("feedbackNo")
+    .classList
+    .remove("selected");
+
+  document.getElementById("nextQuestion").style.display =
+    "none";
+
+  document.getElementById("feedbackStatus").style.display =
+    "none";
+
+  document.getElementById("nextNeed").value =
+    "";
 
 }
 
 
 /*
- * Save the user's usefulness choice locally
+ * Save usefulness answer locally
  * and reveal the second question.
  */
 
 function submitFeedback(value) {
 
   const feedbackData = {
+
     usefulness: value,
-    score: document.getElementById("score").textContent,
-    priority: document.getElementById("priority").textContent,
-    timestamp: new Date().toISOString()
+
+    score:
+      document.getElementById("score").textContent,
+
+    priority:
+      document.getElementById("priority").textContent,
+
+    timestamp:
+      new Date().toISOString()
+
   };
 
 
@@ -1181,14 +1361,17 @@ function submitFeedback(value) {
 
   document
     .getElementById("feedbackYes")
-    .classList.toggle(
+    .classList
+    .toggle(
       "selected",
       value === "yes"
     );
 
+
   document
     .getElementById("feedbackNo")
-    .classList.toggle(
+    .classList
+    .toggle(
       "selected",
       value === "no"
     );
@@ -1204,7 +1387,7 @@ function submitFeedback(value) {
 
 
 /*
- * Send the completed feedback to Google Forms.
+ * Submit completed feedback to Google Forms.
  */
 
 function saveNextNeed() {
@@ -1226,6 +1409,26 @@ function saveNextNeed() {
     );
 
 
+  /*
+   * Make sure the user selected Yes
+   * or Not really before submitting.
+   */
+
+  if (
+    existingFeedback.usefulness !== "yes" &&
+    existingFeedback.usefulness !== "no"
+  ) {
+
+    document.getElementById("feedbackStatus").textContent =
+      "Please choose whether the recommendation was useful first.";
+
+    document.getElementById("feedbackStatus").style.display =
+      "block";
+
+    return;
+  }
+
+
   existingFeedback.nextNeed =
     nextNeed;
 
@@ -1240,8 +1443,8 @@ function saveNextNeed() {
 
 
   /*
-   * Convert our internal values
-   * to the exact Google Forms answers.
+   * Convert internal values
+   * to exact Google Forms answers.
    */
 
   const usefulness =
@@ -1271,76 +1474,61 @@ function saveNextNeed() {
     nextNeedMap[nextNeed];
 
 
-  /*
-   * Google Forms field data.
-   */
-
-  const formData =
-    new URLSearchParams();
-
-
-  formData.append(
-    "entry.1064220020",
-    usefulness
-  );
-
-
-  formData.append(
-    "entry.1802400793",
-    nextNeedText
-  );
+  if (!nextNeedText) {
+    return;
+  }
 
 
   /*
-   * Send the response silently.
+   * Put values into the hidden Google Form.
    */
 
-  fetch(
-    "https://docs.google.com/forms/d/e/1FAIpQLSdmIJ1pZ4y7ZP3EZSYHB63WxoYi2UXEmiWFryxdjNbpf5ZddA/formResponse",
-    {
-      method:"POST",
-      mode:"no-cors",
-      headers:{
-        "Content-Type":
-          "application/x-www-form-urlencoded"
-      },
-      body:
-        formData.toString()
-    }
-  )
-  .then(function() {
+  document.getElementById(
+    "feedbackUsefulness"
+  ).value =
+    usefulness;
 
-    document.getElementById(
-      "feedbackStatus"
-    ).textContent =
-      "Thanks — your feedback was recorded.";
 
-    document.getElementById(
-      "feedbackStatus"
-    ).style.display =
-      "block";
+  document.getElementById(
+    "feedbackNextNeed"
+  ).value =
+    nextNeedText;
 
-  })
-  .catch(function() {
 
-    document.getElementById(
-      "feedbackStatus"
-    ).textContent =
-      "Thanks — your feedback was saved.";
+  /*
+   * Submit the hidden form.
+   * The response goes to Google Forms
+   * through the invisible iframe.
+   */
 
-    document.getElementById(
-      "feedbackStatus"
-    ).style.display =
-      "block";
+  document.getElementById(
+    "feedbackForm"
+  ).submit();
 
-  });
+
+  /*
+   * Show success message immediately.
+   */
+
+  document.getElementById(
+    "feedbackStatus"
+  ).textContent =
+    "Thanks — your feedback was submitted.";
+
+
+  document.getElementById(
+    "feedbackStatus"
+  ).style.display =
+    "block";
 
 }
 
 
 function showComingSoon() {
 
-  document.getElementById("comingSoon").style.display =
+  document.getElementById(
+    "comingSoon"
+  ).style.display =
     "block";
 
 }
