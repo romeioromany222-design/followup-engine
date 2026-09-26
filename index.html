@@ -675,6 +675,7 @@
             </label>
 
             <select id="nextNeed" onchange="saveNextNeed()">
+
               <option value="">
                 Select one
               </option>
@@ -694,6 +695,7 @@
               <option value="recover-ghosted">
                 Recover old / ghosted leads
               </option>
+
             </select>
 
           </div>
@@ -702,7 +704,7 @@
             class="feedback-status"
             id="feedbackStatus"
           >
-            Thanks — your feedback was saved on this device.
+            Thanks — your feedback was recorded.
           </div>
 
         </div>
@@ -954,8 +956,9 @@
         <summary>Is my calculator data uploaded?</summary>
 
         <p>
-          No. This first version calculates the result locally
-          in your browser.
+          No. Your calculator inputs and score are calculated locally
+          in your browser. Feedback choices are sent separately
+          when you submit feedback.
         </p>
       </details>
 
@@ -1155,6 +1158,11 @@ function calculatePriority() {
 }
 
 
+/*
+ * Save the user's usefulness choice locally
+ * and reveal the second question.
+ */
+
 function submitFeedback(value) {
 
   const feedbackData = {
@@ -1173,19 +1181,31 @@ function submitFeedback(value) {
 
   document
     .getElementById("feedbackYes")
-    .classList.toggle("selected", value === "yes");
+    .classList.toggle(
+      "selected",
+      value === "yes"
+    );
 
   document
     .getElementById("feedbackNo")
-    .classList.toggle("selected", value === "no");
+    .classList.toggle(
+      "selected",
+      value === "no"
+    );
 
 
-  document.getElementById("nextQuestion").style.display = "block";
+  document.getElementById("nextQuestion").style.display =
+    "block";
 
-  document.getElementById("feedbackStatus").style.display = "block";
+  document.getElementById("feedbackStatus").style.display =
+    "none";
 
 }
 
+
+/*
+ * Send the completed feedback to Google Forms.
+ */
 
 function saveNextNeed() {
 
@@ -1200,11 +1220,14 @@ function saveNextNeed() {
 
   const existingFeedback =
     JSON.parse(
-      localStorage.getItem("followupEngineFeedback") || "{}"
+      localStorage.getItem(
+        "followupEngineFeedback"
+      ) || "{}"
     );
 
 
-  existingFeedback.nextNeed = nextNeed;
+  existingFeedback.nextNeed =
+    nextNeed;
 
   existingFeedback.timestamp =
     new Date().toISOString();
@@ -1214,6 +1237,103 @@ function saveNextNeed() {
     "followupEngineFeedback",
     JSON.stringify(existingFeedback)
   );
+
+
+  /*
+   * Convert our internal values
+   * to the exact Google Forms answers.
+   */
+
+  const usefulness =
+    existingFeedback.usefulness === "yes"
+      ? "Yes"
+      : "Not really";
+
+
+  const nextNeedMap = {
+
+    "generate-message":
+      "Generate the message",
+
+    "track-followups":
+      "Track all my follow-ups",
+
+    "daily-priority":
+      "Tell me who to contact today",
+
+    "recover-ghosted":
+      "Recover old / ghosted leads"
+
+  };
+
+
+  const nextNeedText =
+    nextNeedMap[nextNeed];
+
+
+  /*
+   * Google Forms field data.
+   */
+
+  const formData =
+    new URLSearchParams();
+
+
+  formData.append(
+    "entry.1064220020",
+    usefulness
+  );
+
+
+  formData.append(
+    "entry.1802400793",
+    nextNeedText
+  );
+
+
+  /*
+   * Send the response silently.
+   */
+
+  fetch(
+    "https://docs.google.com/forms/d/e/1FAIpQLSdmIJ1pZ4y7ZP3EZSYHB63WxoYi2UXEmiWFryxdjNbpf5ZddA/formResponse",
+    {
+      method:"POST",
+      mode:"no-cors",
+      headers:{
+        "Content-Type":
+          "application/x-www-form-urlencoded"
+      },
+      body:
+        formData.toString()
+    }
+  )
+  .then(function() {
+
+    document.getElementById(
+      "feedbackStatus"
+    ).textContent =
+      "Thanks — your feedback was recorded.";
+
+    document.getElementById(
+      "feedbackStatus"
+    ).style.display =
+      "block";
+
+  })
+  .catch(function() {
+
+    document.getElementById(
+      "feedbackStatus"
+    ).textContent =
+      "Thanks — your feedback was saved.";
+
+    document.getElementById(
+      "feedbackStatus"
+    ).style.display =
+      "block";
+
+  });
 
 }
 
