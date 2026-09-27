@@ -1,18 +1,21 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="1Pma6aOW4EKEB0zqRpRe1he1kobQOPCsN7NjbQSHVig">
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N84BKSSSPZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-N84BKSSSPZ');
-</script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N84BKSSSPZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-N84BKSSSPZ');
+  </script>
+
   <title>Follow-Up Priority Calculator | Know Who to Contact Today</title>
 
   <meta name="description" content="Free follow-up priority calculator for freelancers, consultants and small businesses. Find out which lead deserves attention today and what to do next.">
@@ -1138,11 +1141,13 @@
 
 
 <script>
+
 function trackEvent(name, params = {}) {
   if (typeof gtag === "function") {
     gtag("event", name, params);
   }
 }
+
 
 function calculatePriority() {
 
@@ -1317,10 +1322,15 @@ function calculatePriority() {
 
   document.getElementById("result").style.display =
     "block";
-trackEvent("calculator_completed", {
-  score: score,
-  priority: priority
-});
+
+
+  /* GA4: calculator completed */
+
+  trackEvent("calculator_completed", {
+    score: score,
+    priority: priority
+  });
+
 
   /* Reset feedback for each new calculation */
 
@@ -1395,6 +1405,22 @@ function submitFeedback(value) {
 
   document.getElementById("nextQuestion").style.display =
     "block";
+
+
+  /* GA4: feedback usefulness */
+
+  trackEvent(
+    value === "yes"
+      ? "feedback_useful"
+      : "feedback_not_useful",
+    {
+      score:
+        document.getElementById("score").textContent,
+      priority:
+        document.getElementById("priority").textContent
+    }
+  );
+
 
   document.getElementById("feedbackStatus").style.display =
     "none";
@@ -1523,6 +1549,16 @@ function saveNextNeed() {
 
 
   /*
+   * GA4: requested feature
+   */
+
+  trackEvent("feature_requested", {
+    feature: nextNeedText,
+    usefulness: usefulness
+  });
+
+
+  /*
    * Show success message immediately.
    */
 
@@ -1553,3 +1589,4 @@ function showComingSoon() {
 
 </body>
 </html>
+```
