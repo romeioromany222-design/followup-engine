@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1538,6 +1537,19 @@ function saveNextNeed() {
 
 
   /*
+   * GA4: requested feature
+   *
+   * IMPORTANT:
+   * Track the event BEFORE submitting the form.
+   */
+
+  trackEvent("feature_requested", {
+    feature: nextNeedText,
+    usefulness: usefulness
+  });
+
+
+  /*
    * Submit the hidden form.
    * The response goes to Google Forms
    * through the invisible iframe.
@@ -1546,16 +1558,6 @@ function saveNextNeed() {
   document.getElementById(
     "feedbackForm"
   ).submit();
-
-
-  /*
-   * GA4: requested feature
-   */
-
-  trackEvent("feature_requested", {
-    feature: nextNeedText,
-    usefulness: usefulness
-  });
 
 
   /*
@@ -1589,4 +1591,3 @@ function showComingSoon() {
 
 </body>
 </html>
-```
