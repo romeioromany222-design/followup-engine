@@ -498,7 +498,6 @@
 
 <body>
 
-<!-- Hidden Google Form -->
 <form
   id="feedbackForm"
   action="https://docs.google.com/forms/d/e/1FAIpQLSdmIJ1pZ4y7ZP3EZSYHB63WxoYi2UXEmiWFryxdjNbpf5ZddA/formResponse"
@@ -521,7 +520,6 @@
 
 <header>
   <div class="container nav">
-
     <a class="brand" href="#">
       FollowUp Engine
     </a>
@@ -532,7 +530,6 @@
       <a href="#product">Product</a>
       <a href="#faq">FAQ</a>
     </nav>
-
   </div>
 </header>
 
@@ -1141,9 +1138,18 @@
 
 <script>
 
+/*
+ * GA4 custom event helper
+ * Forces events to the FollowUp Engine GA4 property
+ * and enables debug mode for testing.
+ */
 function trackEvent(name, params = {}) {
   if (typeof gtag === "function") {
-    gtag("event", name, params);
+    gtag("event", name, {
+      ...params,
+      send_to: "G-N84BKSSSPZ",
+      debug_mode: true
+    });
   }
 }
 
@@ -1568,7 +1574,6 @@ function saveNextNeed() {
     "feedbackStatus"
   ).textContent =
     "Thanks — your feedback was submitted.";
-
 
   document.getElementById(
     "feedbackStatus"
