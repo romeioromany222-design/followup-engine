@@ -1317,7 +1317,10 @@ function calculatePriority() {
 
   document.getElementById("result").style.display =
     "block";
-
+trackEvent("calculator_completed", {
+  score: score,
+  priority: priority
+});
 
   /* Reset feedback for each new calculation */
 
