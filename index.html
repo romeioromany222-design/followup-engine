@@ -1138,6 +1138,11 @@
 
 
 <script>
+function trackEvent(name, params = {}) {
+  if (typeof gtag === "function") {
+    gtag("event", name, params);
+  }
+}
 
 function calculatePriority() {
 
