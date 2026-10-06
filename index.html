@@ -15,33 +15,63 @@
     gtag('config', 'G-N84BKSSSPZ');
   </script>
 
-  <title>Follow-Up Priority Calculator | Know Who to Contact Today</title>
+  <title>FollowUp Engine | Follow-Up Priority Calculator for Sales</title>
 
-  <meta name="description" content="Free follow-up priority calculator for freelancers, consultants and small businesses. Find out which lead deserves attention today and what to do next.">
+  <meta
+    name="description"
+    content="Free follow-up priority calculator for freelancers, consultants, agencies and small businesses. Find out which lead deserves your attention today and what to do next."
+  >
 
   <meta name="robots" content="index,follow">
 
-  <link rel="canonical" href="https://romeioromany222-design.github.io/followup-engine/">
+  <link
+    rel="canonical"
+    href="https://romeioromany222-design.github.io/followup-engine/"
+  >
 
-  <meta property="og:title" content="Follow-Up Priority Calculator">
-  <meta property="og:description" content="Find out which sales lead deserves your attention today.">
+  <meta
+    property="og:title"
+    content="FollowUp Engine | Know Who to Follow Up With Today"
+  >
+
+  <meta
+    property="og:description"
+    content="A free tool that helps you decide which sales lead deserves your attention today."
+  >
+
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://romeioromany222-design.github.io/followup-engine/">
+
+  <meta
+    property="og:url"
+    content="https://romeioromany222-design.github.io/followup-engine/"
+  >
+
+  <meta name="theme-color" content="#0b1020">
 
   <style>
     :root {
-      --bg:#f6f7fb;
-      --card:#ffffff;
-      --text:#111827;
+      --bg:#f5f7fb;
+      --surface:#ffffff;
+      --surface-soft:#f8fafc;
+      --text:#101828;
       --muted:#667085;
-      --border:#e5e7eb;
-      --dark:#111827;
+      --muted-2:#98a2b3;
+      --border:#e4e7ec;
+      --dark:#0b1020;
+      --dark-2:#161d31;
       --green:#087f5b;
-      --green-bg:#e9f8f2;
-      --blue:#2457a6;
-      --blue-bg:#eef4ff;
-      --orange:#b45309;
-      --orange-bg:#fff7ed;
+      --green-bg:#eaf8f3;
+      --green-border:#bfe7d8;
+      --blue:#175cd3;
+      --blue-bg:#eff6ff;
+      --purple:#7a5af8;
+      --orange:#b54708;
+      --orange-bg:#fff6ed;
+      --shadow-sm:0 4px 18px rgba(16,24,40,.06);
+      --shadow-lg:0 28px 80px rgba(16,24,40,.12);
+      --radius-sm:10px;
+      --radius-md:16px;
+      --radius-lg:24px;
     }
 
     * {
@@ -54,10 +84,16 @@
 
     body {
       margin:0;
-      font-family:Inter,Arial,sans-serif;
-      background:var(--bg);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(122,90,248,.05), transparent 34%),
+        linear-gradient(180deg,#f8faff 0%,#f5f7fb 100%);
       color:var(--text);
       line-height:1.6;
+    }
+
+    body::selection {
+      background:#dbeafe;
     }
 
     a {
@@ -65,72 +101,189 @@
       text-decoration:none;
     }
 
+    button,
+    input,
+    select {
+      font:inherit;
+    }
+
+    button {
+      cursor:pointer;
+    }
+
     .container {
-      width:min(1120px,calc(100% - 32px));
+      width:min(1160px,calc(100% - 32px));
       margin:auto;
     }
 
+    .container.narrow {
+      width:min(900px,calc(100% - 32px));
+    }
+
+    .topbar {
+      position:relative;
+      z-index:20;
+      background:#0b1020;
+      color:#dbe4ff;
+      font-size:13px;
+    }
+
+    .topbar-inner {
+      min-height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      text-align:center;
+    }
+
+    .topbar-dot {
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#7dd3fc;
+      box-shadow:0 0 0 5px rgba(125,211,252,.10);
+      flex:0 0 auto;
+    }
+
     header {
-      background:rgba(255,255,255,.95);
-      border-bottom:1px solid var(--border);
       position:sticky;
       top:0;
-      z-index:10;
+      z-index:15;
+      background:rgba(255,255,255,.90);
+      border-bottom:1px solid rgba(228,231,236,.82);
+      backdrop-filter:blur(14px);
     }
 
     .nav {
-      min-height:68px;
+      min-height:72px;
       display:flex;
       align-items:center;
       justify-content:space-between;
+      gap:20px;
     }
 
     .brand {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
       font-size:19px;
-      font-weight:800;
+      font-weight:850;
+      letter-spacing:-.3px;
+      white-space:nowrap;
+    }
+
+    .brand-mark {
+      width:34px;
+      height:34px;
+      border-radius:11px;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-size:14px;
+      font-weight:900;
+      background:linear-gradient(135deg,#111827 0%,#334155 100%);
+      box-shadow:0 8px 24px rgba(17,24,39,.18);
+    }
+
+    .nav-right {
+      display:flex;
+      align-items:center;
+      gap:18px;
     }
 
     .nav-links {
       display:flex;
+      align-items:center;
       gap:22px;
-      color:var(--muted);
+      color:#475467;
       font-size:14px;
+      font-weight:600;
+    }
+
+    .nav-links a:hover {
+      color:var(--text);
+    }
+
+    .nav-cta {
+      padding:10px 15px;
+      border-radius:10px;
+      background:var(--dark);
+      color:#fff;
+      font-size:13px;
+      font-weight:800;
+      box-shadow:0 8px 20px rgba(11,16,32,.12);
     }
 
     .hero {
-      padding:82px 0 60px;
+      position:relative;
+      overflow:hidden;
+      padding:78px 0 58px;
+    }
+
+    .hero::before {
+      content:"";
+      position:absolute;
+      width:520px;
+      height:520px;
+      right:-180px;
+      top:-170px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(99,102,241,.12) 0%,rgba(99,102,241,0) 68%);
+      pointer-events:none;
     }
 
     .hero-grid {
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:55px;
+      grid-template-columns:1.02fr .98fr;
+      gap:54px;
       align-items:center;
+      position:relative;
+      z-index:1;
     }
 
     .eyebrow {
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       background:var(--blue-bg);
       color:var(--blue);
-      padding:7px 12px;
+      padding:8px 13px;
+      border:1px solid #dbeafe;
       border-radius:999px;
       font-size:13px;
-      font-weight:700;
-      margin-bottom:18px;
+      font-weight:800;
+      margin-bottom:20px;
+    }
+
+    .eyebrow::before {
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:currentColor;
     }
 
     h1 {
-      font-size:clamp(42px,6vw,68px);
-      line-height:1.02;
-      letter-spacing:-3px;
-      margin:0 0 22px;
+      font-size:clamp(46px,6vw,74px);
+      line-height:.98;
+      letter-spacing:-4px;
+      margin:0 0 24px;
+      max-width:720px;
+    }
+
+    .gradient-text {
+      background:linear-gradient(90deg,#101828 0%,#344054 52%,#175cd3 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
     }
 
     .hero-text {
-      color:var(--muted);
-      font-size:19px;
+      color:#475467;
+      font-size:20px;
       max-width:650px;
-      margin-bottom:25px;
+      margin:0 0 28px;
     }
 
     .buttons {
@@ -141,49 +294,210 @@
 
     .btn {
       border:0;
-      border-radius:10px;
-      padding:13px 18px;
+      border-radius:12px;
+      padding:14px 20px;
       font-size:15px;
-      font-weight:750;
-      cursor:pointer;
+      font-weight:800;
       display:inline-flex;
       justify-content:center;
       align-items:center;
+      gap:8px;
+      transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease;
     }
 
-    .primary {
+    .btn:hover {
+      transform:translateY(-1px);
+    }
+
+    .btn.primary {
       background:var(--dark);
       color:#fff;
+      box-shadow:0 12px 28px rgba(11,16,32,.16);
     }
 
-    .secondary {
+    .btn.primary:hover {
+      box-shadow:0 16px 34px rgba(11,16,32,.21);
+    }
+
+    .btn.secondary {
       background:#fff;
       border:1px solid var(--border);
+      color:var(--text);
+    }
+
+    .btn.secondary:hover {
+      border-color:#c9ced6;
+      box-shadow:var(--shadow-sm);
     }
 
     .note {
-      margin-top:18px;
+      margin-top:16px;
+      display:flex;
+      align-items:center;
+      gap:9px;
+      color:#667085;
       font-size:13px;
+      font-weight:600;
+    }
+
+    .note::before {
+      content:"✓";
+      display:grid;
+      place-items:center;
+      width:19px;
+      height:19px;
+      border-radius:50%;
+      background:var(--green-bg);
+      color:var(--green);
+      font-weight:900;
+      font-size:11px;
+    }
+
+    .hero-proof {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:30px;
+      max-width:650px;
+    }
+
+    .proof-chip {
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(228,231,236,.9);
+      border-radius:12px;
+      padding:13px 14px;
+      box-shadow:var(--shadow-sm);
+    }
+
+    .proof-chip strong {
+      display:block;
+      font-size:13px;
+      margin-bottom:2px;
+    }
+
+    .proof-chip span {
       color:var(--muted);
+      font-size:12px;
+    }
+
+    .hero-side {
+      position:relative;
+    }
+
+    .preview-card {
+      position:absolute;
+      top:-20px;
+      right:-14px;
+      width:250px;
+      background:rgba(255,255,255,.93);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+      box-shadow:var(--shadow-lg);
+      z-index:3;
+      transform:rotate(2deg);
+    }
+
+    .preview-label {
+      color:var(--muted);
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:7px;
+    }
+
+    .preview-score {
+      font-size:34px;
+      font-weight:900;
+      line-height:1;
+      letter-spacing:-1px;
+    }
+
+    .preview-priority {
+      margin-top:7px;
+      font-size:12px;
+      font-weight:900;
+      color:var(--green);
+    }
+
+    .preview-line {
+      height:7px;
+      border-radius:999px;
+      background:#eef2f6;
+      margin-top:13px;
+      overflow:hidden;
+    }
+
+    .preview-line span {
+      display:block;
+      width:87%;
+      height:100%;
+      border-radius:inherit;
+      background:linear-gradient(90deg,#34d399,#10b981);
+    }
+
+    .preview-action {
+      margin-top:12px;
+      font-size:12px;
+      color:#475467;
+      line-height:1.5;
     }
 
     .tool {
-      background:#fff;
+      position:relative;
+      background:rgba(255,255,255,.97);
       border:1px solid var(--border);
-      border-radius:18px;
-      padding:28px;
-      box-shadow:0 20px 60px rgba(16,24,40,.08);
+      border-radius:24px;
+      padding:30px;
+      box-shadow:0 30px 90px rgba(16,24,40,.14);
+    }
+
+    .tool::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:24px;
+      pointer-events:none;
+      background:linear-gradient(135deg,rgba(255,255,255,.8),rgba(255,255,255,0));
+    }
+
+    .tool-header {
+      position:relative;
+      z-index:1;
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:flex-start;
+      margin-bottom:23px;
     }
 
     .tool h2 {
       margin:0 0 5px;
       font-size:24px;
+      letter-spacing:-.6px;
     }
 
     .tool-sub {
       color:var(--muted);
       font-size:14px;
-      margin-bottom:22px;
+      margin:0;
+    }
+
+    .tool-badge {
+      background:#f2f4f7;
+      color:#344054;
+      border:1px solid #e4e7ec;
+      border-radius:999px;
+      padding:7px 10px;
+      font-size:11px;
+      font-weight:850;
+      white-space:nowrap;
+    }
+
+    .calculator-fields {
+      position:relative;
+      z-index:1;
     }
 
     .field {
@@ -193,45 +507,78 @@
     label {
       display:block;
       font-size:13px;
-      font-weight:750;
+      font-weight:800;
       margin-bottom:7px;
+      color:#344054;
     }
 
     input,
     select {
       width:100%;
-      padding:12px;
-      border:1px solid #d9dde5;
-      border-radius:9px;
+      padding:13px 13px;
+      border:1px solid #d7dce3;
+      border-radius:10px;
       background:#fff;
+      color:#101828;
       font-size:15px;
+      transition:border-color .18s ease,box-shadow .18s ease;
+    }
+
+    input::placeholder {
+      color:#98a2b3;
     }
 
     input:focus,
     select:focus {
       outline:none;
-      border-color:#687386;
-      box-shadow:0 0 0 3px rgba(17,24,39,.06);
+      border-color:#98a2b3;
+      box-shadow:0 0 0 4px rgba(17,24,39,.06);
+    }
+
+    .calculator-button {
+      position:relative;
+      z-index:1;
+      width:100%;
+      margin-top:4px;
     }
 
     .result {
       display:none;
       margin-top:20px;
       padding:20px;
-      border-radius:14px;
-      background:var(--green-bg);
-      border:1px solid #c8ecdf;
+      border-radius:18px;
+      background:linear-gradient(180deg,#eefbf6 0%,#e8f7f1 100%);
+      border:1px solid var(--green-border);
+      position:relative;
+      z-index:1;
+    }
+
+    .result-top {
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .result-label {
+      color:#475467;
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
     }
 
     .score {
-      font-size:46px;
-      font-weight:850;
+      font-size:48px;
+      font-weight:900;
       line-height:1;
+      letter-spacing:-2px;
     }
 
     .priority {
-      font-weight:850;
-      margin:7px 0 12px;
+      font-weight:900;
+      margin:8px 0 12px;
+      color:#075e43;
     }
 
     .result-text {
@@ -242,15 +589,19 @@
     .action {
       background:#fff;
       border:1px solid rgba(0,0,0,.08);
-      padding:13px;
-      border-radius:10px;
+      padding:14px;
+      border-radius:12px;
       margin-top:14px;
+    }
+
+    .action strong {
+      font-size:13px;
     }
 
     .feedback-box {
       margin-top:16px;
       padding:16px;
-      border-radius:12px;
+      border-radius:13px;
       background:#fff;
       border:1px solid rgba(0,0,0,.08);
     }
@@ -273,8 +624,8 @@
       border-radius:9px;
       padding:9px 12px;
       font-size:13px;
-      font-weight:700;
-      cursor:pointer;
+      font-weight:750;
+      transition:.18s ease;
     }
 
     .feedback-btn:hover {
@@ -301,11 +652,11 @@
       margin-top:12px;
       font-size:13px;
       color:var(--green);
-      font-weight:700;
+      font-weight:800;
     }
 
     .section {
-      padding:75px 0;
+      padding:82px 0;
     }
 
     .white {
@@ -314,21 +665,70 @@
       border-bottom:1px solid var(--border);
     }
 
-    .heading {
-      max-width:720px;
-      margin-bottom:38px;
+    .section-head {
+      max-width:760px;
+      margin:0 auto 42px;
+      text-align:center;
+    }
+
+    .section-kicker {
+      display:inline-block;
+      color:var(--blue);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      font-weight:900;
+      margin-bottom:10px;
     }
 
     .heading h2 {
-      font-size:clamp(30px,4vw,44px);
-      line-height:1.1;
-      letter-spacing:-1.5px;
+      font-size:clamp(31px,4vw,46px);
+      line-height:1.08;
+      letter-spacing:-2px;
       margin:0 0 14px;
     }
 
     .heading p {
       color:var(--muted);
       font-size:17px;
+      margin:0;
+    }
+
+    .audience {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .audience-card {
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:15px;
+      padding:21px;
+      box-shadow:var(--shadow-sm);
+    }
+
+    .audience-icon {
+      width:35px;
+      height:35px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      background:#f3f6ff;
+      color:var(--blue);
+      font-weight:900;
+      margin-bottom:13px;
+    }
+
+    .audience-card h3 {
+      margin:0 0 5px;
+      font-size:16px;
+    }
+
+    .audience-card p {
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
     }
 
     .features {
@@ -340,138 +740,370 @@
     .feature {
       background:#fff;
       border:1px solid var(--border);
-      border-radius:14px;
-      padding:24px;
+      border-radius:17px;
+      padding:26px;
+      box-shadow:var(--shadow-sm);
+    }
+
+    .feature-number {
+      font-size:12px;
+      color:var(--blue);
+      font-weight:900;
+      letter-spacing:.08em;
+      margin-bottom:14px;
     }
 
     .feature h3 {
-      margin-top:0;
+      margin:0 0 8px;
+      font-size:19px;
+      letter-spacing:-.4px;
     }
 
     .feature p {
       color:var(--muted);
       font-size:14px;
+      margin:0;
+    }
+
+    .dark-wrap {
+      background:linear-gradient(180deg,#111827 0%,#0b1020 100%);
+      padding:1px;
+      border-radius:28px;
+      box-shadow:0 30px 90px rgba(11,16,32,.18);
     }
 
     .dark-section {
-      background:#111827;
       color:#fff;
-      border-radius:20px;
-      padding:45px;
-    }
-
-    .dark-section p {
-      color:#c8ced8;
+      border-radius:28px;
+      padding:52px;
+      background:
+        radial-gradient(circle at top right,rgba(124,58,237,.18),transparent 38%),
+        linear-gradient(180deg,#151c2f 0%,#0d1322 100%);
     }
 
     .dark-grid {
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
+      grid-template-columns:1.05fr .95fr;
+      gap:54px;
+      align-items:center;
+    }
+
+    .dark-section .eyebrow {
+      background:rgba(255,255,255,.09);
+      color:#bfdbfe;
+      border-color:rgba(255,255,255,.08);
+    }
+
+    .dark-section h2 {
+      margin:0;
+      font-size:clamp(33px,4vw,48px);
+      line-height:1.06;
+      letter-spacing:-2px;
+    }
+
+    .dark-section p {
+      color:#b8c1d1;
+      font-size:16px;
+      margin:18px 0 0;
+      max-width:600px;
     }
 
     .list {
       list-style:none;
       padding:0;
+      margin:0;
+      display:grid;
+      gap:11px;
     }
 
     .list li {
-      margin:12px 0;
-      color:#e5e7eb;
+      margin:0;
+      color:#e7edf7;
+      font-size:14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
 
-    .list li:before {
+    .list li::before {
       content:"✓";
-      color:#8de1bf;
-      font-weight:800;
-      margin-right:9px;
+      display:grid;
+      place-items:center;
+      width:22px;
+      height:22px;
+      border-radius:50%;
+      background:rgba(52,211,153,.12);
+      color:#86efac;
+      font-weight:900;
+      flex:0 0 auto;
     }
 
     .pricing {
       display:grid;
       grid-template-columns:repeat(2,1fr);
       gap:20px;
-      max-width:850px;
+      max-width:920px;
       margin:auto;
     }
 
     .price-card {
       background:#fff;
       border:1px solid var(--border);
-      border-radius:16px;
-      padding:30px;
+      border-radius:20px;
+      padding:32px;
+      box-shadow:var(--shadow-sm);
     }
 
     .price-card.pro {
+      position:relative;
+      overflow:hidden;
       border:2px solid var(--dark);
+      box-shadow:0 24px 70px rgba(16,24,40,.10);
+    }
+
+    .price-card.pro::before {
+      content:"PLANNED";
+      position:absolute;
+      top:16px;
+      right:16px;
+      padding:6px 9px;
+      border-radius:999px;
+      background:#f3f4f6;
+      color:#344054;
+      border:1px solid #e5e7eb;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.08em;
+    }
+
+    .price-card h3 {
+      margin:0 0 5px;
+      font-size:19px;
     }
 
     .price {
-      font-size:42px;
-      font-weight:850;
+      font-size:46px;
+      font-weight:900;
+      letter-spacing:-2px;
       margin:8px 0;
     }
 
-    .price-card p,
-    .price-card li {
+    .price-sub {
       color:var(--muted);
+      font-size:13px;
+      margin:0 0 18px;
     }
 
     .price-card ul {
-      padding-left:20px;
+      margin:0 0 24px;
+      padding-left:19px;
+    }
+
+    .price-card li {
+      margin:9px 0;
+      color:#475467;
+      font-size:14px;
+    }
+
+    .launch-note {
+      margin-top:12px;
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
     }
 
     .faq {
-      max-width:800px;
+      max-width:840px;
       margin:auto;
     }
 
     details {
       background:#fff;
       border:1px solid var(--border);
-      border-radius:10px;
-      padding:17px;
+      border-radius:12px;
+      padding:18px;
       margin-bottom:10px;
     }
 
     summary {
       cursor:pointer;
-      font-weight:750;
+      font-weight:800;
+      color:#1d2939;
+    }
+
+    details p {
+      color:var(--muted);
+      font-size:14px;
+      margin:12px 0 0;
+    }
+
+    .final-cta {
+      padding:0 0 84px;
+    }
+
+    .final-cta-card {
+      background:
+        radial-gradient(circle at 80% 20%,rgba(255,255,255,.08),transparent 30%),
+        linear-gradient(135deg,#101828 0%,#1d2939 100%);
+      color:#fff;
+      border-radius:26px;
+      padding:50px;
+      text-align:center;
+      box-shadow:0 30px 80px rgba(16,24,40,.14);
+    }
+
+    .final-cta-card h2 {
+      margin:0 0 10px;
+      font-size:clamp(31px,4vw,48px);
+      line-height:1.06;
+      letter-spacing:-2px;
+    }
+
+    .final-cta-card p {
+      color:#c7ced9;
+      max-width:650px;
+      margin:0 auto 24px;
+      font-size:16px;
+    }
+
+    .final-cta-card .btn.secondary {
+      background:#fff;
+      border-color:#fff;
     }
 
     footer {
-      padding:40px 0;
+      padding:42px 0;
       color:var(--muted);
       font-size:13px;
     }
 
-    @media(max-width:850px) {
-      .hero-grid,
-      .dark-grid,
-      .pricing,
-      .features {
+    .footer-row {
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:30px;
+    }
+
+    .footer-brand {
+      font-weight:900;
+      color:#1d2939;
+    }
+
+    .footer-note {
+      margin-top:5px;
+    }
+
+    @media(max-width:1000px) {
+      .hero-grid {
         grid-template-columns:1fr;
       }
 
-      .nav-links {
+      .preview-card {
         display:none;
       }
 
+      .hero-text {
+        max-width:800px;
+      }
+
+      .audience {
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:850px) {
+      .nav-links,
+      .nav-cta {
+        display:none;
+      }
+
+      .nav-right {
+        margin-left:auto;
+      }
+
       .hero {
-        padding-top:55px;
+        padding-top:58px;
       }
 
       h1 {
-        letter-spacing:-2px;
+        letter-spacing:-2.7px;
+      }
+
+      .hero-proof {
+        grid-template-columns:1fr;
+      }
+
+      .features,
+      .dark-grid,
+      .pricing {
+        grid-template-columns:1fr;
       }
 
       .dark-section {
-        padding:28px;
+        padding:30px;
+      }
+
+      .final-cta-card {
+        padding:34px 24px;
+      }
+
+      .footer-row {
+        flex-direction:column;
+      }
+    }
+
+    @media(max-width:560px) {
+      .container,
+      .container.narrow {
+        width:min(100% - 22px,1160px);
+      }
+
+      .topbar-inner {
+        min-height:42px;
+        padding:6px 12px;
+      }
+
+      .nav {
+        min-height:64px;
+      }
+
+      .hero {
+        padding-bottom:40px;
+      }
+
+      h1 {
+        font-size:46px;
+      }
+
+      .hero-text {
+        font-size:17px;
+      }
+
+      .buttons,
+      .buttons .btn {
+        width:100%;
+      }
+
+      .tool {
+        padding:21px;
+        border-radius:19px;
+      }
+
+      .tool-header {
+        flex-direction:column;
+      }
+
+      .audience {
+        grid-template-columns:1fr;
+      }
+
+      .section {
+        padding:65px 0;
       }
     }
   </style>
 
-  <!-- Google Forms submission target -->
+  <!-- Existing feedback submission target -->
   <iframe
     name="feedbackFrame"
     id="feedbackFrame"
@@ -498,6 +1130,13 @@
 
 <body>
 
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span class="topbar-dot"></span>
+    <span>Free tool. No signup. Built to help you decide who to contact next.</span>
+  </div>
+</div>
+
 <form
   id="feedbackForm"
   action="https://docs.google.com/forms/d/e/1FAIpQLSdmIJ1pZ4y7ZP3EZSYHB63WxoYi2UXEmiWFryxdjNbpf5ZddA/formResponse"
@@ -520,16 +1159,33 @@
 
 <header>
   <div class="container nav">
+
     <a class="brand" href="#">
-      FollowUp Engine
+      <span class="brand-mark">F</span>
+      <span>FollowUp Engine</span>
     </a>
 
-    <nav class="nav-links">
-      <a href="#calculator">Free Tool</a>
-      <a href="#how">How It Works</a>
-      <a href="#product">Product</a>
-      <a href="#faq">FAQ</a>
-    </nav>
+    <div class="nav-right">
+
+      <nav class="nav-links">
+        <a href="#calculator">Free Tool</a>
+        <a href="#how">How It Works</a>
+        <a href="#product">Pro</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a
+        class="nav-cta"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSelZTSsz2qZtRo-17Z_XD2KBfvdI1huM8EQu05o21sDgYK_RA/viewform?hl=en"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="trackLaunchListClick()"
+      >
+        Join Launch List
+      </a>
+
+    </div>
+
   </div>
 </header>
 
@@ -546,256 +1202,346 @@
       </div>
 
       <h1>
-        Know who to follow up with today.
+        <span class="gradient-text">Know who to follow up with today.</span>
       </h1>
 
       <p class="hero-text">
         Stop guessing which lead deserves your attention.
         Enter a few details and get a simple priority score,
-        the reason behind it, and your recommended next action.
+        the reason behind it, and a recommended next action.
       </p>
 
       <div class="buttons">
 
-        <a href="#calculator" class="btn primary">
+        <a
+          href="#calculator"
+          class="btn primary"
+          onclick="trackEvent('free_tool_cta_clicked')"
+        >
           Calculate My Priority
+          <span aria-hidden="true">→</span>
         </a>
 
-        <a href="#how" class="btn secondary">
+        <a
+          href="#how"
+          class="btn secondary"
+        >
           See How It Works
         </a>
 
       </div>
 
       <div class="note">
-        Free. No account required. Your calculator inputs stay in your browser.
+        Your calculator inputs stay in your browser.
+      </div>
+
+      <div class="hero-proof">
+
+        <div class="proof-chip">
+          <strong>1-minute test</strong>
+          <span>Try one opportunity quickly.</span>
+        </div>
+
+        <div class="proof-chip">
+          <strong>Simple score</strong>
+          <span>See why the lead ranks where it does.</span>
+        </div>
+
+        <div class="proof-chip">
+          <strong>Next action</strong>
+          <span>Get a practical follow-up suggestion.</span>
+        </div>
+
       </div>
 
     </div>
 
-    <div class="tool" id="calculator">
+    <div class="hero-side">
 
-      <h2>
-        Follow-Up Priority Calculator
-      </h2>
+      <div class="preview-card">
 
-      <div class="tool-sub">
-        Test one opportunity in less than a minute.
-      </div>
-
-      <div class="field">
-
-        <label for="dealValue">
-          Potential deal value ($)
-        </label>
-
-        <input
-          id="dealValue"
-          type="number"
-          min="0"
-          value="1500"
-        >
-
-      </div>
-
-      <div class="field">
-
-        <label for="days">
-          Days since last contact
-        </label>
-
-        <input
-          id="days"
-          type="number"
-          min="0"
-          value="7"
-        >
-
-      </div>
-
-      <div class="field">
-
-        <label for="temperature">
-          Lead temperature
-        </label>
-
-        <select id="temperature">
-          <option value="1">Cold</option>
-          <option value="2" selected>Warm</option>
-          <option value="3">Hot</option>
-        </select>
-
-      </div>
-
-      <div class="field">
-
-        <label for="reply">
-          Current buying signal
-        </label>
-
-        <select id="reply">
-
-          <option value="1">
-            No reply
-          </option>
-
-          <option value="2">
-            They replied
-          </option>
-
-          <option value="3">
-            Asked for details
-          </option>
-
-          <option value="4">
-            Asked about price / proposal
-          </option>
-
-          <option value="5">
-            Ready to decide
-          </option>
-
-        </select>
-
-      </div>
-
-      <div class="field">
-
-        <label for="deadline">
-          Deadline pressure
-        </label>
-
-        <select id="deadline">
-
-          <option value="0">
-            No known deadline
-          </option>
-
-          <option value="1">
-            Within 30 days
-          </option>
-
-          <option value="2">
-            Within 14 days
-          </option>
-
-          <option value="3">
-            Within 7 days
-          </option>
-
-        </select>
-
-      </div>
-
-      <button
-        class="btn primary"
-        style="width:100%;"
-        onclick="calculatePriority()"
-      >
-        Calculate Priority
-      </button>
-
-      <div class="result" id="result">
-
-        <div class="score" id="score">
-          0/100
+        <div class="preview-label">
+          Example result
         </div>
 
-        <div class="priority" id="priority">
-          —
+        <div class="preview-score">
+          87/100
         </div>
 
-        <div class="result-text" id="reason">
-          —
+        <div class="preview-priority">
+          FOLLOW UP TODAY
         </div>
 
-        <div class="action">
+        <div class="preview-line">
+          <span></span>
+        </div>
 
-          <strong>
-            Recommended next action
-          </strong>
+        <div class="preview-action">
+          Send a short, specific follow-up with one clear next step.
+        </div>
 
-          <div
-            class="result-text"
-            id="action"
-            style="margin-top:6px;"
-          >
-            —
+      </div>
+
+      <div class="tool" id="calculator">
+
+        <div class="tool-header">
+
+          <div>
+            <h2>
+              Follow-Up Priority Calculator
+            </h2>
+
+            <p class="tool-sub">
+              Test one opportunity in less than a minute.
+            </p>
+          </div>
+
+          <div class="tool-badge">
+            FREE
           </div>
 
         </div>
 
-        <div class="feedback-box">
+        <div class="calculator-fields">
 
-          <div class="feedback-title">
-            Was this recommendation useful?
-          </div>
+          <div class="field">
 
-          <div class="feedback-buttons">
-
-            <button
-              type="button"
-              class="feedback-btn"
-              id="feedbackYes"
-              onclick="submitFeedback('yes')"
-            >
-              👍 Yes
-            </button>
-
-            <button
-              type="button"
-              class="feedback-btn"
-              id="feedbackNo"
-              onclick="submitFeedback('no')"
-            >
-              👎 Not really
-            </button>
-
-          </div>
-
-          <div
-            class="next-question"
-            id="nextQuestion"
-          >
-
-            <label for="nextNeed">
-              What would you want next?
+            <label for="dealValue">
+              Potential deal value ($)
             </label>
 
-            <select
-              id="nextNeed"
-              onchange="saveNextNeed()"
+            <input
+              id="dealValue"
+              type="number"
+              min="0"
+              value="1500"
             >
 
-              <option value="">
-                Select one
+          </div>
+
+          <div class="field">
+
+            <label for="days">
+              Days since last contact
+            </label>
+
+            <input
+              id="days"
+              type="number"
+              min="0"
+              value="7"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label for="temperature">
+              Lead temperature
+            </label>
+
+            <select id="temperature">
+
+              <option value="1">
+                Cold
               </option>
 
-              <option value="generate-message">
-                Generate the message
+              <option value="2" selected>
+                Warm
               </option>
 
-              <option value="track-followups">
-                Track all my follow-ups
-              </option>
-
-              <option value="daily-priority">
-                Tell me who to contact today
-              </option>
-
-              <option value="recover-ghosted">
-                Recover old / ghosted leads
+              <option value="3">
+                Hot
               </option>
 
             </select>
 
           </div>
 
-          <div
-            class="feedback-status"
-            id="feedbackStatus"
+          <div class="field">
+
+            <label for="reply">
+              Current buying signal
+            </label>
+
+            <select id="reply">
+
+              <option value="1">
+                No reply
+              </option>
+
+              <option value="2">
+                They replied
+              </option>
+
+              <option value="3">
+                Asked for details
+              </option>
+
+              <option value="4">
+                Asked about price / proposal
+              </option>
+
+              <option value="5">
+                Ready to decide
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="field">
+
+            <label for="deadline">
+              Deadline pressure
+            </label>
+
+            <select id="deadline">
+
+              <option value="0">
+                No known deadline
+              </option>
+
+              <option value="1">
+                Within 30 days
+              </option>
+
+              <option value="2">
+                Within 14 days
+              </option>
+
+              <option value="3">
+                Within 7 days
+              </option>
+
+            </select>
+
+          </div>
+
+          <button
+            type="button"
+            class="btn primary calculator-button"
+            onclick="calculatePriority()"
           >
-            Thanks — your feedback was recorded.
+            Calculate Priority
+            <span aria-hidden="true">→</span>
+          </button>
+
+        </div>
+
+        <div class="result" id="result">
+
+          <div class="result-top">
+
+            <div>
+              <div class="result-label">
+                Priority score
+              </div>
+
+              <div class="score" id="score">
+                0/100
+              </div>
+
+              <div class="priority" id="priority">
+                —
+              </div>
+            </div>
+
+          </div>
+
+          <div class="result-text" id="reason">
+            —
+          </div>
+
+          <div class="action">
+
+            <strong>
+              Recommended next action
+            </strong>
+
+            <div
+              class="result-text"
+              id="action"
+              style="margin-top:6px;"
+            >
+              —
+            </div>
+
+          </div>
+
+          <div class="feedback-box">
+
+            <div class="feedback-title">
+              Was this recommendation useful?
+            </div>
+
+            <div class="feedback-buttons">
+
+              <button
+                type="button"
+                class="feedback-btn"
+                id="feedbackYes"
+                onclick="submitFeedback('yes')"
+              >
+                👍 Yes
+              </button>
+
+              <button
+                type="button"
+                class="feedback-btn"
+                id="feedbackNo"
+                onclick="submitFeedback('no')"
+              >
+                👎 Not really
+              </button>
+
+            </div>
+
+            <div
+              class="next-question"
+              id="nextQuestion"
+            >
+
+              <label for="nextNeed">
+                What would you want next?
+              </label>
+
+              <select
+                id="nextNeed"
+                onchange="saveNextNeed()"
+              >
+
+                <option value="">
+                  Select one
+                </option>
+
+                <option value="generate-message">
+                  Generate the message
+                </option>
+
+                <option value="track-followups">
+                  Track all my follow-ups
+                </option>
+
+                <option value="daily-priority">
+                  Tell me who to contact today
+                </option>
+
+                <option value="recover-ghosted">
+                  Recover old / ghosted leads
+                </option>
+
+              </select>
+
+            </div>
+
+            <div
+              class="feedback-status"
+              id="feedbackStatus"
+            >
+              Thanks — your feedback was recorded.
+            </div>
+
           </div>
 
         </div>
@@ -809,20 +1555,116 @@
 </section>
 
 
-<section class="section white" id="how">
+<section class="section white">
 
   <div class="container">
 
-    <div class="heading">
+    <div class="section-head heading">
+
+      <div class="section-kicker">
+        Built for
+      </div>
 
       <h2>
-        Your CRM stores the lead.
-        This helps you decide what to do next.
+        A focused tool for people managing real opportunities.
       </h2>
 
       <p>
-        The tool focuses on one practical question:
-        which opportunity deserves your attention right now?
+        Use the calculator when your CRM or spreadsheet gives you a list,
+        but you still need to decide where to spend your attention first.
+      </p>
+
+    </div>
+
+    <div class="audience">
+
+      <article class="audience-card">
+
+        <div class="audience-icon">
+          F
+        </div>
+
+        <h3>
+          Freelancers
+        </h3>
+
+        <p>
+          Prioritize proposals, prospects and follow-ups.
+        </p>
+
+      </article>
+
+      <article class="audience-card">
+
+        <div class="audience-icon">
+          A
+        </div>
+
+        <h3>
+          Agencies
+        </h3>
+
+        <p>
+          Keep important opportunities from going quiet.
+        </p>
+
+      </article>
+
+      <article class="audience-card">
+
+        <div class="audience-icon">
+          S
+        </div>
+
+        <h3>
+          Salespeople
+        </h3>
+
+        <p>
+          Turn lead lists into practical next actions.
+        </p>
+
+      </article>
+
+      <article class="audience-card">
+
+        <div class="audience-icon">
+          C
+        </div>
+
+        <h3>
+          Consultants
+        </h3>
+
+        <p>
+          Focus follow-up time where it matters most.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="how">
+
+  <div class="container">
+
+    <div class="section-head heading">
+
+      <div class="section-kicker">
+        How it works
+      </div>
+
+      <h2>
+        From a messy lead list to one clear next move.
+      </h2>
+
+      <p>
+        FollowUp Engine keeps the decision simple instead of trying to become another full CRM.
       </p>
 
     </div>
@@ -831,8 +1673,12 @@
 
       <article class="feature">
 
+        <div class="feature-number">
+          01
+        </div>
+
         <h3>
-          01. Prioritize
+          Prioritize
         </h3>
 
         <p>
@@ -844,8 +1690,12 @@
 
       <article class="feature">
 
+        <div class="feature-number">
+          02
+        </div>
+
         <h3>
-          02. Decide
+          Decide
         </h3>
 
         <p>
@@ -857,13 +1707,17 @@
 
       <article class="feature">
 
+        <div class="feature-number">
+          03
+        </div>
+
         <h3>
-          03. Protect Revenue
+          Protect momentum
         </h3>
 
         <p>
-          Identify valuable opportunities that may be
-          losing momentum because nobody followed up.
+          Identify opportunities that deserve attention
+          before they drift further down the pipeline.
         </p>
 
       </article>
@@ -879,40 +1733,44 @@
 
   <div class="container">
 
-    <div class="dark-section">
+    <div class="dark-wrap">
 
-      <div class="dark-grid">
+      <div class="dark-section">
 
-        <div>
+        <div class="dark-grid">
 
-          <div class="eyebrow">
-            The future paid product
+          <div>
+
+            <div class="eyebrow">
+              FollowUp Engine Pro
+            </div>
+
+            <h2>
+              Turn follow-ups into a daily action queue.
+            </h2>
+
+            <p>
+              The planned Pro version expands the same decision engine
+              into a workflow for managing and organizing follow-ups.
+            </p>
+
           </div>
 
-          <h2>
-            Turn your pipeline into a daily action queue.
-          </h2>
+          <div>
 
-          <p>
-            The paid version will only expand after we prove
-            that people actually want the free workflow.
-          </p>
+            <ul class="list">
 
-        </div>
+              <li>Lead tracker</li>
+              <li>Follow-up priority engine</li>
+              <li>Daily action queue</li>
+              <li>Ghosted lead recovery</li>
+              <li>Revenue dashboard</li>
+              <li>Follow-up message prompts</li>
+              <li>Simple sales workflow</li>
 
-        <div>
+            </ul>
 
-          <ul class="list">
-
-            <li>Lead inbox</li>
-            <li>Follow-up priority engine</li>
-            <li>Daily action queue</li>
-            <li>Ghosted lead recovery</li>
-            <li>Revenue-at-risk view</li>
-            <li>Follow-up message prompts</li>
-            <li>Simple sales dashboard</li>
-
-          </ul>
+          </div>
 
         </div>
 
@@ -929,15 +1787,18 @@
 
   <div class="container">
 
-    <div class="heading">
+    <div class="section-head heading">
+
+      <div class="section-kicker">
+        Pricing
+      </div>
 
       <h2>
-        Start free. Pay only if the workflow proves useful.
+        Start free. Join the launch list for Pro.
       </h2>
 
       <p>
-        We are deliberately keeping the free calculator available
-        so visitors can experience the core idea before buying anything.
+        There is no payment today. The paid product is being validated before checkout is enabled.
       </p>
 
     </div>
@@ -954,7 +1815,7 @@
           $0
         </div>
 
-        <p>
+        <p class="price-sub">
           Try the core decision engine.
         </p>
 
@@ -988,7 +1849,7 @@
           $19
         </div>
 
-        <p>
+        <p class="price-sub">
           Planned one-time product.
         </p>
 
@@ -1003,19 +1864,20 @@
 
         </ul>
 
-        <button
+        <a
           class="btn primary"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSelZTSsz2qZtRo-17Z_XD2KBfvdI1huM8EQu05o21sDgYK_RA/viewform?hl=en"
+          target="_blank"
+          rel="noopener noreferrer"
+          onclick="trackLaunchListClick()"
           style="width:100%;"
-          onclick="showComingSoon()"
         >
           Join the Launch List
-        </button>
+          <span aria-hidden="true">→</span>
+        </a>
 
-        <div
-          id="comingSoon"
-          style="display:none;margin-top:12px;font-size:13px;color:#667085;"
-        >
-          The paid product is being validated before checkout is enabled.
+        <div class="launch-note">
+          Free to join. No payment today.
         </div>
 
       </div>
@@ -1031,7 +1893,11 @@
 
   <div class="container">
 
-    <div class="heading">
+    <div class="section-head heading">
+
+      <div class="section-kicker">
+        FAQ
+      </div>
 
       <h2>
         Frequently asked questions
@@ -1096,15 +1962,72 @@
       <details>
 
         <summary>
-          Why is the paid checkout not active yet?
+          What is FollowUp Engine Pro?
         </summary>
 
         <p>
-          Because the product should be validated before asking
-          users to pay. The free tool is the first market test.
+          Pro is a planned one-time $19 product designed to expand
+          the free calculator into a more complete follow-up workflow.
         </p>
 
       </details>
+
+      <details>
+
+        <summary>
+          How do I join the Pro launch list?
+        </summary>
+
+        <p>
+          Click “Join the Launch List”, enter your email in the Google Form,
+          and you will be added to the launch list.
+        </p>
+
+      </details>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="final-cta">
+
+  <div class="container">
+
+    <div class="final-cta-card">
+
+      <h2>
+        Start with one lead.
+      </h2>
+
+      <p>
+        Find out who deserves your attention today,
+        then tell us what would make the workflow even more useful.
+      </p>
+
+      <div class="buttons" style="justify-content:center;">
+
+        <a
+          href="#calculator"
+          class="btn secondary"
+          onclick="trackEvent('final_free_tool_clicked')"
+        >
+          Try the Free Tool
+        </a>
+
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSelZTSsz2qZtRo-17Z_XD2KBfvdI1huM8EQu05o21sDgYK_RA/viewform?hl=en"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn secondary"
+          onclick="trackLaunchListClick()"
+        >
+          Join Pro Launch List
+        </a>
+
+      </div>
 
     </div>
 
@@ -1117,19 +2040,21 @@
 
 <footer>
 
-  <div class="container">
+  <div class="container footer-row">
 
-    <strong>
-      FollowUp Engine
-    </strong>
+    <div>
+      <div class="footer-brand">
+        FollowUp Engine
+      </div>
 
-    <p>
-      A simple decision tool for sales follow-ups.
-    </p>
+      <div class="footer-note">
+        A simple decision tool for sales follow-ups.
+      </div>
+    </div>
 
-    <p>
+    <div>
       © 2026 FollowUp Engine.
-    </p>
+    </div>
 
   </div>
 
@@ -1140,17 +2065,31 @@
 
 /*
  * GA4 custom event helper
- * Forces events to the FollowUp Engine GA4 property
- * and enables debug mode for testing.
  */
 function trackEvent(name, params = {}) {
+
   if (typeof gtag === "function") {
+
     gtag("event", name, {
       ...params,
       send_to: "G-N84BKSSSPZ",
       debug_mode: true
     });
+
   }
+
+}
+
+
+/*
+ * Track launch list CTA clicks.
+ */
+function trackLaunchListClick() {
+
+  trackEvent("launch_list_clicked", {
+    destination: "google_form"
+  });
+
 }
 
 
@@ -1261,7 +2200,9 @@ function calculatePriority() {
 
 
   if (score > 100) {
+
     score = 100;
+
   }
 
 
@@ -1421,6 +2362,7 @@ function submitFeedback(value) {
     {
       score:
         document.getElementById("score").textContent,
+
       priority:
         document.getElementById("priority").textContent
     }
@@ -1544,9 +2486,6 @@ function saveNextNeed() {
 
   /*
    * GA4: requested feature
-   *
-   * IMPORTANT:
-   * Track the event BEFORE submitting the form.
    */
 
   trackEvent("feature_requested", {
@@ -1556,9 +2495,7 @@ function saveNextNeed() {
 
 
   /*
-   * Submit the hidden form.
-   * The response goes to Google Forms
-   * through the invisible iframe.
+   * Submit the hidden feedback form.
    */
 
   document.getElementById(
@@ -1577,16 +2514,6 @@ function saveNextNeed() {
 
   document.getElementById(
     "feedbackStatus"
-  ).style.display =
-    "block";
-
-}
-
-
-function showComingSoon() {
-
-  document.getElementById(
-    "comingSoon"
   ).style.display =
     "block";
 
