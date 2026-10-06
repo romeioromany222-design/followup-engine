@@ -1,2672 +1,888 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="1Pma6aOW4EKEB0zqRpRe1he1kobQOPCsN7NjbQSHVig">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N84BKSSSPZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-N84BKSSSPZ');
-  </script>
-
-  <title>FollowUp Engine | Follow-Up Priority Calculator for Sales</title>
-
-  <meta
-    name="description"
-    content="Free follow-up priority calculator for freelancers, consultants, agencies and small businesses. Find out which lead deserves your attention today and what to do next."
-  >
-
-  <meta name="robots" content="index,follow">
-
-  <link
-    rel="canonical"
-    href="https://romeioromany222-design.github.io/followup-engine/"
-  >
-
-  <meta
-    property="og:title"
-    content="FollowUp Engine | Know Who to Follow Up With Today"
-  >
-
-  <meta
-    property="og:description"
-    content="A free tool that helps you decide which sales lead deserves your attention today."
-  >
-
-  <meta property="og:type" content="website">
-
-  <meta
-    property="og:url"
-    content="https://romeioromany222-design.github.io/followup-engine/"
-  >
-
-  <meta name="theme-color" content="#0b1020">
-
-  <style>
-    :root {
-      --bg:#f4f7fb;
-      --surface:#ffffff;
-      --surface-soft:#f8fafc;
-      --text:#101828;
-      --muted:#667085;
-      --muted-2:#98a2b3;
-      --border:#e4e7ec;
-      --dark:#0b1020;
-      --dark-2:#151c2f;
-      --green:#087f5b;
-      --green-bg:#eaf8f3;
-      --green-border:#bfe7d8;
-      --blue:#175cd3;
-      --blue-bg:#eff6ff;
-      --purple:#7a5af8;
-      --orange:#b54708;
-      --orange-bg:#fff6ed;
-      --shadow-sm:0 6px 24px rgba(16,24,40,.06);
-      --shadow-md:0 18px 50px rgba(16,24,40,.10);
-      --shadow-lg:0 35px 100px rgba(16,24,40,.15);
-      --radius-sm:10px;
-      --radius-md:16px;
-      --radius-lg:26px;
-    }
-
-    * {
-      box-sizing:border-box;
-    }
-
-    html {
-      scroll-behavior:smooth;
-    }
-
-    body {
-      margin:0;
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-      background:
-        radial-gradient(circle at 8% 0%,rgba(99,102,241,.09),transparent 28%),
-        radial-gradient(circle at 92% 12%,rgba(14,165,233,.07),transparent 25%),
-        linear-gradient(180deg,#f9fbff 0%,#f4f7fb 52%,#ffffff 100%);
-      color:var(--text);
-      line-height:1.6;
-    }
-
-    body::selection {
-      background:#dbeafe;
-    }
-
-    a {
-      color:inherit;
-      text-decoration:none;
-    }
-
-    button,
-    input,
-    select {
-      font:inherit;
-    }
-
-    button {
-      cursor:pointer;
-    }
-
-    .container {
-      width:min(1160px,calc(100% - 32px));
-      margin:auto;
-    }
-
-    .container.narrow {
-      width:min(900px,calc(100% - 32px));
-      margin:auto;
-    }
-
-    .topbar {
-      position:relative;
-      z-index:20;
-      background:
-        linear-gradient(90deg,#080d1b 0%,#111827 50%,#080d1b 100%);
-      color:#dbe4ff;
-      font-size:13px;
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-
-    .topbar-inner {
-      min-height:40px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      text-align:center;
-    }
-
-    .topbar-dot {
-      width:7px;
-      height:7px;
-      border-radius:50%;
-      background:#7dd3fc;
-      box-shadow:0 0 0 5px rgba(125,211,252,.10),0 0 16px rgba(125,211,252,.35);
-      flex:0 0 auto;
-    }
-
-    header {
-      position:sticky;
-      top:0;
-      z-index:15;
-      background:rgba(255,255,255,.84);
-      border-bottom:1px solid rgba(228,231,236,.78);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-    }
-
-    .nav {
-      min-height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .brand {
-      display:inline-flex;
-      align-items:center;
-      gap:11px;
-      font-size:19px;
-      font-weight:850;
-      letter-spacing:-.4px;
-      white-space:nowrap;
-    }
-
-    .brand-mark {
-      width:36px;
-      height:36px;
-      border-radius:12px;
-      display:grid;
-      place-items:center;
-      color:#fff;
-      font-size:14px;
-      font-weight:900;
-      background:
-        linear-gradient(135deg,#111827 0%,#344054 100%);
-      box-shadow:
-        0 8px 24px rgba(17,24,39,.18),
-        inset 0 1px 0 rgba(255,255,255,.18);
-    }
-
-    .nav-right {
-      display:flex;
-      align-items:center;
-      gap:20px;
-    }
-
-    .nav-links {
-      display:flex;
-      align-items:center;
-      gap:24px;
-      color:#475467;
-      font-size:14px;
-      font-weight:650;
-    }
-
-    .nav-links a {
-      position:relative;
-      transition:color .18s ease;
-    }
-
-    .nav-links a::after {
-      content:"";
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:-8px;
-      height:2px;
-      border-radius:2px;
-      background:var(--blue);
-      transform:scaleX(0);
-      transition:transform .18s ease;
-    }
-
-    .nav-links a:hover {
-      color:var(--text);
-    }
-
-    .nav-links a:hover::after {
-      transform:scaleX(1);
-    }
-
-    .nav-cta {
-      padding:11px 16px;
-      border-radius:11px;
-      background:var(--dark);
-      color:#fff;
-      font-size:13px;
-      font-weight:800;
-      box-shadow:0 8px 24px rgba(11,16,32,.15);
-      transition:transform .18s ease,box-shadow .18s ease;
-    }
-
-    .nav-cta:hover {
-      transform:translateY(-1px);
-      box-shadow:0 13px 30px rgba(11,16,32,.22);
-    }
-
-    .hero {
-      position:relative;
-      overflow:hidden;
-      padding:88px 0 72px;
-    }
-
-    .hero::before {
-      content:"";
-      position:absolute;
-      width:680px;
-      height:680px;
-      right:-260px;
-      top:-250px;
-      border-radius:50%;
-      background:
-        radial-gradient(
-          circle,
-          rgba(99,102,241,.15) 0%,
-          rgba(99,102,241,.07) 28%,
-          rgba(99,102,241,0) 70%
-        );
-      pointer-events:none;
-    }
-
-    .hero::after {
-      content:"";
-      position:absolute;
-      width:420px;
-      height:420px;
-      left:-240px;
-      bottom:-220px;
-      border-radius:50%;
-      background:radial-gradient(circle,rgba(14,165,233,.08),transparent 68%);
-      pointer-events:none;
-    }
-
-    .hero-grid {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:58px;
-      align-items:center;
-      position:relative;
-      z-index:1;
-    }
-
-    .eyebrow {
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      background:rgba(239,246,255,.88);
-      color:var(--blue);
-      padding:8px 13px;
-      border:1px solid #dbeafe;
-      border-radius:999px;
-      font-size:13px;
-      font-weight:850;
-      margin-bottom:21px;
-      box-shadow:0 5px 18px rgba(23,92,211,.06);
-    }
-
-    .eyebrow::before {
-      content:"";
-      width:7px;
-      height:7px;
-      border-radius:50%;
-      background:currentColor;
-      box-shadow:0 0 0 4px rgba(23,92,211,.10);
-    }
-
-    h1 {
-      font-size:clamp(48px,6vw,76px);
-      line-height:.97;
-      letter-spacing:-4.5px;
-      margin:0 0 25px;
-      max-width:720px;
-    }
-
-    .gradient-text {
-      background:
-        linear-gradient(
-          105deg,
-          #0f172a 0%,
-          #1f2937 43%,
-          #175cd3 100%
-        );
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .hero-text {
-      color:#475467;
-      font-size:19px;
-      line-height:1.7;
-      max-width:650px;
-      margin:0 0 29px;
-    }
-
-    .buttons {
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .btn {
-      border:0;
-      border-radius:12px;
-      padding:14px 20px;
-      font-size:15px;
-      font-weight:800;
-      display:inline-flex;
-      justify-content:center;
-      align-items:center;
-      gap:9px;
-      transition:
-        transform .18s ease,
-        box-shadow .18s ease,
-        border-color .18s ease,
-        background .18s ease;
-    }
-
-    .btn:hover {
-      transform:translateY(-2px);
-    }
-
-    .btn.primary {
-      background:
-        linear-gradient(135deg,#0b1020 0%,#1d2939 100%);
-      color:#fff;
-      box-shadow:
-        0 13px 30px rgba(11,16,32,.18),
-        inset 0 1px 0 rgba(255,255,255,.08);
-    }
-
-    .btn.primary:hover {
-      box-shadow:
-        0 18px 38px rgba(11,16,32,.24),
-        inset 0 1px 0 rgba(255,255,255,.08);
-    }
-
-    .btn.secondary {
-      background:rgba(255,255,255,.82);
-      border:1px solid var(--border);
-      color:var(--text);
-      box-shadow:0 5px 18px rgba(16,24,40,.03);
-    }
-
-    .btn.secondary:hover {
-      border-color:#c9ced6;
-      background:#fff;
-      box-shadow:var(--shadow-sm);
-    }
-
-    .note {
-      margin-top:16px;
-      display:flex;
-      align-items:center;
-      gap:9px;
-      color:#667085;
-      font-size:13px;
-      font-weight:600;
-    }
-
-    .note::before {
-      content:"✓";
-      display:grid;
-      place-items:center;
-      width:19px;
-      height:19px;
-      border-radius:50%;
-      background:var(--green-bg);
-      color:var(--green);
-      font-weight:900;
-      font-size:11px;
-      box-shadow:0 0 0 4px rgba(8,127,91,.04);
-    }
-
-    .hero-proof {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-      margin-top:30px;
-      max-width:650px;
-    }
-
-    .proof-chip {
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(228,231,236,.92);
-      border-radius:14px;
-      padding:14px;
-      box-shadow:var(--shadow-sm);
-      transition:transform .18s ease,box-shadow .18s ease;
-    }
-
-    .proof-chip:hover {
-      transform:translateY(-2px);
-      box-shadow:var(--shadow-md);
-    }
-
-    .proof-chip strong {
-      display:block;
-      font-size:13px;
-      margin-bottom:3px;
-    }
-
-    .proof-chip span {
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.45;
-    }
-
-    .hero-side {
-      position:relative !important;
-      display:flex !important;
-      flex-direction:column !important;
-      align-items:stretch !important;
-      width:100% !important;
-    }
-
-    .preview-card {
-      position:static !important;
-      top:auto !important;
-      right:auto !important;
-      bottom:auto !important;
-      left:auto !important;
-      inset:auto !important;
-      display:block !important;
-      width:min(260px,100%) !important;
-      align-self:flex-end !important;
-      margin:0 0 15px 0 !important;
-      background:rgba(255,255,255,.96);
-      border:1px solid rgba(228,231,236,.92);
-      border-radius:18px;
-      padding:17px;
-      box-shadow:var(--shadow-lg);
-      z-index:3 !important;
-      transform:none !important;
-      rotate:none !important;
-      translate:none !important;
-      scale:1 !important;
-      float:none !important;
-    }
-
-    .preview-label {
-      color:var(--muted);
-      font-size:11px;
-      font-weight:850;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:7px;
-    }
-
-    .preview-score {
-      font-size:35px;
-      font-weight:900;
-      line-height:1;
-      letter-spacing:-1.5px;
-    }
-
-    .preview-priority {
-      margin-top:7px;
-      font-size:12px;
-      font-weight:900;
-      color:var(--green);
-    }
-
-    .preview-line {
-      height:7px;
-      border-radius:999px;
-      background:#eef2f6;
-      margin-top:13px;
-      overflow:hidden;
-    }
-
-    .preview-line span {
-      display:block;
-      width:87%;
-      height:100%;
-      border-radius:inherit;
-      background:linear-gradient(90deg,#34d399,#10b981);
-    }
-
-    .preview-action {
-      margin-top:12px;
-      font-size:12px;
-      color:#475467;
-      line-height:1.5;
-    }
-
-    .tool {
-      position:relative;
-      width:100%;
-      background:rgba(255,255,255,.97);
-      border:1px solid rgba(228,231,236,.96);
-      border-radius:26px;
-      padding:31px;
-      box-shadow:
-        0 35px 100px rgba(16,24,40,.14),
-        0 8px 24px rgba(16,24,40,.05);
-      overflow:hidden;
-    }
-
-    .tool::before {
-      content:"";
-      position:absolute;
-      width:250px;
-      height:250px;
-      top:-150px;
-      right:-100px;
-      border-radius:50%;
-      background:radial-gradient(circle,rgba(23,92,211,.08),transparent 68%);
-      pointer-events:none;
-    }
-
-    .tool::after {
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:26px;
-      pointer-events:none;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.82),
-          rgba(255,255,255,0)
-        );
-    }
-
-    .tool-header {
-      position:relative;
-      z-index:1;
-      display:flex;
-      justify-content:space-between;
-      gap:18px;
-      align-items:flex-start;
-      margin-bottom:23px;
-    }
-
-    .tool h2 {
-      margin:0 0 5px;
-      font-size:25px;
-      letter-spacing:-.7px;
-      line-height:1.2;
-    }
-
-    .tool-sub {
-      color:var(--muted);
-      font-size:14px;
-      margin:0;
-    }
-
-    .tool-badge {
-      background:#f2f4f7;
-      color:#344054;
-      border:1px solid #e4e7ec;
-      border-radius:999px;
-      padding:7px 10px;
-      font-size:11px;
-      font-weight:850;
-      white-space:nowrap;
-      box-shadow:0 3px 10px rgba(16,24,40,.04);
-    }
-
-    .calculator-fields {
-      position:relative;
-      z-index:1;
-    }
-
-    .field {
-      margin-bottom:16px;
-    }
-
-    label {
-      display:block;
-      font-size:13px;
-      font-weight:800;
-      margin-bottom:7px;
-      color:#344054;
-    }
-
-    input,
-    select {
-      width:100%;
-      padding:13px 13px;
-      border:1px solid #d7dce3;
-      border-radius:11px;
-      background:#fff;
-      color:#101828;
-      font-size:15px;
-      transition:
-        border-color .18s ease,
-        box-shadow .18s ease,
-        transform .18s ease;
-    }
-
-    input:hover,
-    select:hover {
-      border-color:#b8c0cc;
-    }
-
-    input::placeholder {
-      color:#98a2b3;
-    }
-
-    input:focus,
-    select:focus {
-      outline:none;
-      border-color:#98a2b3;
-      box-shadow:0 0 0 4px rgba(17,24,39,.06);
-    }
-
-    .calculator-button {
-      position:relative;
-      z-index:1;
-      width:100%;
-      margin-top:5px;
-      min-height:50px;
-    }
-
-    .result {
-      display:none;
-      margin-top:20px;
-      padding:21px;
-      border-radius:18px;
-      background:
-        linear-gradient(180deg,#effcf7 0%,#e6f7f0 100%);
-      border:1px solid var(--green-border);
-      position:relative;
-      z-index:1;
-      box-shadow:0 12px 30px rgba(8,127,91,.06);
-    }
-
-    .result-top {
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-    }
-
-    .result-label {
-      color:#475467;
-      font-size:12px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    .score {
-      font-size:50px;
-      font-weight:900;
-      line-height:1;
-      letter-spacing:-2px;
-    }
-
-    .priority {
-      font-weight:900;
-      margin:8px 0 12px;
-      color:#075e43;
-    }
-
-    .result-text {
-      color:#344054;
-      font-size:14px;
-      line-height:1.6;
-    }
-
-    .action {
-      background:#fff;
-      border:1px solid rgba(0,0,0,.08);
-      padding:14px;
-      border-radius:12px;
-      margin-top:14px;
-      box-shadow:0 4px 14px rgba(16,24,40,.03);
-    }
-
-    .action strong {
-      font-size:13px;
-    }
-
-    .feedback-box {
-      margin-top:16px;
-      padding:16px;
-      border-radius:13px;
-      background:#fff;
-      border:1px solid rgba(0,0,0,.08);
-    }
-
-    .feedback-title {
-      font-weight:800;
-      font-size:14px;
-      margin-bottom:10px;
-    }
-
-    .feedback-buttons {
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-
-    .feedback-btn {
-      border:1px solid var(--border);
-      background:#fff;
-      border-radius:9px;
-      padding:9px 12px;
-      font-size:13px;
-      font-weight:750;
-      transition:.18s ease;
-    }
-
-    .feedback-btn:hover {
-      border-color:#98a2b3;
-      transform:translateY(-1px);
-    }
-
-    .feedback-btn.selected {
-      background:var(--dark);
-      color:#fff;
-      border-color:var(--dark);
-    }
-
-    .next-question {
-      display:none;
-      margin-top:16px;
-    }
-
-    .next-question label {
-      margin-bottom:8px;
-    }
-
-    .feedback-status {
-      display:none;
-      margin-top:12px;
-      font-size:13px;
-      color:var(--green);
-      font-weight:800;
-    }
-
-    .section {
-      padding:88px 0;
-    }
-
-    .white {
-      background:rgba(255,255,255,.88);
-      border-top:1px solid var(--border);
-      border-bottom:1px solid var(--border);
-    }
-
-    .section-head {
-      max-width:760px;
-      margin:0 auto 44px;
-      text-align:center;
-    }
-
-    .section-kicker {
-      display:inline-block;
-      color:var(--blue);
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.1em;
-      font-weight:900;
-      margin-bottom:10px;
-    }
-
-    .heading h2 {
-      font-size:clamp(32px,4vw,48px);
-      line-height:1.08;
-      letter-spacing:-2.2px;
-      margin:0 0 14px;
-    }
-
-    .heading p {
-      color:var(--muted);
-      font-size:17px;
-      line-height:1.7;
-      margin:0;
-    }
-
-    .audience {
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:15px;
-    }
-
-    .audience-card {
-      background:rgba(255,255,255,.96);
-      border:1px solid var(--border);
-      border-radius:17px;
-      padding:22px;
-      box-shadow:var(--shadow-sm);
-      transition:
-        transform .2s ease,
-        box-shadow .2s ease,
-        border-color .2s ease;
-    }
-
-    .audience-card:hover {
-      transform:translateY(-4px);
-      box-shadow:var(--shadow-md);
-      border-color:#d5dbe4;
-    }
-
-    .audience-icon {
-      width:37px;
-      height:37px;
-      border-radius:11px;
-      display:grid;
-      place-items:center;
-      background:#f3f6ff;
-      color:var(--blue);
-      font-weight:900;
-      margin-bottom:14px;
-    }
-
-    .audience-card h3 {
-      margin:0 0 5px;
-      font-size:16px;
-    }
-
-    .audience-card p {
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.55;
-    }
-
-    .features {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-
-    .feature {
-      position:relative;
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:27px;
-      box-shadow:var(--shadow-sm);
-      overflow:hidden;
-      transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-    }
-
-    .feature:hover {
-      transform:translateY(-4px);
-      box-shadow:var(--shadow-md);
-    }
-
-    .feature::after {
-      content:"";
-      position:absolute;
-      width:120px;
-      height:120px;
-      right:-70px;
-      top:-70px;
-      border-radius:50%;
-      background:radial-gradient(circle,rgba(23,92,211,.07),transparent 68%);
-    }
-
-    .feature-number {
-      font-size:12px;
-      color:var(--blue);
-      font-weight:900;
-      letter-spacing:.08em;
-      margin-bottom:14px;
-    }
-
-    .feature h3 {
-      margin:0 0 8px;
-      font-size:19px;
-      letter-spacing:-.4px;
-    }
-
-    .feature p {
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.65;
-      margin:0;
-    }
-
-    .dark-wrap {
-      background:
-        linear-gradient(135deg,#111827,#0b1020);
-      padding:1px;
-      border-radius:30px;
-      box-shadow:0 30px 90px rgba(11,16,32,.18);
-    }
-
-    .dark-section {
-      color:#fff;
-      border-radius:29px;
-      padding:55px;
-      background:
-        radial-gradient(circle at top right,rgba(124,58,237,.20),transparent 38%),
-        radial-gradient(circle at bottom left,rgba(23,92,211,.10),transparent 35%),
-        linear-gradient(180deg,#151c2f 0%,#0d1322 100%);
-    }
-
-    .dark-grid {
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:54px;
-      align-items:center;
-    }
-
-    .dark-section .eyebrow {
-      background:rgba(255,255,255,.08);
-      color:#bfdbfe;
-      border-color:rgba(255,255,255,.08);
-      box-shadow:none;
-    }
-
-    .dark-section h2 {
-      margin:0;
-      font-size:clamp(34px,4vw,49px);
-      line-height:1.06;
-      letter-spacing:-2.2px;
-    }
-
-    .dark-section p {
-      color:#b8c1d1;
-      font-size:16px;
-      line-height:1.7;
-      margin:18px 0 0;
-      max-width:600px;
-    }
-
-    .list {
-      list-style:none;
-      padding:0;
-      margin:0;
-      display:grid;
-      gap:12px;
-    }
-
-    .list li {
-      margin:0;
-      color:#e7edf7;
-      font-size:14px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .list li::before {
-      content:"✓";
-      display:grid;
-      place-items:center;
-      width:23px;
-      height:23px;
-      border-radius:50%;
-      background:rgba(52,211,153,.12);
-      color:#86efac;
-      font-weight:900;
-      flex:0 0 auto;
-    }
-
-    .pricing {
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:20px;
-      max-width:920px;
-      margin:auto;
-    }
-
-    .price-card {
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:21px;
-      padding:33px;
-      box-shadow:var(--shadow-sm);
-      transition:transform .2s ease,box-shadow .2s ease;
-    }
-
-    .price-card:hover {
-      transform:translateY(-4px);
-      box-shadow:var(--shadow-md);
-    }
-
-    .price-card.pro {
-      position:relative;
-      overflow:hidden;
-      border:2px solid var(--dark);
-      box-shadow:0 25px 75px rgba(16,24,40,.12);
-    }
-
-    .price-card.pro::before {
-      content:"PLANNED";
-      position:absolute;
-      top:16px;
-      right:16px;
-      padding:6px 9px;
-      border-radius:999px;
-      background:#f3f4f6;
-      color:#344054;
-      border:1px solid #e5e7eb;
-      font-size:10px;
-      font-weight:900;
-      letter-spacing:.08em;
-    }
-
-    .price-card h3 {
-      margin:0 0 5px;
-      font-size:19px;
-    }
-
-    .price {
-      font-size:48px;
-      font-weight:900;
-      letter-spacing:-2.5px;
-      margin:8px 0;
-    }
-
-    .price-sub {
-      color:var(--muted);
-      font-size:13px;
-      margin:0 0 18px;
-    }
-
-    .price-card ul {
-      margin:0 0 24px;
-      padding-left:19px;
-    }
-
-    .price-card li {
-      margin:9px 0;
-      color:#475467;
-      font-size:14px;
-    }
-
-    .launch-note {
-      margin-top:12px;
-      text-align:center;
-      color:var(--muted);
-      font-size:12px;
-    }
-
-    .faq {
-      max-width:840px;
-      margin:auto;
-    }
-
-    details {
-      background:rgba(255,255,255,.94);
-      border:1px solid var(--border);
-      border-radius:13px;
-      padding:19px;
-      margin-bottom:10px;
-      transition:
-        border-color .18s ease,
-        box-shadow .18s ease;
-    }
-
-    details[open] {
-      border-color:#d2d8e2;
-      box-shadow:var(--shadow-sm);
-    }
-
-    summary {
-      cursor:pointer;
-      font-weight:800;
-      color:#1d2939;
-    }
-
-    details p {
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.65;
-      margin:12px 0 0;
-    }
-
-    .final-cta {
-      padding:0 0 88px;
-    }
-
-    .final-cta-card {
-      position:relative;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at 15% 0%,rgba(99,102,241,.16),transparent 32%),
-        radial-gradient(circle at 85% 20%,rgba(255,255,255,.09),transparent 30%),
-        linear-gradient(135deg,#101828 0%,#1d2939 100%);
-      color:#fff;
-      border-radius:28px;
-      padding:55px;
-      text-align:center;
-      box-shadow:0 30px 80px rgba(16,24,40,.16);
-    }
-
-    .final-cta-card h2 {
-      margin:0 0 10px;
-      font-size:clamp(32px,4vw,49px);
-      line-height:1.06;
-      letter-spacing:-2.2px;
-    }
-
-    .final-cta-card p {
-      color:#c7ced9;
-      max-width:650px;
-      margin:0 auto 24px;
-      font-size:16px;
-      line-height:1.7;
-    }
-
-    .final-cta-card .btn.secondary {
-      background:#fff;
-      border-color:#fff;
-    }
-
-    footer {
-      padding:42px 0;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .footer-row {
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:30px;
-    }
-
-    .footer-brand {
-      font-weight:900;
-      color:#1d2939;
-    }
-
-    .footer-note {
-      margin-top:5px;
-    }
-
-    @media(max-width:1000px) {
-      .hero-grid {
-        grid-template-columns:1fr;
-      }
-
-      .preview-card {
-        display:none !important;
-      }
-
-      .hero-text {
-        max-width:800px;
-      }
-
-      .audience {
-        grid-template-columns:repeat(2,1fr);
-      }
-    }
-
-    @media(max-width:850px) {
-      .nav-links,
-      .nav-cta {
-        display:none;
-      }
-
-      .nav-right {
-        margin-left:auto;
-      }
-
-      .hero {
-        padding-top:62px;
-      }
-
-      h1 {
-        letter-spacing:-3px;
-      }
-
-      .hero-proof {
-        grid-template-columns:1fr;
-      }
-
-      .features,
-      .dark-grid,
-      .pricing {
-        grid-template-columns:1fr;
-      }
-
-      .dark-section {
-        padding:32px;
-      }
-
-      .final-cta-card {
-        padding:36px 24px;
-      }
-
-      .footer-row {
-        flex-direction:column;
-      }
-    }
-
-    @media(max-width:560px) {
-      .container,
-      .container.narrow {
-        width:min(100% - 22px,1160px);
-      }
-
-      .topbar-inner {
-        min-height:42px;
-        padding:6px 12px;
-      }
-
-      .nav {
-        min-height:64px;
-      }
-
-      .hero {
-        padding:52px 0 42px;
-      }
-
-      h1 {
-        font-size:45px;
-        letter-spacing:-2.8px;
-      }
-
-      .hero-text {
-        font-size:17px;
-      }
-
-      .buttons,
-      .buttons .btn {
-        width:100%;
-      }
-
-      .tool {
-        padding:21px;
-        border-radius:20px;
-      }
-
-      .tool-header {
-        flex-direction:column;
-      }
-
-      .audience {
-        grid-template-columns:1fr;
-      }
-
-      .section {
-        padding:68px 0;
-      }
-
-      .heading h2 {
-        letter-spacing:-1.5px;
-      }
-
-      .dark-section {
-        padding:28px 22px;
-      }
-
-      .price-card {
-        padding:26px;
-      }
-    }
-  </style>
-
-  <!-- Existing feedback submission target -->
-  <iframe
-    name="feedbackFrame"
-    id="feedbackFrame"
-    style="display:none;"
-    title="Feedback submission"
-  ></iframe>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebApplication",
-    "name":"Follow-Up Priority Calculator",
-    "applicationCategory":"BusinessApplication",
-    "operatingSystem":"Web",
-    "description":"A free calculator that helps freelancers and small businesses prioritize sales follow-ups.",
-    "offers":{
-      "@type":"Offer",
-      "price":"0",
-      "priceCurrency":"USD"
-    }
-  }
-  </script>
-</head>
-
-<body>
-
-<div class="topbar">
-  <div class="container topbar-inner">
-    <span class="topbar-dot"></span>
-    <span>Free tool. No signup. Built to help you decide who to contact next.</span>
-  </div>
-</div>
-
-<form
-  id="feedbackForm"
-  action="https://docs.google.com/forms/d/e/1FAIpQLSdmIJ1pZ4y7ZP3EZSYHB63WxoYi2UXEmiWFryxdjNbpf5ZddA/formResponse"
-  method="POST"
-  target="feedbackFrame"
-  style="display:none;"
->
-  <input
-    type="hidden"
-    name="entry.1064220020"
-    id="feedbackUsefulness"
-  >
-
-  <input
-    type="hidden"
-    name="entry.1802400793"
-    id="feedbackNextNeed"
-  >
-</form>
-
-<header>
-  <div class="container nav">
-
-    <a class="brand" href="#">
-      <span class="brand-mark">F</span>
-      <span>FollowUp Engine</span>
-    </a>
-
-    <div class="nav-right">
-
-      <nav class="nav-links">
-        <a href="#calculator">Free Tool</a>
-        <a href="#how">How It Works</a>
-        <a href="#product">Pro</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-
-      <a
-        class="nav-cta"
-        href="https://docs.google.com/forms/d/e/1FAIpQLSelZTSsz2qZtRo-17Z_XD2KBfvdI1huM8EQu05o21sDgYK_RA/viewform?hl=en"
-        target="_blank"
-        rel="noopener noreferrer"
-        onclick="trackLaunchListClick()"
-      >
-        Join Launch List
-      </a>
-
-    </div>
-
-  </div>
-</header>
-
-<main>
-
-<section class="hero">
-
-  <div class="container hero-grid">
-
-    <div>
-
-      <div class="eyebrow">
-        Free sales follow-up tool
-      </div>
-
-      <h1>
-        <span class="gradient-text">Know who to follow up with today.</span>
-      </h1>
-
-      <p class="hero-text">
-        Stop guessing which lead deserves your attention.
-        Enter a few details and get a simple priority score,
-        the reason behind it, and a recommended next action.
-      </p>
-
-      <div class="buttons">
-
-        <a
-          href="#calculator"
-          class="btn primary"
-          onclick="trackEvent('free_tool_cta_clicked')"
-        >
-          Calculate My Priority
-          <span aria-hidden="true">→</span>
-        </a>
-
-        <a
-          href="#how"
-          class="btn secondary"
-        >
-          See How It Works
-        </a>
-
-      </div>
-
-      <div class="note">
-        Your calculator inputs stay in your browser.
-      </div>
-
-      <div class="hero-proof">
-
-        <div class="proof-chip">
-          <strong>1-minute test</strong>
-          <span>Try one opportunity quickly.</span>
-        </div>
-
-        <div class="proof-chip">
-          <strong>Simple score</strong>
-          <span>See why the lead ranks where it does.</span>
-        </div>
-
-        <div class="proof-chip">
-          <strong>Next action</strong>
-          <span>Get a practical follow-up suggestion.</span>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="hero-side">
-
-      <div class="preview-card">
-
-        <div class="preview-label">
-          Example result
-        </div>
-
-        <div class="preview-score">
-          87/100
-        </div>
-
-        <div class="preview-priority">
-          FOLLOW UP TODAY
-        </div>
-
-        <div class="preview-line">
-          <span></span>
-        </div>
-
-        <div class="preview-action">
-          Send a short, specific follow-up with one clear next step.
-        </div>
-
-      </div>
-
-      <div class="tool" id="calculator">
-
-        <div class="tool-header">
-
-          <div>
-            <h2>
-              Follow-Up Priority Calculator
-            </h2>
-
-            <p class="tool-sub">
-              Test one opportunity in less than a minute.
-            </p>
-          </div>
-
-          <div class="tool-badge">
-            FREE
-          </div>
-
-        </div>
-
-        <div class="calculator-fields">
-
-          <div class="field">
-
-            <label for="dealValue">
-              Potential deal value ($)
-            </label>
-
-            <input
-              id="dealValue"
-              type="number"
-              min="0"
-              value="1500"
-            >
-
-          </div>
-
-          <div class="field">
-
-            <label for="days">
-              Days since last contact
-            </label>
-
-            <input
-              id="days"
-              type="number"
-              min="0"
-              value="7"
-            >
-
-          </div>
-
-          <div class="field">
-
-            <label for="temperature">
-              Lead temperature
-            </label>
-
-            <select id="temperature">
-
-              <option value="1">
-                Cold
-              </option>
-
-              <option value="2" selected>
-                Warm
-              </option>
-
-              <option value="3">
-                Hot
-              </option>
-
-            </select>
-
-          </div>
-
-          <div class="field">
-
-            <label for="reply">
-              Current buying signal
-            </label>
-
-            <select id="reply">
-
-              <option value="1">
-                No reply
-              </option>
-
-              <option value="2">
-                They replied
-              </option>
-
-              <option value="3">
-                Asked for details
-              </option>
-
-              <option value="4">
-                Asked about price / proposal
-              </option>
-
-              <option value="5">
-                Ready to decide
-              </option>
-
-            </select>
-
-          </div>
-
-          <div class="field">
-
-            <label for="deadline">
-              Deadline pressure
-            </label>
-
-            <select id="deadline">
-
-              <option value="0">
-                No known deadline
-              </option>
-
-              <option value="1">
-                Within 30 days
-              </option>
-
-              <option value="2">
-                Within 14 days
-              </option>
-
-              <option value="3">
-                Within 7 days
-              </option>
-
-            </select>
-
-          </div>
-
-          <button
-            type="button"
-            class="btn primary calculator-button"
-            onclick="calculatePriority()"
-          >
-            Calculate Priority
-            <span aria-hidden="true">→</span>
-          </button>
-
-        </div>
-
-        <div class="result" id="result">
-
-          <div class="result-top">
-
-            <div>
-              <div class="result-label">
-                Priority score
-              </div>
-
-              <div class="score" id="score">
-                0/100
-              </div>
-
-              <div class="priority" id="priority">
-                —
-              </div>
-            </div>
-
-          </div>
-
-          <div class="result-text" id="reason">
-            —
-          </div>
-
-          <div class="action">
-
-            <strong>
-              Recommended next action
-            </strong>
-
-            <div
-              class="result-text"
-              id="action"
-              style="margin-top:6px;"
-            >
-              —
-            </div>
-
-          </div>
-
-          <div class="feedback-box">
-
-            <div class="feedback-title">
-              Was this recommendation useful?
-            </div>
-
-            <div class="feedback-buttons">
-
-              <button
-                type="button"
-                class="feedback-btn"
-                id="feedbackYes"
-                onclick="submitFeedback('yes')"
-              >
-                👍 Yes
-              </button>
-
-              <button
-                type="button"
-                class="feedback-btn"
-                id="feedbackNo"
-                onclick="submitFeedback('no')"
-              >
-                👎 Not really
-              </button>
-
-            </div>
-
-            <div
-              class="next-question"
-              id="nextQuestion"
-            >
-
-              <label for="nextNeed">
-                What would you want next?
-              </label>
-
-              <select
-                id="nextNeed"
-                onchange="saveNextNeed()"
-              >
-
-                <option value="">
-                  Select one
-                </option>
-
-                <option value="generate-message">
-                  Generate the message
-                </option>
-
-                <option value="track-followups">
-                  Track all my follow-ups
-                </option>
-
-                <option value="daily-priority">
-                  Tell me who to contact today
-                </option>
-
-                <option value="recover-ghosted">
-                  Recover old / ghosted leads
-                </option>
-
-              </select>
-
-            </div>
-
-            <div
-              class="feedback-status"
-              id="feedbackStatus"
-            >
-              Thanks — your feedback was recorded.
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section white">
-
-  <div class="container">
-
-    <div class="section-head heading">
-
-      <div class="section-kicker">
-        Built for
-      </div>
-
-      <h2>
-        A focused tool for people managing real opportunities.
-      </h2>
-
-      <p>
-        Use the calculator when your CRM or spreadsheet gives you a list,
-        but you still need to decide where to spend your attention first.
-      </p>
-
-    </div>
-
-    <div class="audience">
-
-      <article class="audience-card">
-
-        <div class="audience-icon">
-          F
-        </div>
-
-        <h3>
-          Freelancers
-        </h3>
-
-        <p>
-          Prioritize proposals, prospects and follow-ups.
-        </p>
-
-      </article>
-
-      <article class="audience-card">
-
-        <div class="audience-icon">
-          A
-        </div>
-
-        <h3>
-          Agencies
-        </h3>
-
-        <p>
-          Keep important opportunities from going quiet.
-        </p>
-
-      </article>
-
-      <article class="audience-card">
-
-        <div class="audience-icon">
-          S
-        </div>
-
-        <h3>
-          Salespeople
-        </h3>
-
-        <p>
-          Turn lead lists into practical next actions.
-        </p>
-
-      </article>
-
-      <article class="audience-card">
-
-        <div class="audience-icon">
-          C
-        </div>
-
-        <h3>
-          Consultants
-        </h3>
-
-        <p>
-          Focus follow-up time where it matters most.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section" id="how">
-
-  <div class="container">
-
-    <div class="section-head heading">
-
-      <div class="section-kicker">
-        How it works
-      </div>
-
-      <h2>
-        From a messy lead list to one clear next move.
-      </h2>
-
-      <p>
-        FollowUp Engine keeps the decision simple instead of trying to become another full CRM.
-      </p>
-
-    </div>
-
-    <div class="features">
-
-      <article class="feature">
-
-        <div class="feature-number">
-          01
-        </div>
-
-        <h3>
-          Prioritize
-        </h3>
-
-        <p>
-          Combine deal value, time since contact,
-          buying signals and deadline pressure.
-        </p>
-
-      </article>
-
-      <article class="feature">
-
-        <div class="feature-number">
-          02
-        </div>
-
-        <h3>
-          Decide
-        </h3>
-
-        <p>
-          Turn the score into a practical next action
-          instead of staring at a long lead list.
-        </p>
-
-      </article>
-
-      <article class="feature">
-
-        <div class="feature-number">
-          03
-        </div>
-
-        <h3>
-          Protect momentum
-        </h3>
-
-        <p>
-          Identify opportunities that deserve attention
-          before they drift further down the pipeline.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section">
-
-  <div class="container">
-
-    <div class="dark-wrap">
-
-      <div class="dark-section">
-
-        <div class="dark-grid">
-
-          <div>
-
-            <div class="eyebrow">
-              FollowUp Engine Pro
-            </div>
-
-            <h2>
-              Turn follow-ups into a daily action queue.
-            </h2>
-
-            <p>
-              The planned Pro version expands the same decision engine
-              into a workflow for managing and organizing follow-ups.
-            </p>
-
-          </div>
-
-          <div>
-
-            <ul class="list">
-
-              <li>Lead tracker</li>
-              <li>Follow-up priority engine</li>
-              <li>Daily action queue</li>
-              <li>Ghosted lead recovery</li>
-              <li>Revenue dashboard</li>
-              <li>Follow-up message prompts</li>
-              <li>Simple sales workflow</li>
-
-            </ul>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section white" id="product">
-
-  <div class="container">
-
-    <div class="section-head heading">
-
-      <div class="section-kicker">
-        Pricing
-      </div>
-
-      <h2>
-        Start free. Join the launch list for Pro.
-      </h2>
-
-      <p>
-        There is no payment today. The paid product is being validated before checkout is enabled.
-      </p>
-
-    </div>
-
-    <div class="pricing">
-
-      <div class="price-card">
-
-        <h3>
-          Free Calculator
-        </h3>
-
-        <div class="price">
-          $0
-        </div>
-
-        <p class="price-sub">
-          Try the core decision engine.
-        </p>
-
-        <ul>
-
-          <li>Priority score</li>
-          <li>Reason for priority</li>
-          <li>Recommended action</li>
-          <li>No signup</li>
-
-        </ul>
-
-        <a
-          href="#calculator"
-          class="btn secondary"
-          style="width:100%;"
-        >
-          Use Free Tool
-        </a>
-
-      </div>
-
-
-      <div class="price-card pro">
-
-        <h3>
-          FollowUp Engine Pro
-        </h3>
-
-        <div class="price">
-          $19
-        </div>
-
-        <p class="price-sub">
-          Planned one-time product.
-        </p>
-
-        <ul>
-
-          <li>Lead tracker</li>
-          <li>Priority engine</li>
-          <li>Daily follow-up queue</li>
-          <li>Ghosted lead recovery</li>
-          <li>Message prompts</li>
-          <li>Revenue dashboard</li>
-
-        </ul>
-
-        <a
-          class="btn primary"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSelZTSsz2qZtRo-17Z_XD2KBfvdI1huM8EQu05o21sDgYK_RA/viewform?hl=en"
-          target="_blank"
-          rel="noopener noreferrer"
-          onclick="trackLaunchListClick()"
-          style="width:100%;"
-        >
-          Join the Launch List
-          <span aria-hidden="true">→</span>
-        </a>
-
-        <div class="launch-note">
-          Free to join. No payment today.
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section" id="faq">
-
-  <div class="container">
-
-    <div class="section-head heading">
-
-      <div class="section-kicker">
-        FAQ
-      </div>
-
-      <h2>
-        Frequently asked questions
-      </h2>
-
-    </div>
-
-    <div class="faq">
-
-      <details>
-
-        <summary>
-          Is the calculator free?
-        </summary>
-
-        <p>
-          Yes. The core calculator is free and does not require an account.
-        </p>
-
-      </details>
-
-      <details>
-
-        <summary>
-          Does this replace a CRM?
-        </summary>
-
-        <p>
-          No. It is intentionally focused on follow-up prioritization
-          rather than trying to replace a full CRM.
-        </p>
-
-      </details>
-
-      <details>
-
-        <summary>
-          Who is it for?
-        </summary>
-
-        <p>
-          Freelancers, consultants, agencies, coaches and small
-          service businesses managing sales opportunities.
-        </p>
-
-      </details>
-
-      <details>
-
-        <summary>
-          Is my calculator data uploaded?
-        </summary>
-
-        <p>
-          No. Your calculator inputs and score are calculated locally
-          in your browser. Feedback choices are sent separately
-          when you submit feedback.
-        </p>
-
-      </details>
-
-      <details>
-
-        <summary>
-          What is FollowUp Engine Pro?
-        </summary>
-
-        <p>
-          Pro is a planned one-time $19 product designed to expand
-          the free calculator into a more complete follow-up workflow.
-        </p>
-
-      </details>
-
-      <details>
-
-        <summary>
-          How do I join the Pro launch list?
-        </summary>
-
-        <p>
-          Click “Join the Launch List”, enter your email in the Google Form,
-          and you will be added to the launch list.
-        </p>
-
-      </details>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="final-cta">
-
-  <div class="container">
-
-    <div class="final-cta-card">
-
-      <h2>
-        Start with one lead.
-      </h2>
-
-      <p>
-        Find out who deserves your attention today,
-        then tell us what would make the workflow even more useful.
-      </p>
-
-      <div class="buttons" style="justify-content:center;">
-
-        <a
-          href="#calculator"
-          class="btn secondary"
-          onclick="trackEvent('final_free_tool_clicked')"
-        >
-          Try the Free Tool
-        </a>
-
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSelZTSsz2qZtRo-17Z_XD2KBfvdI1huM8EQu05o21sDgYK_RA/viewform?hl=en"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn secondary"
-          onclick="trackLaunchListClick()"
-        >
-          Join Pro Launch List
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<footer>
-
-  <div class="container footer-row">
-
-    <div>
-      <div class="footer-brand">
-        FollowUp Engine
-      </div>
-
-      <div class="footer-note">
-        A simple decision tool for sales follow-ups.
-      </div>
-    </div>
-
-    <div>
-      © 2026 FollowUp Engine.
-    </div>
-
-  </div>
-
-</footer>
-
-
-<script>
-
-function trackEvent(name, params = {}) {
-
-  if (typeof gtag === "function") {
-
-    gtag("event", name, {
-      ...params,
-      send_to: "G-N84BKSSSPZ",
-      debug_mode: true
-    });
-
-  }
-
+<style>
+:root{
+  --bg:#f5f7fb;
+  --surface:#ffffff;
+  --surface-soft:#f8fafc;
+  --text:#101828;
+  --muted:#667085;
+  --muted-2:#98a2b3;
+  --border:#e4e7ec;
+  --dark:#0b1020;
+  --dark-2:#161d31;
+  --green:#087f5b;
+  --green-bg:#eaf8f3;
+  --green-border:#bfe7d8;
+  --blue:#175cd3;
+  --blue-bg:#eff6ff;
+  --purple:#7a5af8;
+  --orange:#b54708;
+  --orange-bg:#fff6ed;
+  --shadow:0 12px 32px rgba(16,24,40,.08);
+  --shadow-lg:0 24px 60px rgba(16,24,40,.14);
+  --radius:20px;
+  --radius-lg:28px;
 }
 
-
-function trackLaunchListClick() {
-
-  trackEvent("launch_list_clicked", {
-    destination: "google_form"
-  });
-
+*{
+  box-sizing:border-box;
 }
 
-
-function calculatePriority() {
-
-  const deal =
-    Number(document.getElementById("dealValue").value) || 0;
-
-  const days =
-    Number(document.getElementById("days").value) || 0;
-
-  const temperature =
-    Number(document.getElementById("temperature").value);
-
-  const reply =
-    Number(document.getElementById("reply").value);
-
-  const deadline =
-    Number(document.getElementById("deadline").value);
-
-
-  let score = 0;
-
-
-  if (deal >= 10000) {
-
-    score += 25;
-
-  } else if (deal >= 5000) {
-
-    score += 20;
-
-  } else if (deal >= 2500) {
-
-    score += 15;
-
-  } else if (deal >= 1000) {
-
-    score += 10;
-
-  } else if (deal > 0) {
-
-    score += 5;
-
-  }
-
-
-  if (days >= 30) {
-
-    score += 25;
-
-  } else if (days >= 14) {
-
-    score += 21;
-
-  } else if (days >= 7) {
-
-    score += 16;
-
-  } else if (days >= 3) {
-
-    score += 10;
-
-  } else {
-
-    score += 4;
-
-  }
-
-
-  score += temperature * 5;
-
-
-  if (reply === 5) {
-
-    score += 20;
-
-  } else if (reply === 4) {
-
-    score += 17;
-
-  } else if (reply === 3) {
-
-    score += 14;
-
-  } else if (reply === 2) {
-
-    score += 9;
-
-  } else {
-
-    score += 3;
-
-  }
-
-
-  score += deadline * 5;
-
-
-  if (score > 100) {
-
-    score = 100;
-
-  }
-
-
-  let priority;
-  let reason;
-  let action;
-
-
-  if (score >= 75) {
-
-    priority = "FOLLOW UP TODAY";
-
-    reason =
-      "This opportunity has strong value, buying intent, inactivity, or deadline pressure.";
-
-    action =
-      "Send a short and specific follow-up today. Reference the previous conversation and give one clear next step.";
-
-  } else if (score >= 50) {
-
-    priority = "HIGH PRIORITY";
-
-    reason =
-      "The opportunity has enough potential that delaying the next contact may reduce momentum.";
-
-    action =
-      "Follow up within 24–48 hours and add something useful: clarification, recommendation, example, or next step.";
-
-  } else if (score >= 30) {
-
-    priority = "MEDIUM PRIORITY";
-
-    reason =
-      "There is potential, but the current signals do not make this an urgent opportunity.";
-
-    action =
-      "Schedule the next follow-up and avoid repeatedly contacting the lead without providing new value.";
-
-  } else {
-
-    priority = "LOW PRIORITY";
-
-    reason =
-      "Current signals are weak or the opportunity is not currently urgent.";
-
-    action =
-      "Keep the lead in your pipeline and spend your immediate selling time on higher-priority opportunities.";
-
-  }
-
-
-  document.getElementById("score").textContent =
-    score + "/100";
-
-  document.getElementById("priority").textContent =
-    priority;
-
-  document.getElementById("reason").textContent =
-    reason;
-
-  document.getElementById("action").textContent =
-    action;
-
-  document.getElementById("result").style.display =
-    "block";
-
-
-  trackEvent("calculator_completed", {
-    score: score,
-    priority: priority
-  });
-
-
-  document
-    .getElementById("feedbackYes")
-    .classList
-    .remove("selected");
-
-  document
-    .getElementById("feedbackNo")
-    .classList
-    .remove("selected");
-
-  document.getElementById("nextQuestion").style.display =
-    "none";
-
-  document.getElementById("feedbackStatus").style.display =
-    "none";
-
-  document.getElementById("nextNeed").value =
-    "";
-
+html{
+  scroll-behavior:smooth;
 }
 
-
-function submitFeedback(value) {
-
-  const feedbackData = {
-
-    usefulness: value,
-
-    score:
-      document.getElementById("score").textContent,
-
-    priority:
-      document.getElementById("priority").textContent,
-
-    timestamp:
-      new Date().toISOString()
-
-  };
-
-
-  localStorage.setItem(
-    "followupEngineFeedback",
-    JSON.stringify(feedbackData)
-  );
-
-
-  document
-    .getElementById("feedbackYes")
-    .classList
-    .toggle(
-      "selected",
-      value === "yes"
-    );
-
-
-  document
-    .getElementById("feedbackNo")
-    .classList
-    .toggle(
-      "selected",
-      value === "no"
-    );
-
-
-  document.getElementById("nextQuestion").style.display =
-    "block";
-
-
-  trackEvent(
-    value === "yes"
-      ? "feedback_useful"
-      : "feedback_not_useful",
-    {
-      score:
-        document.getElementById("score").textContent,
-
-      priority:
-        document.getElementById("priority").textContent
-    }
-  );
-
-
-  document.getElementById("feedbackStatus").style.display =
-    "none";
-
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 15% 5%,rgba(23,92,211,.06),transparent 28%),
+    radial-gradient(circle at 85% 8%,rgba(122,90,248,.06),transparent 25%),
+    linear-gradient(180deg,#f8faff 0%,#f5f7fb 45%,#fff 100%);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
 }
 
-
-function saveNextNeed() {
-
-  const nextNeed =
-    document.getElementById("nextNeed").value;
-
-
-  if (!nextNeed) {
-    return;
-  }
-
-
-  const existingFeedback =
-    JSON.parse(
-      localStorage.getItem(
-        "followupEngineFeedback"
-      ) || "{}"
-    );
-
-
-  if (
-    existingFeedback.usefulness !== "yes" &&
-    existingFeedback.usefulness !== "no"
-  ) {
-
-    document.getElementById("feedbackStatus").textContent =
-      "Please choose whether the recommendation was useful first.";
-
-    document.getElementById("feedbackStatus").style.display =
-      "block";
-
-    return;
-  }
-
-
-  existingFeedback.nextNeed =
-    nextNeed;
-
-  existingFeedback.timestamp =
-    new Date().toISOString();
-
-
-  localStorage.setItem(
-    "followupEngineFeedback",
-    JSON.stringify(existingFeedback)
-  );
-
-
-  const usefulness =
-    existingFeedback.usefulness === "yes"
-      ? "Yes"
-      : "Not really";
-
-
-  const nextNeedMap = {
-
-    "generate-message":
-      "Generate the message",
-
-    "track-followups":
-      "Track all my follow-ups",
-
-    "daily-priority":
-      "Tell me who to contact today",
-
-    "recover-ghosted":
-      "Recover old / ghosted leads"
-
-  };
-
-
-  const nextNeedText =
-    nextNeedMap[nextNeed];
-
-
-  if (!nextNeedText) {
-    return;
-  }
-
-
-  document.getElementById(
-    "feedbackUsefulness"
-  ).value =
-    usefulness;
-
-
-  document.getElementById(
-    "feedbackNextNeed"
-  ).value =
-    nextNeedText;
-
-
-  trackEvent("feature_requested", {
-    feature: nextNeedText,
-    usefulness: usefulness
-  });
-
-
-  document.getElementById(
-    "feedbackForm"
-  ).submit();
-
-
-  document.getElementById(
-    "feedbackStatus"
-  ).textContent =
-    "Thanks — your feedback was submitted.";
-
-  document.getElementById(
-    "feedbackStatus"
-  ).style.display =
-    "block";
-
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
-</script>
+button,
+input,
+select{
+  font:inherit;
+}
 
-</body>
-</html>
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+  background:
+    radial-gradient(circle at 50% -80%,rgba(83,130,255,.25),transparent 45%),
+    var(--dark);
+  color:#d0d5dd;
+  text-align:center;
+  padding:9px 16px;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.01em;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(228,231,236,.8);
+}
+
+.nav{
+  width:min(1180px,calc(100% - 40px));
+  min-height:72px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:-.03em;
+}
+
+.brand-mark{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  background:linear-gradient(135deg,#175cd3,#7a5af8);
+  box-shadow:0 8px 20px rgba(23,92,211,.25);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  color:#475467;
+  font-size:14px;
+  font-weight:600;
+}
+
+.nav-links a{
+  transition:.2s ease;
+}
+
+.nav-links a:hover{
+  color:var(--text);
+}
+
+.nav-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:0 17px;
+  border-radius:10px;
+  background:var(--dark);
+  color:#fff;
+  font-size:14px;
+  font-weight:700;
+  box-shadow:0 8px 18px rgba(11,16,32,.14);
+  transition:.2s ease;
+}
+
+.nav-cta:hover{
+  transform:translateY(-1px);
+  box-shadow:0 12px 24px rgba(11,16,32,.2);
+}
+
+/* =========================
+   HERO — PREMIUM SAAS
+========================= */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:82px 0 72px;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(23,92,211,.15),transparent 32%),
+    radial-gradient(circle at 85% 10%,rgba(122,90,248,.14),transparent 30%),
+    linear-gradient(180deg,#f9fbff 0%,#f5f7fb 100%);
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  top:-250px;
+  right:-160px;
+  border-radius:50%;
+  background:rgba(122,90,248,.08);
+  filter:blur(20px);
+  pointer-events:none;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  left:-230px;
+  bottom:-240px;
+  border-radius:50%;
+  background:rgba(23,92,211,.07);
+  filter:blur(25px);
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  width:min(1180px,calc(100% - 40px));
+  margin:auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);
+  gap:64px;
+  align-items:center;
+}
+
+.hero-copy{
+  max-width:650px;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 12px;
+  border:1px solid #d9e2f3;
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  color:#175cd3;
+  font-size:13px;
+  font-weight:800;
+  box-shadow:0 6px 18px rgba(16,24,40,.05);
+}
+
+.eyebrow::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#12b76a;
+  box-shadow:0 0 0 4px rgba(18,183,106,.12);
+}
+
+.hero h1{
+  margin:22px 0 20px;
+  max-width:680px;
+  font-size:clamp(48px,6vw,76px);
+  line-height:1.02;
+  letter-spacing:-.055em;
+  font-weight:850;
+  color:#0b1020;
+}
+
+.hero h1 strong{
+  background:linear-gradient(135deg,#175cd3 10%,#7a5af8 90%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:620px;
+  margin:0;
+  color:#667085;
+  font-size:18px;
+  line-height:1.7;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:30px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:50px;
+  padding:0 20px;
+  border-radius:12px;
+  border:1px solid transparent;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:800;
+  transition:.22s ease;
+}
+
+.btn-primary{
+  color:#fff;
+  background:linear-gradient(135deg,#175cd3,#315fd5);
+  box-shadow:
+    0 10px 24px rgba(23,92,211,.24),
+    inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 15px 30px rgba(23,92,211,.3),
+    inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+.btn-secondary{
+  color:#344054;
+  background:rgba(255,255,255,.8);
+  border-color:#d0d5dd;
+  box-shadow:0 5px 15px rgba(16,24,40,.04);
+}
+
+.btn-secondary:hover{
+  transform:translateY(-2px);
+  background:#fff;
+  border-color:#98a2b3;
+}
+
+.hero-note{
+  margin-top:16px !important;
+  font-size:12px !important;
+  color:#98a2b3 !important;
+}
+
+.proof-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:24px;
+}
+
+.proof-chip{
+  padding:7px 11px;
+  border:1px solid #e4e7ec;
+  border-radius:999px;
+  background:rgba(255,255,255,.75);
+  color:#475467;
+  font-size:12px;
+  font-weight:700;
+}
+
+/* =========================
+   HERO PRODUCT PREVIEW
+========================= */
+
+.hero-side{
+  position:relative !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  width:100% !important;
+}
+
+.preview-card{
+  position:relative !important;
+  top:auto !important;
+  right:auto !important;
+  bottom:auto !important;
+  left:auto !important;
+  inset:auto !important;
+  display:block !important;
+  width:min(330px,100%) !important;
+  align-self:flex-end !important;
+  margin:0 0 -34px 0 !important;
+  padding:20px !important;
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(208,213,221,.85);
+  border-radius:22px;
+  box-shadow:
+    0 28px 70px rgba(16,24,40,.15),
+    0 8px 25px rgba(23,92,211,.08);
+  z-index:5 !important;
+  transform:none !important;
+  rotate:none !important;
+  translate:none !important;
+  scale:1 !important;
+  float:none !important;
+}
+
+.preview-card::before{
+  content:"";
+  display:block;
+  width:48px;
+  height:4px;
+  border-radius:99px;
+  margin-bottom:18px;
+  background:linear-gradient(90deg,#175cd3,#7a5af8);
+}
+
+.preview-card h3{
+  margin:0 0 4px;
+  font-size:13px;
+  color:#667085;
+  font-weight:700;
+}
+
+.preview-score{
+  font-size:44px;
+  line-height:1;
+  font-weight:850;
+  letter-spacing:-.05em;
+  color:#0b1020;
+}
+
+.preview-status{
+  display:inline-flex;
+  margin-top:10px;
+  padding:6px 9px;
+  border-radius:999px;
+  background:var(--green-bg);
+  color:var(--green);
+  font-size:11px;
+  font-weight:850;
+}
+
+.preview-line{
+  height:7px;
+  margin:18px 0 15px;
+  border-radius:99px;
+  overflow:hidden;
+  background:#eaecf0;
+}
+
+.preview-line span{
+  display:block;
+  width:87%;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,#12b76a,#175cd3);
+}
+
+.preview-card p{
+  margin:0;
+  font-size:12px;
+  line-height:1.6;
+  color:#667085;
+}
+
+/* =========================
+   CALCULATOR
+========================= */
+
+.calculator-card{
+  position:relative;
+  overflow:hidden;
+  background:rgba(255,255,255,.97);
+  border:1px solid rgba(208,213,221,.9);
+  border-radius:28px;
+  padding:32px;
+  box-shadow:
+    0 35px 80px rgba(16,24,40,.14),
+    0 10px 30px rgba(23,92,211,.07);
+}
+
+.calculator-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:4px;
+  background:linear-gradient(90deg,#175cd3,#7a5af8,#12b76a);
+}
+
+.calculator-card h2{
+  margin:0;
+  font-size:26px;
+  line-height:1.2;
+  letter-spacing:-.035em;
+}
+
+.calculator-card > p{
+  color:var(--muted);
+}
+
+.free-badge{
+  display:inline-flex;
+  margin-bottom:14px;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#eef4ff;
+  color:#175cd3;
+  font-size:11px;
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+
+.form-group{
+  margin-top:20px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:8px;
+  color:#344054;
+  font-size:13px;
+  font-weight:750;
+}
+
+.form-group input,
+.form-group select{
+  width:100%;
+  min-height:48px;
+  padding:0 14px;
+  color:#101828;
+  background:#fff;
+  border:1px solid #d0d5dd;
+  border-radius:11px;
+  outline:none;
+  transition:.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+  border-color:#84adff;
+  box-shadow:0 0 0 4px rgba(23,92,211,.1);
+}
+
+.calculate-btn{
+  width:100%;
+  margin-top:24px;
+  min-height:52px;
+  border:0;
+  border-radius:12px;
+  color:#fff;
+  background:linear-gradient(135deg,#175cd3,#315fd5);
+  font-weight:850;
+  cursor:pointer;
+  box-shadow:0 12px 25px rgba(23,92,211,.22);
+  transition:.22s ease;
+}
+
+.calculate-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 16px 32px rgba(23,92,211,.28);
+}
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
+section{
+  padding:88px 0;
+}
+
+.container{
+  width:min(1180px,calc(100% - 40px));
+  margin:auto;
+}
+
+.section-heading{
+  max-width:680px;
+  margin:0 auto 45px;
+  text-align:center;
+}
+
+.section-heading h2{
+  margin:0 0 12px;
+  font-size:clamp(32px,4vw,46px);
+  line-height:1.08;
+  letter-spacing:-.045em;
+}
+
+.section-heading p{
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.audience-grid,
+.features-grid,
+.steps-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.card,
+.audience-card,
+.feature-card,
+.step-card{
+  background:rgba(255,255,255,.88);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:24px;
+  box-shadow:0 8px 24px rgba(16,24,40,.045);
+  transition:.25s ease;
+}
+
+.card:hover,
+.audience-card:hover,
+.feature-card:hover,
+.step-card:hover{
+  transform:translateY(-4px);
+  border-color:#c7d2e4;
+  box-shadow:0 18px 40px rgba(16,24,40,.09);
+}
+
+/* =========================
+   PRO SECTION
+========================= */
+
+.pro-section{
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(23,92,211,.35),transparent 30%),
+    radial-gradient(circle at 85% 80%,rgba(122,90,248,.25),transparent 32%),
+    linear-gradient(135deg,#0b1020,#161d31);
+}
+
+.pro-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom,transparent,#000,transparent);
+  pointer-events:none;
+}
+
+.pro-section .container{
+  position:relative;
+  z-index:2;
+}
+
+.pro-section .section-heading p{
+  color:#98a2b3;
+}
+
+.pro-section .feature-card{
+  background:rgba(255,255,255,.055);
+  border-color:rgba(255,255,255,.1);
+  color:#fff;
+  box-shadow:none;
+}
+
+.pro-section .feature-card:hover{
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.18);
+}
+
+/* =========================
+   PRICING
+========================= */
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+  max-width:800px;
+  margin:auto;
+}
+
+.price-card{
+  position:relative;
+  padding:30px;
+  border:1px solid var(--border);
+  border-radius:24px;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+
+.price-card.featured{
+  border:2px solid #175cd3;
+  box-shadow:
+    0 25px 55px rgba(23,92,211,.13),
+    0 8px 20px rgba(16,24,40,.05);
+}
+
+.price-card.featured::before{
+  content:"PLANNED";
+  position:absolute;
+  top:-12px;
+  right:22px;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#175cd3;
+  color:#fff;
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.06em;
+}
+
+/* =========================
+   FAQ
+========================= */
+
+.faq{
+  max-width:820px;
+  margin:auto;
+}
+
+.faq-item{
+  padding:20px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.faq-item h3{
+  margin:0 0 8px;
+  font-size:16px;
+}
+
+.faq-item p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* =========================
+   FINAL CTA
+========================= */
+
+.final-cta{
+  padding:95px 0;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 0,rgba(23,92,211,.12),transparent 42%),
+    #f8fafc;
+}
+
+.final-cta h2{
+  margin:0 auto 12px;
+  max-width:700px;
+  font-size:clamp(36px,5vw,56px);
+  line-height:1.05;
+  letter-spacing:-.05em;
+}
+
+.final-cta p{
+  max-width:600px;
+  margin:0 auto;
+  color:var(--muted);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:38px 0;
+  color:#98a2b3;
+  background:#0b1020;
+  font-size:13px;
+}
+
+footer a{
+  color:#d0d5dd;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+  .hero{
+    padding:65px 0 55px;
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .hero-copy{
+    max-width:760px;
+    margin:auto;
+    text-align:center;
+  }
+
+  .hero h1{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero-actions,
+  .proof-row{
+    justify-content:center;
+  }
+
+  .hero-side{
+    max-width:650px;
+    margin:auto;
+  }
+
+  .preview-card{
+    align-self:center !important;
+    margin:0 0 -20px 0 !important;
+  }
+
+  .audience-grid,
+  .features-grid,
+  .steps-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:700px){
+
+  .nav{
+    width:min(100% - 28px,1180px);
+    min-height:64px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .nav-cta{
+    min-height:38px;
+    padding:0 13px;
+    font-size:12px;
+  }
+
+  .hero{
+    padding:48px 0 40px;
+  }
+
+  .hero-inner,
+  .container{
+    width:min(100% - 28px,1180px);
+  }
+
+  .hero h1{
+    font-size:clamp(42px,12vw,60px);
+    letter-spacing:-.06em;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+  }
+
+  .hero-actions .btn{
+    width:100%;
+  }
+
+  .proof-row{
+    gap:6px;
+  }
+
+  .proof-chip{
+    font-size:11px;
+  }
+
+  .preview-card{
+    display:none !important;
+  }
+
+  .calculator-card{
+    padding:22px;
+    border-radius:22px;
+  }
+
+  section{
+    padding:65px 0;
+  }
+
+  .audience-grid,
+  .features-grid,
+  .steps-grid,
+  .pricing-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-heading{
+    margin-bottom:32px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+    transition:none !important;
+    animation:none !important;
+  }
+}
+</style>
