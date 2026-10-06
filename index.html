@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -382,30 +381,42 @@
     }
 
     .hero-side {
-      position:relative;
-      display:flex;
-      flex-direction:column;
-      align-items:flex-end;
-      width:100%;
+      position:relative !important;
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:stretch !important;
+      width:100% !important;
     }
 
-    /* Fixed Example Result card:
+    /* Example Result card:
        straight, in normal document flow,
-       and never covering the calculator heading. */
+       above the calculator and never covering its heading. */
     .preview-card {
-      position:relative;
-      top:auto;
-      right:auto;
-      width:min(250px,100%);
-      align-self:flex-end;
+      position:static !important;
+      top:auto !important;
+      right:auto !important;
+      bottom:auto !important;
+      left:auto !important;
+      inset:auto !important;
+
+      display:block !important;
+      width:min(250px,100%) !important;
+      align-self:flex-end !important;
+
+      margin:0 0 16px 0 !important;
+
       background:rgba(255,255,255,.93);
       border:1px solid var(--border);
       border-radius:18px;
       padding:16px;
       box-shadow:var(--shadow-lg);
-      z-index:3;
-      transform:none;
-      margin-bottom:16px;
+      z-index:3 !important;
+
+      transform:none !important;
+      rotate:none !important;
+      translate:none !important;
+      scale:1 !important;
+      float:none !important;
     }
 
     .preview-label {
@@ -1010,7 +1021,7 @@
       }
 
       .preview-card {
-        display:none;
+        display:none !important;
       }
 
       .hero-text {
@@ -2534,4 +2545,3 @@ function saveNextNeed() {
 
 </body>
 </html>
-```
