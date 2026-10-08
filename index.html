@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="google-site-verification" content="1Pma6aOW4EKEB0zqRpRe1he1kobQOPCsN7NjbQSHVig">
 
   <!-- Google Analytics -->
@@ -10,15 +11,15 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N84BKSSSPZ');
+    gtag("js", new Date());
+    gtag("config", "G-N84BKSSSPZ");
   </script>
 
-  <title>FollowUp Engine | Follow-Up Priority Calculator for Sales</title>
+  <title>FollowUp Engine | Know Who to Follow Up With Today</title>
 
   <meta
     name="description"
-    content="Free follow-up priority calculator for freelancers, consultants, agencies and small businesses. Find out which lead deserves your attention today and what to do next."
+    content="FollowUp Engine helps freelancers, consultants, agencies and small businesses decide which sales lead deserves attention today and what to do next."
   >
 
   <meta name="robots" content="index,follow">
@@ -35,7 +36,7 @@
 
   <meta
     property="og:description"
-    content="A free tool that helps you decide which sales lead deserves your attention today."
+    content="A simple sales follow-up priority calculator that tells you who deserves attention today and what to do next."
   >
 
   <meta property="og:type" content="website">
@@ -45,57 +46,67 @@
     content="https://romeioromany222-design.github.io/followup-engine/"
   >
 
+  <meta
+    property="og:site_name"
+    content="FollowUp Engine"
+  >
+
   <meta name="theme-color" content="#080b14">
 
   <style>
     :root {
-      --bg:#f5f7fb;
-      --surface:#ffffff;
-      --surface-soft:#f8fafc;
-      --text:#101828;
-      --muted:#667085;
-      --muted-2:#98a2b3;
-      --border:#e4e7ec;
-      --dark:#080b14;
-      --dark-2:#111827;
-      --dark-3:#1d2939;
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text: #101828;
+      --text-strong: #0b1220;
+      --muted: #667085;
+      --muted-2: #98a2b3;
+      --border: #e4e7ec;
+      --border-strong: #d0d5dd;
 
-      --green:#087f5b;
-      --green-bg:#eaf8f3;
-      --green-border:#bfe7d8;
+      --dark: #080b14;
+      --dark-2: #101828;
+      --dark-3: #1d2939;
 
-      --blue:#175cd3;
-      --blue-bg:#eff6ff;
-      --blue-light:#60a5fa;
+      --blue: #175cd3;
+      --blue-light: #60a5fa;
+      --blue-bg: #eff6ff;
 
-      --purple:#7a5af8;
-      --purple-light:#a78bfa;
+      --purple: #7a5af8;
 
-      --orange:#b54708;
-      --orange-bg:#fff6ed;
+      --green: #087f5b;
+      --green-light: #10b981;
+      --green-bg: #eaf8f3;
+      --green-border: #bfe7d8;
 
-      --shadow-xs:0 2px 8px rgba(16,24,40,.04);
-      --shadow-sm:0 8px 28px rgba(16,24,40,.06);
-      --shadow-md:0 18px 55px rgba(16,24,40,.10);
-      --shadow-lg:0 35px 100px rgba(16,24,40,.15);
-      --shadow-xl:0 45px 120px rgba(16,24,40,.18);
+      --orange: #b54708;
+      --orange-bg: #fff6ed;
 
-      --radius-sm:10px;
-      --radius-md:16px;
-      --radius-lg:24px;
-      --radius-xl:30px;
+      --shadow-xs: 0 2px 8px rgba(16,24,40,.04);
+      --shadow-sm: 0 8px 28px rgba(16,24,40,.06);
+      --shadow-md: 0 18px 55px rgba(16,24,40,.10);
+      --shadow-lg: 0 30px 90px rgba(16,24,40,.14);
+
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 30px;
     }
 
     * {
-      box-sizing:border-box;
+      box-sizing: border-box;
     }
 
     html {
-      scroll-behavior:smooth;
+      scroll-behavior: smooth;
     }
 
     body {
-      margin:0;
+      margin: 0;
+      min-width: 320px;
+      overflow-x: hidden;
+
       font-family:
         Inter,
         ui-sans-serif,
@@ -106,57 +117,51 @@
         Arial,
         sans-serif;
 
+      color: var(--text);
+      line-height: 1.6;
+
       background:
         radial-gradient(
-          circle at 8% 0%,
+          circle at 7% 0%,
           rgba(99,102,241,.09),
-          transparent 28%
+          transparent 27%
         ),
         radial-gradient(
-          circle at 92% 8%,
-          rgba(14,165,233,.075),
+          circle at 93% 8%,
+          rgba(14,165,233,.07),
           transparent 25%
         ),
         linear-gradient(
           180deg,
-          #fafcff 0%,
-          #f5f7fb 48%,
+          #fbfdff 0%,
+          #f5f7fb 50%,
           #ffffff 100%
         );
-
-      color:var(--text);
-      line-height:1.6;
-      overflow-x:hidden;
     }
 
     ::selection {
-      background:#dbeafe;
-      color:#0f172a;
+      background: #dbeafe;
+      color: #0f172a;
     }
 
     a {
-      color:inherit;
-      text-decoration:none;
+      color: inherit;
+      text-decoration: none;
     }
 
     button,
     input,
     select {
-      font:inherit;
+      font: inherit;
     }
 
     button {
-      cursor:pointer;
+      cursor: pointer;
     }
 
     .container {
-      width:min(1160px,calc(100% - 32px));
-      margin:auto;
-    }
-
-    .container.narrow {
-      width:min(900px,calc(100% - 32px));
-      margin:auto;
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
     }
 
     /* =========================================
@@ -164,93 +169,100 @@
     ========================================= */
 
     .topbar {
-      position:relative;
-      z-index:30;
-      color:#dbe4ff;
-      font-size:12px;
+      position: relative;
+      z-index: 50;
+
+      color: #dbe4ff;
+      font-size: 12px;
 
       background:
         linear-gradient(
           90deg,
           #070a12 0%,
-          #101827 50%,
+          #111827 50%,
           #070a12 100%
         );
 
-      border-bottom:1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
     .topbar-inner {
-      min-height:40px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      text-align:center;
+      min-height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      padding: 6px 0;
+
+      text-align: center;
+      line-height: 1.35;
     }
 
     .topbar-dot {
-      width:7px;
-      height:7px;
-      border-radius:50%;
-      background:#7dd3fc;
+      width: 7px;
+      height: 7px;
+      flex: 0 0 auto;
+
+      border-radius: 50%;
+      background: #7dd3fc;
 
       box-shadow:
         0 0 0 5px rgba(125,211,252,.08),
         0 0 18px rgba(125,211,252,.45);
-
-      flex:0 0 auto;
     }
 
     /* =========================================
-       NAVIGATION
+       NAV
     ========================================= */
 
     header {
-      position:sticky;
-      top:0;
-      z-index:25;
+      position: sticky;
+      top: 0;
+      z-index: 40;
 
-      background:rgba(255,255,255,.82);
-      border-bottom:1px solid rgba(228,231,236,.76);
+      background: rgba(255,255,255,.86);
 
-      backdrop-filter:blur(20px);
-      -webkit-backdrop-filter:blur(20px);
+      border-bottom: 1px solid rgba(228,231,236,.78);
+
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
 
     .nav {
-      min-height:72px;
+      min-height: 72px;
 
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .brand {
-      display:inline-flex;
-      align-items:center;
-      gap:11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
 
-      font-size:19px;
-      font-weight:850;
-      letter-spacing:-.45px;
+      font-size: 19px;
+      font-weight: 850;
+      letter-spacing: -.45px;
 
-      white-space:nowrap;
+      white-space: nowrap;
     }
 
     .brand-mark {
-      width:37px;
-      height:37px;
+      width: 38px;
+      height: 38px;
 
-      border-radius:12px;
+      display: grid;
+      place-items: center;
 
-      display:grid;
-      place-items:center;
+      border-radius: 12px;
 
-      color:#fff;
-      font-size:14px;
-      font-weight:900;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
 
       background:
         linear-gradient(
@@ -265,36 +277,37 @@
     }
 
     .nav-right {
-      display:flex;
-      align-items:center;
-      gap:20px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
     }
 
     .nav-links {
-      display:flex;
-      align-items:center;
-      gap:25px;
+      display: flex;
+      align-items: center;
+      gap: 25px;
 
-      color:#475467;
-      font-size:14px;
-      font-weight:650;
+      color: #475467;
+      font-size: 14px;
+      font-weight: 650;
     }
 
     .nav-links a {
-      position:relative;
-      transition:color .18s ease;
+      position: relative;
+      transition: color .18s ease;
     }
 
     .nav-links a::after {
-      content:"";
+      content: "";
 
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:-8px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
 
-      height:2px;
-      border-radius:2px;
+      height: 2px;
+
+      border-radius: 2px;
 
       background:
         linear-gradient(
@@ -303,30 +316,35 @@
           var(--purple)
         );
 
-      transform:scaleX(0);
-      transform-origin:center;
+      transform: scaleX(0);
+      transform-origin: center;
 
-      transition:transform .18s ease;
+      transition: transform .18s ease;
     }
 
     .nav-links a:hover {
-      color:var(--text);
+      color: var(--text);
     }
 
     .nav-links a:hover::after {
-      transform:scaleX(1);
+      transform: scaleX(1);
     }
 
     .nav-cta {
-      padding:11px 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
 
-      border-radius:11px;
+      min-height: 42px;
+      padding: 10px 16px;
 
-      background:var(--dark);
-      color:#fff;
+      border-radius: 11px;
 
-      font-size:13px;
-      font-weight:800;
+      color: #fff;
+      background: var(--dark);
+
+      font-size: 13px;
+      font-weight: 800;
 
       box-shadow:
         0 8px 24px rgba(8,11,20,.16),
@@ -338,7 +356,7 @@
     }
 
     .nav-cta:hover {
-      transform:translateY(-1px);
+      transform: translateY(-1px);
 
       box-shadow:
         0 13px 30px rgba(8,11,20,.22),
@@ -350,120 +368,117 @@
     ========================================= */
 
     .hero {
-      position:relative;
-      overflow:hidden;
+      position: relative;
+      overflow: hidden;
 
-      padding:86px 0 78px;
+      padding: 84px 0 78px;
     }
 
     .hero::before {
-      content:"";
+      content: "";
 
-      position:absolute;
+      position: absolute;
 
-      width:760px;
-      height:760px;
+      width: 760px;
+      height: 760px;
 
-      right:-320px;
-      top:-300px;
+      right: -320px;
+      top: -320px;
 
-      border-radius:50%;
+      border-radius: 50%;
 
       background:
         radial-gradient(
           circle,
-          rgba(99,102,241,.16) 0%,
-          rgba(99,102,241,.07) 30%,
-          rgba(99,102,241,0) 70%
+          rgba(99,102,241,.15) 0%,
+          rgba(99,102,241,.06) 32%,
+          transparent 70%
         );
 
-      pointer-events:none;
+      pointer-events: none;
     }
 
     .hero::after {
-      content:"";
+      content: "";
 
-      position:absolute;
+      position: absolute;
 
-      width:480px;
-      height:480px;
+      width: 520px;
+      height: 520px;
 
-      left:-280px;
-      bottom:-260px;
+      left: -320px;
+      bottom: -320px;
 
-      border-radius:50%;
+      border-radius: 50%;
 
       background:
         radial-gradient(
           circle,
-          rgba(14,165,233,.09),
+          rgba(14,165,233,.08),
           transparent 68%
         );
 
-      pointer-events:none;
+      pointer-events: none;
     }
 
     .hero-grid {
-      display:grid;
+      position: relative;
+      z-index: 1;
+
+      display: grid;
 
       grid-template-columns:
-        minmax(0,1fr)
-        minmax(430px,520px);
+        minmax(0, 1fr)
+        minmax(420px, 520px);
 
-      gap:64px;
+      gap: 62px;
 
-      align-items:center;
-
-      position:relative;
-      z-index:1;
+      align-items: center;
     }
 
     .eyebrow {
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
 
-      background:rgba(239,246,255,.9);
-      color:var(--blue);
+      padding: 8px 13px;
 
-      padding:8px 13px;
+      border: 1px solid #dbeafe;
+      border-radius: 999px;
 
-      border:1px solid #dbeafe;
-      border-radius:999px;
+      color: var(--blue);
+      background: rgba(239,246,255,.90);
 
-      font-size:12px;
-      font-weight:850;
-
-      margin-bottom:21px;
+      font-size: 12px;
+      font-weight: 850;
 
       box-shadow:
         0 5px 18px rgba(23,92,211,.06);
     }
 
     .eyebrow::before {
-      content:"";
+      content: "";
 
-      width:7px;
-      height:7px;
+      width: 7px;
+      height: 7px;
 
-      border-radius:50%;
+      border-radius: 50%;
 
-      background:currentColor;
+      background: currentColor;
 
       box-shadow:
         0 0 0 4px rgba(23,92,211,.10);
     }
 
-    h1 {
-      font-size:clamp(48px,6vw,76px);
+    .hero h1 {
+      max-width: 760px;
 
-      line-height:.96;
+      margin: 21px 0 24px;
 
-      letter-spacing:-4.8px;
+      font-size: clamp(48px, 6vw, 76px);
+      line-height: .96;
 
-      margin:0 0 25px;
-
-      max-width:760px;
+      letter-spacing: -4.8px;
     }
 
     .gradient-text {
@@ -476,42 +491,44 @@
           #7a5af8 100%
         );
 
-      -webkit-background-clip:text;
-      background-clip:text;
+      -webkit-background-clip: text;
+      background-clip: text;
 
-      color:transparent;
+      color: transparent;
     }
 
     .hero-text {
-      color:#475467;
+      max-width: 660px;
 
-      font-size:18px;
-      line-height:1.72;
+      margin: 0 0 28px;
 
-      max-width:650px;
+      color: #475467;
 
-      margin:0 0 29px;
+      font-size: 18px;
+      line-height: 1.72;
     }
 
     .buttons {
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .btn {
-      border:0;
-      border-radius:12px;
+      min-height: 48px;
 
-      padding:14px 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
 
-      font-size:15px;
-      font-weight:800;
+      padding: 13px 19px;
 
-      display:inline-flex;
-      justify-content:center;
-      align-items:center;
-      gap:9px;
+      border: 0;
+      border-radius: 12px;
+
+      font-size: 14px;
+      font-weight: 800;
 
       transition:
         transform .18s ease,
@@ -521,18 +538,18 @@
     }
 
     .btn:hover {
-      transform:translateY(-2px);
+      transform: translateY(-2px);
     }
 
     .btn.primary {
+      color: #fff;
+
       background:
         linear-gradient(
           135deg,
           #080b14 0%,
           #1d2939 100%
         );
-
-      color:#fff;
 
       box-shadow:
         0 13px 30px rgba(8,11,20,.18),
@@ -546,141 +563,130 @@
     }
 
     .btn.secondary {
-      background:rgba(255,255,255,.84);
+      color: var(--text);
+      background: rgba(255,255,255,.84);
 
-      border:1px solid var(--border);
-      color:var(--text);
+      border: 1px solid var(--border);
 
       box-shadow:
         0 5px 18px rgba(16,24,40,.03);
     }
 
     .btn.secondary:hover {
-      border-color:#c9ced6;
-      background:#fff;
-      box-shadow:var(--shadow-sm);
+      background: #fff;
+      border-color: #c9ced6;
+      box-shadow: var(--shadow-sm);
     }
 
     .note {
-      margin-top:16px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
 
-      display:flex;
-      align-items:center;
-      gap:9px;
+      margin-top: 15px;
 
-      color:#667085;
-      font-size:13px;
-      font-weight:600;
+      color: #667085;
+
+      font-size: 13px;
+      font-weight: 600;
     }
 
     .note::before {
-      content:"✓";
+      content: "✓";
 
-      display:grid;
-      place-items:center;
+      width: 19px;
+      height: 19px;
 
-      width:19px;
-      height:19px;
+      display: grid;
+      place-items: center;
 
-      border-radius:50%;
+      border-radius: 50%;
 
-      background:var(--green-bg);
-      color:var(--green);
+      background: var(--green-bg);
+      color: var(--green);
 
-      font-weight:900;
-      font-size:11px;
-
-      box-shadow:
-        0 0 0 4px rgba(8,127,91,.04);
+      font-size: 11px;
+      font-weight: 900;
     }
 
     .hero-proof {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
+      max-width: 650px;
 
-      gap:10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
 
-      margin-top:30px;
+      gap: 10px;
 
-      max-width:650px;
+      margin-top: 28px;
     }
 
     .proof-chip {
-      position:relative;
+      padding: 14px;
 
-      background:rgba(255,255,255,.74);
+      border: 1px solid rgba(228,231,236,.92);
+      border-radius: 14px;
 
-      border:1px solid rgba(228,231,236,.92);
+      background: rgba(255,255,255,.74);
 
-      border-radius:14px;
-
-      padding:14px;
-
-      box-shadow:var(--shadow-sm);
+      box-shadow: var(--shadow-sm);
 
       transition:
         transform .18s ease,
-        box-shadow .18s ease,
-        border-color .18s ease;
+        box-shadow .18s ease;
     }
 
     .proof-chip:hover {
-      transform:translateY(-3px);
-
-      box-shadow:var(--shadow-md);
-
-      border-color:#d4dae3;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
     }
 
     .proof-chip strong {
-      display:block;
+      display: block;
 
-      font-size:13px;
+      margin-bottom: 3px;
 
-      margin-bottom:3px;
+      font-size: 13px;
     }
 
     .proof-chip span {
-      color:var(--muted);
+      color: var(--muted);
 
-      font-size:12px;
-
-      line-height:1.45;
+      font-size: 12px;
+      line-height: 1.45;
     }
 
     /* =========================================
-       HERO TOOL AREA
+       HERO SIDE
     ========================================= */
 
     .hero-side {
-      position:relative;
+      width: 100%;
+      max-width: 520px;
 
-      width:100%;
-      max-width:520px;
+      display: flex;
+      flex-direction: column;
+      gap: 17px;
 
-      display:flex;
-      flex-direction:column;
-      align-items:stretch;
-
-      gap:18px;
-
-      margin:0 auto;
+      margin: 0 auto;
     }
 
     /* =========================================
-       DYNAMIC EXAMPLE RESULT CARD
+       LIVE PREVIEW
     ========================================= */
 
     .preview-card {
-      position:relative;
+      position: relative;
 
-      width:min(330px,100%);
+      width: min(350px, 100%);
 
-      align-self:flex-end;
+      align-self: flex-end;
 
-      margin:0;
+      padding: 20px;
 
-      padding:20px 20px 19px;
+      overflow: hidden;
+
+      border: 1px solid #dfe4ec;
+      border-radius: 19px;
 
       background:
         linear-gradient(
@@ -689,168 +695,113 @@
           #fbfcff 100%
         );
 
-      border:1px solid #dfe4ec;
-
-      border-radius:18px;
-
       box-shadow:
         0 20px 50px rgba(16,24,40,.10),
         0 6px 18px rgba(16,24,40,.04);
 
-      overflow:hidden;
-
-      z-index:2;
-
-      transform:none;
-      rotate:0deg;
-      translate:none;
-      scale:1;
-
-      float:none;
-
-      isolation:isolate;
+      isolation: isolate;
     }
 
     .preview-card::before {
-      content:"";
+      content: "";
 
-      position:absolute;
+      position: absolute;
 
-      top:0;
-      left:20px;
-      right:20px;
+      top: 0;
+      left: 20px;
+      right: 20px;
 
-      height:2px;
+      height: 2px;
 
-      border-radius:0 0 3px 3px;
+      border-radius: 0 0 3px 3px;
 
       background:
         linear-gradient(
           90deg,
-          #175cd3 0%,
-          #7a5af8 100%
+          #175cd3,
+          #7a5af8
         );
-
-      opacity:.85;
-    }
-
-    .preview-card::after {
-      content:"";
-
-      position:absolute;
-
-      width:130px;
-      height:130px;
-
-      top:-75px;
-      right:-55px;
-
-      border-radius:50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(23,92,211,.08),
-          transparent 68%
-        );
-
-      pointer-events:none;
-
-      z-index:-1;
     }
 
     .preview-label {
-      color:#667085;
+      margin-bottom: 8px;
 
-      font-size:10px;
-      font-weight:850;
+      color: #667085;
 
-      text-transform:uppercase;
-      letter-spacing:.11em;
+      font-size: 10px;
+      font-weight: 850;
 
-      margin:0 0 8px;
+      text-transform: uppercase;
+      letter-spacing: .11em;
     }
 
     .preview-score {
-      color:#0f172a;
+      color: #0f172a;
 
-      font-size:39px;
-      font-weight:900;
+      font-size: 40px;
+      font-weight: 900;
 
-      line-height:1;
+      line-height: 1;
 
-      letter-spacing:-2px;
-
-      margin:0;
-
-      transition:
-        opacity .18s ease,
-        transform .18s ease;
+      letter-spacing: -2px;
     }
 
     .preview-priority {
-      display:inline-flex;
-      align-items:center;
+      display: inline-flex;
+      align-items: center;
 
-      margin-top:8px;
+      margin-top: 9px;
 
-      color:#087f5b;
+      color: var(--orange);
 
-      font-size:11px;
-      font-weight:900;
+      font-size: 11px;
+      font-weight: 900;
 
-      letter-spacing:.045em;
-      line-height:1.3;
-
-      transition:
-        color .18s ease,
-        opacity .18s ease;
+      letter-spacing: .045em;
     }
 
     .preview-priority::before {
-      content:"";
+      content: "";
 
-      width:6px;
-      height:6px;
+      width: 6px;
+      height: 6px;
 
-      margin-right:7px;
+      margin-right: 7px;
 
-      border-radius:50%;
+      border-radius: 50%;
 
-      background:#10b981;
+      background: currentColor;
 
       box-shadow:
-        0 0 0 4px rgba(16,185,129,.10);
-
-      flex:0 0 auto;
+        0 0 0 4px rgba(181,71,8,.08);
     }
 
     .preview-line {
-      width:100%;
-      height:7px;
+      width: 100%;
+      height: 7px;
 
-      border-radius:999px;
+      margin-top: 14px;
 
-      background:#edf1f5;
+      overflow: hidden;
 
-      margin-top:14px;
+      border-radius: 999px;
 
-      overflow:hidden;
+      background: #edf1f5;
     }
 
     .preview-line span {
-      display:block;
+      display: block;
 
-      width:0%;
-      height:100%;
+      width: 0;
+      height: 100%;
 
-      border-radius:inherit;
+      border-radius: inherit;
 
       background:
         linear-gradient(
           90deg,
-          #34d399,
-          #10b981
+          #fbbf24,
+          #f59e0b
         );
 
       transition:
@@ -859,24 +810,12 @@
     }
 
     .preview-action {
-      margin-top:13px;
+      margin-top: 13px;
 
-      color:#475467;
+      color: #475467;
 
-      font-size:12.5px;
-
-      line-height:1.6;
-
-      font-weight:500;
-
-      max-width:100%;
-
-      overflow:visible;
-      white-space:normal;
-      word-break:normal;
-      overflow-wrap:break-word;
-
-      transition:opacity .18s ease;
+      font-size: 12.5px;
+      line-height: 1.6;
     }
 
     /* =========================================
@@ -884,9 +823,16 @@
     ========================================= */
 
     .tool {
-      position:relative;
+      position: relative;
 
-      width:100%;
+      width: 100%;
+
+      padding: 30px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(220,225,233,.96);
+      border-radius: 26px;
 
       background:
         linear-gradient(
@@ -895,31 +841,23 @@
           rgba(249,251,255,.98)
         );
 
-      border:1px solid rgba(220,225,233,.96);
-
-      border-radius:26px;
-
-      padding:31px;
-
       box-shadow:
         0 35px 100px rgba(16,24,40,.14),
         0 8px 24px rgba(16,24,40,.05);
-
-      overflow:hidden;
     }
 
     .tool::before {
-      content:"";
+      content: "";
 
-      position:absolute;
+      position: absolute;
 
-      width:300px;
-      height:300px;
+      width: 300px;
+      height: 300px;
 
-      top:-180px;
-      right:-110px;
+      top: -180px;
+      right: -110px;
 
-      border-radius:50%;
+      border-radius: 50%;
 
       background:
         radial-gradient(
@@ -928,152 +866,118 @@
           transparent 68%
         );
 
-      pointer-events:none;
-    }
-
-    .tool::after {
-      content:"";
-
-      position:absolute;
-
-      inset:0;
-
-      border-radius:26px;
-
-      pointer-events:none;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.85),
-          rgba(255,255,255,0)
-        );
+      pointer-events: none;
     }
 
     .tool-header {
-      position:relative;
+      position: relative;
+      z-index: 1;
 
-      z-index:1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
 
-      display:flex;
-      justify-content:space-between;
-
-      gap:18px;
-
-      align-items:flex-start;
-
-      margin-bottom:23px;
+      margin-bottom: 23px;
     }
 
     .tool h2 {
-      margin:0 0 5px;
+      margin: 0 0 5px;
 
-      font-size:25px;
-
-      letter-spacing:-.8px;
-
-      line-height:1.2;
+      font-size: 25px;
+      line-height: 1.2;
+      letter-spacing: -.8px;
     }
 
     .tool-sub {
-      color:var(--muted);
+      margin: 0;
 
-      font-size:14px;
+      color: var(--muted);
 
-      margin:0;
+      font-size: 14px;
     }
 
     .tool-badge {
-      background:#f2f4f7;
-      color:#344054;
+      flex: 0 0 auto;
 
-      border:1px solid #e4e7ec;
+      padding: 7px 10px;
 
-      border-radius:999px;
+      border: 1px solid #e4e7ec;
+      border-radius: 999px;
 
-      padding:7px 10px;
+      color: #344054;
+      background: #f2f4f7;
 
-      font-size:10px;
-      font-weight:850;
+      font-size: 10px;
+      font-weight: 850;
 
-      letter-spacing:.06em;
-
-      white-space:nowrap;
-
-      box-shadow:
-        0 3px 10px rgba(16,24,40,.04);
+      letter-spacing: .06em;
     }
 
     .calculator-fields {
-      position:relative;
-      z-index:1;
+      position: relative;
+      z-index: 1;
     }
 
     .field {
-      margin-bottom:16px;
+      margin-bottom: 15px;
     }
 
     label {
-      display:block;
+      display: block;
 
-      font-size:13px;
-      font-weight:800;
+      margin-bottom: 7px;
 
-      margin-bottom:7px;
+      color: #344054;
 
-      color:#344054;
+      font-size: 13px;
+      font-weight: 800;
     }
 
     input,
     select {
-      width:100%;
+      width: 100%;
+      min-height: 47px;
 
-      padding:13px 13px;
+      padding: 11px 13px;
 
-      border:1px solid #d7dce3;
+      border: 1px solid #d7dce3;
+      border-radius: 11px;
 
-      border-radius:11px;
+      color: #101828;
+      background: #fff;
 
-      background:#fff;
-      color:#101828;
-
-      font-size:15px;
+      font-size: 15px;
 
       transition:
         border-color .18s ease,
-        box-shadow .18s ease,
-        transform .18s ease;
+        box-shadow .18s ease;
     }
 
     input:hover,
     select:hover {
-      border-color:#b8c0cc;
+      border-color: #b8c0cc;
     }
 
     input::placeholder {
-      color:#98a2b3;
+      color: #98a2b3;
     }
 
     input:focus,
     select:focus {
-      outline:none;
+      outline: none;
 
-      border-color:#98a2b3;
+      border-color: #98a2b3;
 
       box-shadow:
         0 0 0 4px rgba(17,24,39,.06);
     }
 
     .calculator-button {
-      position:relative;
+      width: 100%;
+      min-height: 52px;
 
-      z-index:1;
-
-      width:100%;
-
-      margin-top:5px;
-
-      min-height:52px;
+      margin-top: 5px;
     }
 
     /* =========================================
@@ -1081,13 +985,16 @@
     ========================================= */
 
     .result {
-      display:none;
+      display: none;
 
-      margin-top:20px;
+      position: relative;
+      z-index: 1;
 
-      padding:21px;
+      margin-top: 20px;
+      padding: 21px;
 
-      border-radius:18px;
+      border: 1px solid var(--green-border);
+      border-radius: 18px;
 
       background:
         linear-gradient(
@@ -1096,121 +1003,106 @@
           #e6f7f0 100%
         );
 
-      border:1px solid var(--green-border);
-
-      position:relative;
-
-      z-index:1;
-
       box-shadow:
         0 12px 30px rgba(8,127,91,.06);
     }
 
     .result-top {
-      display:flex;
-
-      align-items:flex-start;
-      justify-content:space-between;
-
-      gap:14px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
     }
 
     .result-label {
-      color:#475467;
+      color: #475467;
 
-      font-size:11px;
-      font-weight:800;
+      font-size: 11px;
+      font-weight: 800;
 
-      text-transform:uppercase;
-      letter-spacing:.09em;
+      text-transform: uppercase;
+      letter-spacing: .09em;
     }
 
     .score {
-      font-size:50px;
+      margin-top: 3px;
 
-      font-weight:900;
+      color: #0b1020;
 
-      line-height:1;
+      font-size: 50px;
+      font-weight: 900;
 
-      letter-spacing:-2px;
+      line-height: 1;
 
-      color:#0b1020;
+      letter-spacing: -2px;
     }
 
     .priority {
-      font-weight:900;
+      margin: 8px 0 12px;
 
-      margin:8px 0 12px;
+      color: #075e43;
 
-      color:#075e43;
+      font-weight: 900;
     }
 
     .result-text {
-      color:#344054;
+      color: #344054;
 
-      font-size:14px;
-
-      line-height:1.6;
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .action {
-      background:#fff;
+      margin-top: 14px;
+      padding: 14px;
 
-      border:1px solid rgba(0,0,0,.08);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 12px;
 
-      padding:14px;
-
-      border-radius:12px;
-
-      margin-top:14px;
+      background: #fff;
 
       box-shadow:
         0 4px 14px rgba(16,24,40,.03);
     }
 
     .action strong {
-      font-size:13px;
+      font-size: 13px;
     }
 
     .feedback-box {
-      margin-top:16px;
+      margin-top: 16px;
+      padding: 16px;
 
-      padding:16px;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 13px;
 
-      border-radius:13px;
-
-      background:#fff;
-
-      border:1px solid rgba(0,0,0,.08);
+      background: #fff;
     }
 
     .feedback-title {
-      font-weight:800;
+      margin-bottom: 10px;
 
-      font-size:14px;
-
-      margin-bottom:10px;
+      font-size: 14px;
+      font-weight: 800;
     }
 
     .feedback-buttons {
-      display:flex;
-
-      gap:8px;
-
-      flex-wrap:wrap;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
     .feedback-btn {
-      border:1px solid var(--border);
+      padding: 9px 12px;
 
-      background:#fff;
+      border: 1px solid var(--border);
+      border-radius: 9px;
 
-      border-radius:9px;
+      color: var(--text);
+      background: #fff;
 
-      padding:9px 12px;
-
-      font-size:13px;
-      font-weight:750;
+      font-size: 13px;
+      font-weight: 750;
 
       transition:
         border-color .18s ease,
@@ -1219,39 +1111,30 @@
     }
 
     .feedback-btn:hover {
-      border-color:#98a2b3;
-
-      transform:translateY(-1px);
+      transform: translateY(-1px);
+      border-color: #98a2b3;
     }
 
     .feedback-btn.selected {
-      background:var(--dark);
-
-      color:#fff;
-
-      border-color:var(--dark);
+      color: #fff;
+      background: var(--dark);
+      border-color: var(--dark);
     }
 
     .next-question {
-      display:none;
-
-      margin-top:16px;
-    }
-
-    .next-question label {
-      margin-bottom:8px;
+      display: none;
+      margin-top: 16px;
     }
 
     .feedback-status {
-      display:none;
+      display: none;
 
-      margin-top:12px;
+      margin-top: 12px;
 
-      font-size:13px;
+      color: var(--green);
 
-      color:var(--green);
-
-      font-weight:800;
+      font-size: 13px;
+      font-weight: 800;
     }
 
     /* =========================================
@@ -1259,58 +1142,56 @@
     ========================================= */
 
     .section {
-      padding:88px 0;
+      padding: 88px 0;
     }
 
     .white {
-      background:rgba(255,255,255,.88);
+      background: rgba(255,255,255,.88);
 
-      border-top:1px solid var(--border);
-      border-bottom:1px solid var(--border);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
     .section-head {
-      max-width:760px;
+      max-width: 760px;
 
-      margin:0 auto 44px;
+      margin: 0 auto 44px;
 
-      text-align:center;
+      text-align: center;
     }
 
     .section-kicker {
-      display:inline-block;
+      display: inline-block;
 
-      color:var(--blue);
+      margin-bottom: 10px;
 
-      font-size:11px;
+      color: var(--blue);
 
-      text-transform:uppercase;
+      font-size: 11px;
+      font-weight: 900;
 
-      letter-spacing:.12em;
-
-      font-weight:900;
-
-      margin-bottom:10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
     }
 
-    .heading h2 {
-      font-size:clamp(32px,4vw,48px);
+    .section-head h2 {
+      margin: 0 0 14px;
 
-      line-height:1.08;
+      color: var(--text-strong);
 
-      letter-spacing:-2.3px;
+      font-size: clamp(32px,4vw,48px);
+      line-height: 1.08;
 
-      margin:0 0 14px;
+      letter-spacing: -2.3px;
     }
 
-    .heading p {
-      color:var(--muted);
+    .section-head p {
+      margin: 0;
 
-      font-size:17px;
+      color: var(--muted);
 
-      line-height:1.7;
-
-      margin:0;
+      font-size: 17px;
+      line-height: 1.7;
     }
 
     /* =========================================
@@ -1318,25 +1199,20 @@
     ========================================= */
 
     .audience {
-      display:grid;
-
-      grid-template-columns:repeat(4,1fr);
-
-      gap:15px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 15px;
     }
 
     .audience-card {
-      position:relative;
+      padding: 22px;
 
-      background:rgba(255,255,255,.96);
+      border: 1px solid var(--border);
+      border-radius: 17px;
 
-      border:1px solid var(--border);
+      background: rgba(255,255,255,.96);
 
-      border-radius:17px;
-
-      padding:22px;
-
-      box-shadow:var(--shadow-sm);
+      box-shadow: var(--shadow-sm);
 
       transition:
         transform .2s ease,
@@ -1345,73 +1221,69 @@
     }
 
     .audience-card:hover {
-      transform:translateY(-4px);
+      transform: translateY(-4px);
 
-      box-shadow:var(--shadow-md);
+      border-color: #d5dbe4;
 
-      border-color:#d5dbe4;
+      box-shadow: var(--shadow-md);
     }
 
     .audience-icon {
-      width:37px;
-      height:37px;
+      width: 37px;
+      height: 37px;
 
-      border-radius:11px;
+      display: grid;
+      place-items: center;
 
-      display:grid;
-      place-items:center;
+      margin-bottom: 14px;
 
-      background:#f3f6ff;
+      border-radius: 11px;
 
-      color:var(--blue);
+      color: var(--blue);
+      background: #f3f6ff;
 
-      font-weight:900;
-
-      margin-bottom:14px;
+      font-size: 13px;
+      font-weight: 900;
     }
 
     .audience-card h3 {
-      margin:0 0 5px;
+      margin: 0 0 5px;
 
-      font-size:16px;
+      font-size: 16px;
     }
 
     .audience-card p {
-      margin:0;
+      margin: 0;
 
-      color:var(--muted);
+      color: var(--muted);
 
-      font-size:13px;
-
-      line-height:1.55;
+      font-size: 13px;
+      line-height: 1.55;
     }
 
     /* =========================================
-       FEATURES
+       HOW IT WORKS
     ========================================= */
 
     .features {
-      display:grid;
-
-      grid-template-columns:repeat(3,1fr);
-
-      gap:18px;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
     }
 
     .feature {
-      position:relative;
+      position: relative;
 
-      background:#fff;
+      padding: 27px;
 
-      border:1px solid var(--border);
+      overflow: hidden;
 
-      border-radius:18px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
 
-      padding:27px;
+      background: #fff;
 
-      box-shadow:var(--shadow-sm);
-
-      overflow:hidden;
+      box-shadow: var(--shadow-sm);
 
       transition:
         transform .2s ease,
@@ -1420,69 +1292,49 @@
     }
 
     .feature:hover {
-      transform:translateY(-4px);
+      transform: translateY(-4px);
 
-      box-shadow:var(--shadow-md);
+      border-color: #d7dce5;
 
-      border-color:#d7dce5;
-    }
-
-    .feature::after {
-      content:"";
-
-      position:absolute;
-
-      width:150px;
-      height:150px;
-
-      right:-80px;
-      top:-80px;
-
-      border-radius:50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(23,92,211,.08),
-          transparent 68%
-        );
+      box-shadow: var(--shadow-md);
     }
 
     .feature-number {
-      font-size:11px;
+      margin-bottom: 14px;
 
-      color:var(--blue);
+      color: var(--blue);
 
-      font-weight:900;
+      font-size: 11px;
+      font-weight: 900;
 
-      letter-spacing:.1em;
-
-      margin-bottom:14px;
+      letter-spacing: .1em;
     }
 
     .feature h3 {
-      margin:0 0 8px;
+      margin: 0 0 8px;
 
-      font-size:19px;
-
-      letter-spacing:-.4px;
+      font-size: 19px;
+      letter-spacing: -.4px;
     }
 
     .feature p {
-      color:var(--muted);
+      margin: 0;
 
-      font-size:14px;
+      color: var(--muted);
 
-      line-height:1.65;
-
-      margin:0;
+      font-size: 14px;
+      line-height: 1.65;
     }
 
     /* =========================================
-       PRO SECTION
+       PRO
     ========================================= */
 
     .dark-wrap {
+      padding: 1px;
+
+      border-radius: 30px;
+
       background:
         linear-gradient(
           135deg,
@@ -1490,20 +1342,16 @@
           #151c2f
         );
 
-      padding:1px;
-
-      border-radius:30px;
-
       box-shadow:
         0 30px 90px rgba(11,16,32,.18);
     }
 
     .dark-section {
-      color:#fff;
+      padding: 55px;
 
-      border-radius:29px;
+      color: #fff;
 
-      padding:55px;
+      border-radius: 29px;
 
       background:
         radial-gradient(
@@ -1524,89 +1372,81 @@
     }
 
     .dark-grid {
-      display:grid;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
 
-      grid-template-columns:1.05fr .95fr;
+      gap: 54px;
 
-      gap:54px;
-
-      align-items:center;
+      align-items: center;
     }
 
     .dark-section .eyebrow {
-      background:rgba(255,255,255,.08);
+      margin-bottom: 18px;
 
-      color:#bfdbfe;
+      color: #bfdbfe;
+      background: rgba(255,255,255,.08);
 
-      border-color:rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.08);
 
-      box-shadow:none;
+      box-shadow: none;
     }
 
     .dark-section h2 {
-      margin:0;
+      margin: 0;
 
-      font-size:clamp(34px,4vw,49px);
+      font-size: clamp(34px,4vw,49px);
+      line-height: 1.06;
 
-      line-height:1.06;
-
-      letter-spacing:-2.2px;
+      letter-spacing: -2.2px;
     }
 
     .dark-section p {
-      color:#b8c1d1;
+      max-width: 600px;
 
-      font-size:16px;
+      margin: 18px 0 0;
 
-      line-height:1.7;
+      color: #b8c1d1;
 
-      margin:18px 0 0;
-
-      max-width:600px;
+      font-size: 16px;
+      line-height: 1.7;
     }
 
     .list {
-      list-style:none;
+      display: grid;
+      gap: 12px;
 
-      padding:0;
-      margin:0;
+      margin: 0;
+      padding: 0;
 
-      display:grid;
-
-      gap:12px;
+      list-style: none;
     }
 
     .list li {
-      margin:0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
 
-      color:#e7edf7;
+      color: #e7edf7;
 
-      font-size:14px;
-
-      display:flex;
-      align-items:center;
-
-      gap:10px;
+      font-size: 14px;
     }
 
     .list li::before {
-      content:"✓";
+      content: "✓";
 
-      display:grid;
-      place-items:center;
+      width: 23px;
+      height: 23px;
+      flex: 0 0 auto;
 
-      width:23px;
-      height:23px;
+      display: grid;
+      place-items: center;
 
-      border-radius:50%;
+      border-radius: 50%;
 
-      background:rgba(52,211,153,.12);
+      color: #86efac;
+      background: rgba(52,211,153,.12);
 
-      color:#86efac;
-
-      font-weight:900;
-
-      flex:0 0 auto;
+      font-weight: 900;
     }
 
     /* =========================================
@@ -1614,124 +1454,141 @@
     ========================================= */
 
     .pricing {
-      display:grid;
+      max-width: 920px;
 
-      grid-template-columns:repeat(2,1fr);
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
 
-      gap:20px;
+      gap: 20px;
 
-      max-width:920px;
-
-      margin:auto;
+      margin: 0 auto;
     }
 
     .price-card {
-      background:#fff;
+      padding: 33px;
 
-      border:1px solid var(--border);
+      border: 1px solid var(--border);
+      border-radius: 21px;
 
-      border-radius:21px;
+      background: #fff;
 
-      padding:33px;
-
-      box-shadow:var(--shadow-sm);
+      box-shadow: var(--shadow-sm);
 
       transition:
         transform .2s ease,
-        box-shadow .2s ease,
-        border-color .2s ease;
+        box-shadow .2s ease;
     }
 
     .price-card:hover {
-      transform:translateY(-4px);
-
-      box-shadow:var(--shadow-md);
-
-      border-color:#d4dae3;
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
     }
 
     .price-card.pro {
-      position:relative;
+      position: relative;
 
-      overflow:hidden;
+      overflow: hidden;
 
-      border:2px solid var(--dark);
+      border: 2px solid var(--dark);
 
       box-shadow:
         0 25px 75px rgba(16,24,40,.12);
     }
 
     .price-card.pro::before {
-      content:"PLANNED";
+      content: "PLANNED";
 
-      position:absolute;
+      position: absolute;
 
-      top:16px;
-      right:16px;
+      top: 16px;
+      right: 16px;
 
-      padding:6px 9px;
+      padding: 6px 9px;
 
-      border-radius:999px;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
 
-      background:#f3f4f6;
+      color: #344054;
+      background: #f3f4f6;
 
-      color:#344054;
+      font-size: 10px;
+      font-weight: 900;
 
-      border:1px solid #e5e7eb;
-
-      font-size:10px;
-
-      font-weight:900;
-
-      letter-spacing:.08em;
+      letter-spacing: .08em;
     }
 
     .price-card h3 {
-      margin:0 0 5px;
+      margin: 0 0 5px;
 
-      font-size:19px;
+      font-size: 19px;
     }
 
     .price {
-      font-size:48px;
+      margin: 8px 0;
 
-      font-weight:900;
+      color: var(--text-strong);
 
-      letter-spacing:-2.5px;
+      font-size: 48px;
+      font-weight: 900;
 
-      margin:8px 0;
+      letter-spacing: -2.5px;
     }
 
     .price-sub {
-      color:var(--muted);
+      margin: 0 0 18px;
 
-      font-size:13px;
+      color: var(--muted);
 
-      margin:0 0 18px;
+      font-size: 13px;
     }
 
     .price-card ul {
-      margin:0 0 24px;
-
-      padding-left:19px;
+      margin: 0 0 24px;
+      padding-left: 19px;
     }
 
     .price-card li {
-      margin:9px 0;
+      margin: 9px 0;
 
-      color:#475467;
+      color: #475467;
 
-      font-size:14px;
+      font-size: 14px;
     }
 
     .launch-note {
-      margin-top:12px;
+      margin-top: 12px;
 
-      text-align:center;
+      color: var(--muted);
 
-      color:var(--muted);
+      font-size: 12px;
 
-      font-size:12px;
+      text-align: center;
+    }
+
+    /* =========================================
+       TRUST NOTE
+    ========================================= */
+
+    .privacy-note {
+      max-width: 680px;
+
+      margin: 30px auto 0;
+
+      padding: 15px 18px;
+
+      border: 1px solid var(--border);
+      border-radius: 13px;
+
+      color: #667085;
+      background: #f8fafc;
+
+      font-size: 13px;
+
+      text-align: center;
+    }
+
+    .privacy-note strong {
+      color: #344054;
     }
 
     /* =========================================
@@ -1739,21 +1596,18 @@
     ========================================= */
 
     .faq {
-      max-width:840px;
-
-      margin:auto;
+      max-width: 840px;
+      margin: 0 auto;
     }
 
     details {
-      background:rgba(255,255,255,.94);
+      margin-bottom: 10px;
+      padding: 19px;
 
-      border:1px solid var(--border);
+      border: 1px solid var(--border);
+      border-radius: 13px;
 
-      border-radius:13px;
-
-      padding:19px;
-
-      margin-bottom:10px;
+      background: rgba(255,255,255,.94);
 
       transition:
         border-color .18s ease,
@@ -1761,27 +1615,25 @@
     }
 
     details[open] {
-      border-color:#d2d8e2;
-
-      box-shadow:var(--shadow-sm);
+      border-color: #d2d8e2;
+      box-shadow: var(--shadow-sm);
     }
 
     summary {
-      cursor:pointer;
+      cursor: pointer;
 
-      font-weight:800;
+      color: #1d2939;
 
-      color:#1d2939;
+      font-weight: 800;
     }
 
     details p {
-      color:var(--muted);
+      margin: 12px 0 0;
 
-      font-size:14px;
+      color: var(--muted);
 
-      line-height:1.65;
-
-      margin:12px 0 0;
+      font-size: 14px;
+      line-height: 1.65;
     }
 
     /* =========================================
@@ -1789,13 +1641,21 @@
     ========================================= */
 
     .final-cta {
-      padding:0 0 88px;
+      padding: 0 0 88px;
     }
 
     .final-cta-card {
-      position:relative;
+      position: relative;
 
-      overflow:hidden;
+      overflow: hidden;
+
+      padding: 58px 40px;
+
+      border-radius: 28px;
+
+      color: #fff;
+
+      text-align: center;
 
       background:
         radial-gradient(
@@ -1814,76 +1674,46 @@
           #1d2939 100%
         );
 
-      color:#fff;
-
-      border-radius:28px;
-
-      padding:55px;
-
-      text-align:center;
-
       box-shadow:
         0 30px 80px rgba(16,24,40,.16);
     }
 
-    .final-cta-card::before {
-      content:"";
-
-      position:absolute;
-
-      inset:0;
-
-      pointer-events:none;
-
-      background:
-        linear-gradient(
-          120deg,
-          transparent 0%,
-          rgba(255,255,255,.035) 48%,
-          transparent 100%
-        );
-    }
-
     .final-cta-card h2 {
-      position:relative;
+      position: relative;
+      z-index: 1;
 
-      z-index:1;
+      margin: 0 0 10px;
 
-      margin:0 0 10px;
+      font-size: clamp(32px,4vw,49px);
+      line-height: 1.06;
 
-      font-size:clamp(32px,4vw,49px);
-
-      line-height:1.06;
-
-      letter-spacing:-2.2px;
+      letter-spacing: -2.2px;
     }
 
     .final-cta-card p {
-      position:relative;
+      position: relative;
+      z-index: 1;
 
-      z-index:1;
+      max-width: 650px;
 
-      color:#c7ced9;
+      margin: 0 auto 24px;
 
-      max-width:650px;
+      color: #c7ced9;
 
-      margin:0 auto 24px;
-
-      font-size:16px;
-
-      line-height:1.7;
+      font-size: 16px;
+      line-height: 1.7;
     }
 
     .final-cta-card .buttons {
-      position:relative;
+      position: relative;
+      z-index: 1;
 
-      z-index:1;
+      justify-content: center;
     }
 
     .final-cta-card .btn.secondary {
-      background:#fff;
-
-      border-color:#fff;
+      background: #fff;
+      border-color: #fff;
     }
 
     /* =========================================
@@ -1891,226 +1721,205 @@
     ========================================= */
 
     footer {
-      padding:42px 0;
+      padding: 42px 0;
 
-      color:var(--muted);
+      color: var(--muted);
 
-      font-size:13px;
+      font-size: 13px;
     }
 
     .footer-row {
-      display:flex;
-
-      align-items:flex-start;
-
-      justify-content:space-between;
-
-      gap:30px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 30px;
     }
 
     .footer-brand {
-      font-weight:900;
-
-      color:#1d2939;
+      color: #1d2939;
+      font-weight: 900;
     }
 
     .footer-note {
-      margin-top:5px;
+      margin-top: 5px;
     }
 
     /* =========================================
        RESPONSIVE
     ========================================= */
 
-    @media(max-width:1050px) {
-
+    @media (max-width: 1050px) {
       .hero-grid {
-        grid-template-columns:1fr 480px;
-
-        gap:40px;
+        grid-template-columns: 1fr 470px;
+        gap: 38px;
       }
 
-      h1 {
-        font-size:clamp(46px,6vw,68px);
+      .hero h1 {
+        font-size: clamp(46px,6vw,68px);
       }
 
       .hero-side {
-        max-width:480px;
+        max-width: 470px;
       }
-
     }
 
-    @media(max-width:1000px) {
-
+    @media (max-width: 1000px) {
       .hero-grid {
-        grid-template-columns:1fr;
+        grid-template-columns: 1fr;
       }
 
       .hero-text {
-        max-width:800px;
-      }
-
-      .preview-card {
-        display:none;
+        max-width: 800px;
       }
 
       .hero-side {
-        max-width:700px;
-        margin:auto;
+        max-width: 700px;
+      }
+
+      .preview-card {
+        display: none;
       }
 
       .audience {
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns: repeat(2,1fr);
       }
-
     }
 
-    @media(max-width:850px) {
-
+    @media (max-width: 850px) {
       .nav-links,
       .nav-cta {
-        display:none;
-      }
-
-      .nav-right {
-        margin-left:auto;
+        display: none;
       }
 
       .hero {
-        padding-top:62px;
+        padding-top: 62px;
       }
 
-      h1 {
-        letter-spacing:-3px;
+      .hero h1 {
+        letter-spacing: -3px;
       }
 
       .hero-proof {
-        grid-template-columns:1fr;
+        grid-template-columns: 1fr;
       }
 
       .features,
       .dark-grid,
       .pricing {
-        grid-template-columns:1fr;
+        grid-template-columns: 1fr;
       }
 
       .dark-section {
-        padding:32px;
+        padding: 34px;
       }
 
       .final-cta-card {
-        padding:36px 24px;
+        padding: 42px 24px;
       }
 
       .footer-row {
-        flex-direction:column;
+        flex-direction: column;
       }
-
     }
 
-    @media(max-width:560px) {
-
-      .container,
-      .container.narrow {
-        width:min(100% - 22px,1160px);
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 22px, 1160px);
       }
 
       .topbar-inner {
-        min-height:42px;
-
-        padding:6px 12px;
-
-        line-height:1.35;
+        min-height: 42px;
+        padding: 6px 12px;
       }
 
       .nav {
-        min-height:64px;
+        min-height: 64px;
       }
 
       .brand {
-        font-size:17px;
+        font-size: 17px;
       }
 
       .brand-mark {
-        width:34px;
-        height:34px;
+        width: 34px;
+        height: 34px;
       }
 
       .hero {
-        padding:52px 0 42px;
+        padding: 52px 0 42px;
       }
 
-      h1 {
-        font-size:45px;
-        letter-spacing:-2.8px;
+      .hero h1 {
+        font-size: 45px;
+        letter-spacing: -2.8px;
       }
 
       .hero-text {
-        font-size:17px;
+        font-size: 17px;
       }
 
       .buttons,
       .buttons .btn {
-        width:100%;
+        width: 100%;
       }
 
       .tool {
-        padding:21px;
-
-        border-radius:20px;
+        padding: 21px;
+        border-radius: 20px;
       }
 
       .tool-header {
-        flex-direction:column;
+        flex-direction: column;
       }
 
       .tool-badge {
-        align-self:flex-start;
+        align-self: flex-start;
       }
 
       .score {
-        font-size:46px;
+        font-size: 46px;
       }
 
       .audience {
-        grid-template-columns:1fr;
+        grid-template-columns: 1fr;
       }
 
       .section {
-        padding:68px 0;
+        padding: 68px 0;
       }
 
-      .heading h2 {
-        letter-spacing:-1.5px;
+      .section-head h2 {
+        letter-spacing: -1.5px;
       }
 
       .dark-section {
-        padding:28px 22px;
+        padding: 28px 22px;
       }
 
       .price-card {
-        padding:26px;
+        padding: 26px;
       }
 
       .final-cta {
-        padding-bottom:68px;
+        padding-bottom: 68px;
       }
 
+      .final-cta-card {
+        padding: 38px 20px;
+      }
     }
 
-    @media(prefers-reduced-motion:reduce) {
-
+    @media (prefers-reduced-motion: reduce) {
       html {
-        scroll-behavior:auto;
+        scroll-behavior: auto;
       }
 
       *,
       *::before,
       *::after {
-        animation:none !important;
-        transition:none !important;
+        animation: none !important;
+        transition: none !important;
       }
-
     }
   </style>
 
@@ -2122,18 +1931,20 @@
     title="Feedback submission"
   ></iframe>
 
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"WebApplication",
-    "name":"Follow-Up Priority Calculator",
-    "applicationCategory":"BusinessApplication",
-    "operatingSystem":"Web",
-    "description":"A free calculator that helps freelancers and small businesses prioritize sales follow-ups.",
-    "offers":{
-      "@type":"Offer",
-      "price":"0",
-      "priceCurrency":"USD"
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "FollowUp Engine",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://romeioromany222-design.github.io/followup-engine/",
+    "description": "A free sales follow-up priority calculator that helps users decide which lead deserves attention today and what to do next.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
     }
   }
   </script>
@@ -2141,437 +1952,502 @@
 
 <body>
 
-<div class="topbar">
-  <div class="container topbar-inner">
-    <span class="topbar-dot"></span>
-    <span>
-      Free tool. No signup. Built to help you decide who to contact next.
-    </span>
+  <!-- =========================================
+       TOP BAR
+  ========================================== -->
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span class="topbar-dot" aria-hidden="true"></span>
+      <span>
+        Free tool. No signup. Built to help you decide who to contact next.
+      </span>
+    </div>
   </div>
-</div>
 
-<form
-  id="feedbackForm"
-  action="https://docs.google.com/forms/d/e/1FAIpQLSdmIJ1pZ4y7ZP3EZSYHB63WxoYi2UXEmiWFryxdjNbpf5ZddA/formResponse"
-  method="POST"
-  target="feedbackFrame"
-  style="display:none;"
->
-  <input
-    type="hidden"
-    name="entry.1064220020"
-    id="feedbackUsefulness"
+
+  <!-- =========================================
+       HIDDEN FEEDBACK FORM
+  ========================================== -->
+
+  <form
+    id="feedbackForm"
+    action="https://docs.google.com/forms/d/e/1FAIpQLSdmIJ1pZ4y7ZP3EZSYHB63WxoYi2UXEmiWFryxdjNbpf5ZddA/formResponse"
+    method="POST"
+    target="feedbackFrame"
+    style="display:none;"
   >
+    <input
+      type="hidden"
+      name="entry.1064220020"
+      id="feedbackUsefulness"
+    >
 
-  <input
-    type="hidden"
-    name="entry.1802400793"
-    id="feedbackNextNeed"
-  >
-</form>
+    <input
+      type="hidden"
+      name="entry.1802400793"
+      id="feedbackNextNeed"
+    >
+  </form>
 
-<header>
 
-  <div class="container nav">
+  <!-- =========================================
+       NAVIGATION
+  ========================================== -->
 
-    <a class="brand" href="#">
-      <span class="brand-mark">F</span>
-      <span>FollowUp Engine</span>
-    </a>
-
-    <div class="nav-right">
-
-      <nav class="nav-links">
-        <a href="#calculator">Free Tool</a>
-        <a href="#how">How It Works</a>
-        <a href="#product">Pro</a>
-        <a href="#faq">FAQ</a>
-      </nav>
+  <header>
+    <div class="container nav">
 
       <a
-        class="nav-cta"
-        href="https://docs.google.com/forms/d/e/1FAIpQLSelZTSsz2qZtRo-17Z_XD2KBfvdI1huM8EQu05o21sDgYK_RA/viewform?hl=en"
-        target="_blank"
-        rel="noopener noreferrer"
-        onclick="trackLaunchListClick()"
+        class="brand"
+        href="#"
+        aria-label="FollowUp Engine home"
       >
-        Join Launch List
+        <span class="brand-mark">F</span>
+        <span>FollowUp Engine</span>
       </a>
 
-    </div>
+      <div class="nav-right">
 
-  </div>
-
-</header>
-
-<main>
-
-<section class="hero">
-
-  <div class="container hero-grid">
-
-    <div>
-
-      <div class="eyebrow">
-        Free sales follow-up tool
-      </div>
-
-      <h1>
-        <span class="gradient-text">
-          Know who to follow up with today.
-        </span>
-      </h1>
-
-      <p class="hero-text">
-        Stop guessing which lead deserves your attention.
-        Enter a few details and get a simple priority score,
-        the reason behind it, and a recommended next action.
-      </p>
-
-      <div class="buttons">
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#calculator">Free Tool</a>
+          <a href="#how">How It Works</a>
+          <a href="#product">Pro</a>
+          <a href="#faq">FAQ</a>
+        </nav>
 
         <a
-          href="#calculator"
-          class="btn primary"
-          onclick="trackEvent('free_tool_cta_clicked')"
+          class="nav-cta"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSelZTSsz2qZtRo-17Z_XD2KBfvdI1huM8EQu05o21sDgYK_RA/viewform?hl=en"
+          target="_blank"
+          rel="noopener noreferrer"
+          onclick="trackLaunchListClick()"
         >
-          Calculate My Priority
-          <span aria-hidden="true">→</span>
-        </a>
-
-        <a
-          href="#how"
-          class="btn secondary"
-        >
-          See How It Works
+          Join Early Access
         </a>
 
       </div>
-
-      <div class="note">
-        Your calculator inputs stay in your browser.
-      </div>
-
-      <div class="hero-proof">
-
-        <div class="proof-chip">
-          <strong>1-minute test</strong>
-          <span>Try one opportunity quickly.</span>
-        </div>
-
-        <div class="proof-chip">
-          <strong>Simple score</strong>
-          <span>See why the lead ranks where it does.</span>
-        </div>
-
-        <div class="proof-chip">
-          <strong>Next action</strong>
-          <span>Get a practical follow-up suggestion.</span>
-        </div>
-
-      </div>
-
     </div>
+  </header>
 
-    <div class="hero-side">
 
-      <!-- Dynamic Example Result Card -->
-      <div class="preview-card">
+  <main>
 
-        <div class="preview-label">
-          Live example result
-        </div>
+    <!-- =========================================
+         HERO
+    ========================================== -->
 
-        <div
-          class="preview-score"
-          id="previewScore"
-        >
-          39/100
-        </div>
+    <section class="hero">
 
-        <div
-          class="preview-priority"
-          id="previewPriority"
-        >
-          MEDIUM PRIORITY
-        </div>
+      <div class="container hero-grid">
 
-        <div class="preview-line">
-          <span id="previewProgress"></span>
-        </div>
+        <div>
 
-        <div
-          class="preview-action"
-          id="previewAction"
-        >
-          Schedule the next follow-up and avoid repeatedly contacting the lead without providing new value.
-        </div>
-
-      </div>
-
-      <!-- Calculator -->
-      <div class="tool" id="calculator">
-
-        <div class="tool-header">
-
-          <div>
-
-            <h2>
-              Follow-Up Priority Calculator
-            </h2>
-
-            <p class="tool-sub">
-              Test one opportunity in less than a minute.
-            </p>
-
+          <div class="eyebrow">
+            Free sales follow-up tool
           </div>
 
-          <div class="tool-badge">
-            FREE
-          </div>
+          <h1>
+            <span class="gradient-text">
+              Know who to follow up with today.
+            </span>
+          </h1>
 
-        </div>
+          <p class="hero-text">
+            Stop guessing which lead deserves your attention.
+            Enter a few details and get a clear priority score,
+            the reason behind it, and a practical next action.
+          </p>
 
-        <div class="calculator-fields">
+          <div class="buttons">
 
-          <div class="field">
-
-            <label for="dealValue">
-              Potential deal value ($)
-            </label>
-
-            <input
-              id="dealValue"
-              type="number"
-              min="0"
-              value="1500"
+            <a
+              href="#calculator"
+              class="btn primary"
+              onclick="trackEvent('free_tool_cta_clicked')"
             >
+              Calculate My Priority
+              <span aria-hidden="true">→</span>
+            </a>
 
-          </div>
-
-          <div class="field">
-
-            <label for="days">
-              Days since last contact
-            </label>
-
-            <input
-              id="days"
-              type="number"
-              min="0"
-              value="7"
+            <a
+              href="#how"
+              class="btn secondary"
             >
+              See How It Works
+            </a>
 
           </div>
 
-          <div class="field">
+          <div class="note">
+            Your calculator inputs stay in your browser.
+          </div>
 
-            <label for="temperature">
-              Lead temperature
-            </label>
+          <div class="hero-proof">
 
-            <select id="temperature">
+            <div class="proof-chip">
+              <strong>1-minute test</strong>
+              <span>Score one opportunity quickly.</span>
+            </div>
 
-              <option value="1">
-                Cold
-              </option>
+            <div class="proof-chip">
+              <strong>Simple score</strong>
+              <span>Understand why the lead ranks there.</span>
+            </div>
 
-              <option value="2" selected>
-                Warm
-              </option>
-
-              <option value="3">
-                Hot
-              </option>
-
-            </select>
+            <div class="proof-chip">
+              <strong>Next action</strong>
+              <span>Know what to do next.</span>
+            </div>
 
           </div>
 
-          <div class="field">
+        </div>
 
-            <label for="reply">
-              Current buying signal
-            </label>
 
-            <select id="reply">
+        <!-- =====================================
+             CALCULATOR SIDE
+        ====================================== -->
 
-              <option value="1">
-                No reply
-              </option>
+        <div class="hero-side">
 
-              <option value="2">
-                They replied
-              </option>
+          <!-- LIVE EXAMPLE -->
 
-              <option value="3">
-                Asked for details
-              </option>
+          <div class="preview-card">
 
-              <option value="4">
-                Asked about price / proposal
-              </option>
+            <div class="preview-label">
+              Live example result
+            </div>
 
-              <option value="5">
-                Ready to decide
-              </option>
+            <div
+              class="preview-score"
+              id="previewScore"
+            >
+              39/100
+            </div>
 
-            </select>
+            <div
+              class="preview-priority"
+              id="previewPriority"
+            >
+              MEDIUM PRIORITY
+            </div>
 
-          </div>
+            <div class="preview-line" aria-hidden="true">
+              <span id="previewProgress"></span>
+            </div>
 
-          <div class="field">
-
-            <label for="deadline">
-              Deadline pressure
-            </label>
-
-            <select id="deadline">
-
-              <option value="0">
-                No known deadline
-              </option>
-
-              <option value="1">
-                Within 30 days
-              </option>
-
-              <option value="2">
-                Within 14 days
-              </option>
-
-              <option value="3">
-                Within 7 days
-              </option>
-
-            </select>
+            <div
+              class="preview-action"
+              id="previewAction"
+            >
+              Schedule the next follow-up and avoid repeatedly contacting the lead without providing new value.
+            </div>
 
           </div>
 
-          <button
-            type="button"
-            class="btn primary calculator-button"
-            onclick="calculatePriority()"
+
+          <!-- CALCULATOR -->
+
+          <div
+            class="tool"
+            id="calculator"
           >
-            Calculate Priority
-            <span aria-hidden="true">→</span>
-          </button>
 
-        </div>
+            <div class="tool-header">
 
-        <div class="result" id="result">
+              <div>
+                <h2>
+                  Follow-Up Priority Calculator
+                </h2>
 
-          <div class="result-top">
-
-            <div>
-
-              <div class="result-label">
-                Priority score
+                <p class="tool-sub">
+                  Test one opportunity in less than a minute.
+                </p>
               </div>
 
-              <div class="score" id="score">
-                0/100
+              <div class="tool-badge">
+                FREE
               </div>
 
-              <div class="priority" id="priority">
+            </div>
+
+
+            <div class="calculator-fields">
+
+              <div class="field">
+
+                <label for="dealValue">
+                  Potential deal value ($)
+                </label>
+
+                <input
+                  id="dealValue"
+                  type="number"
+                  min="0"
+                  inputmode="decimal"
+                  value="1500"
+                  aria-describedby="dealValueHelp"
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="days">
+                  Days since last contact
+                </label>
+
+                <input
+                  id="days"
+                  type="number"
+                  min="0"
+                  inputmode="numeric"
+                  value="7"
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="temperature">
+                  Lead temperature
+                </label>
+
+                <select id="temperature">
+
+                  <option value="1">
+                    Cold
+                  </option>
+
+                  <option value="2" selected>
+                    Warm
+                  </option>
+
+                  <option value="3">
+                    Hot
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="reply">
+                  Current buying signal
+                </label>
+
+                <select id="reply">
+
+                  <option value="1">
+                    No reply
+                  </option>
+
+                  <option value="2">
+                    They replied
+                  </option>
+
+                  <option value="3">
+                    Asked for details
+                  </option>
+
+                  <option value="4">
+                    Asked about price / proposal
+                  </option>
+
+                  <option value="5">
+                    Ready to decide
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="deadline">
+                  Deadline pressure
+                </label>
+
+                <select id="deadline">
+
+                  <option value="0">
+                    No known deadline
+                  </option>
+
+                  <option value="1">
+                    Within 30 days
+                  </option>
+
+                  <option value="2">
+                    Within 14 days
+                  </option>
+
+                  <option value="3">
+                    Within 7 days
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="btn primary calculator-button"
+                onclick="calculatePriority()"
+              >
+                Calculate Priority
+                <span aria-hidden="true">→</span>
+              </button>
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <div
+              class="result"
+              id="result"
+              aria-live="polite"
+            >
+
+              <div class="result-top">
+
+                <div>
+
+                  <div class="result-label">
+                    Priority score
+                  </div>
+
+                  <div
+                    class="score"
+                    id="score"
+                  >
+                    0/100
+                  </div>
+
+                  <div
+                    class="priority"
+                    id="priority"
+                  >
+                    —
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div
+                class="result-text"
+                id="reason"
+              >
                 —
               </div>
 
-            </div>
 
-          </div>
+              <div class="action">
 
-          <div class="result-text" id="reason">
-            —
-          </div>
+                <strong>
+                  Recommended next action
+                </strong>
 
-          <div class="action">
+                <div
+                  class="result-text"
+                  id="action"
+                  style="margin-top:6px;"
+                >
+                  —
+                </div>
 
-            <strong>
-              Recommended next action
-            </strong>
+              </div>
 
-            <div
-              class="result-text"
-              id="action"
-              style="margin-top:6px;"
-            >
-              —
-            </div>
 
-          </div>
+              <!-- FEEDBACK -->
 
-          <div class="feedback-box">
+              <div class="feedback-box">
 
-            <div class="feedback-title">
-              Was this recommendation useful?
-            </div>
+                <div class="feedback-title">
+                  Was this recommendation useful?
+                </div>
 
-            <div class="feedback-buttons">
+                <div class="feedback-buttons">
 
-              <button
-                type="button"
-                class="feedback-btn"
-                id="feedbackYes"
-                onclick="submitFeedback('yes')"
-              >
-                👍 Yes
-              </button>
+                  <button
+                    type="button"
+                    class="feedback-btn"
+                    id="feedbackYes"
+                    onclick="submitFeedback('yes')"
+                  >
+                    👍 Yes
+                  </button>
 
-              <button
-                type="button"
-                class="feedback-btn"
-                id="feedbackNo"
-                onclick="submitFeedback('no')"
-              >
-                👎 Not really
-              </button>
+                  <button
+                    type="button"
+                    class="feedback-btn"
+                    id="feedbackNo"
+                    onclick="submitFeedback('no')"
+                  >
+                    👎 Not really
+                  </button>
 
-            </div>
+                </div>
 
-            <div
-              class="next-question"
-              id="nextQuestion"
-            >
 
-              <label for="nextNeed">
-                What would you want next?
-              </label>
+                <div
+                  class="next-question"
+                  id="nextQuestion"
+                >
 
-              <select
-                id="nextNeed"
-                onchange="saveNextNeed()"
-              >
+                  <label for="nextNeed">
+                    What would you want next?
+                  </label>
 
-                <option value="">
-                  Select one
-                </option>
+                  <select
+                    id="nextNeed"
+                    onchange="saveNextNeed()"
+                  >
 
-                <option value="generate-message">
-                  Generate the message
-                </option>
+                    <option value="">
+                      Select one
+                    </option>
 
-                <option value="track-followups">
-                  Track all my follow-ups
-                </option>
+                    <option value="generate-message">
+                      Generate the message
+                    </option>
 
-                <option value="daily-priority">
-                  Tell me who to contact today
-                </option>
+                    <option value="track-followups">
+                      Track all my follow-ups
+                    </option>
 
-                <option value="recover-ghosted">
-                  Recover old / ghosted leads
-                </option>
+                    <option value="daily-priority">
+                      Tell me who to contact today
+                    </option>
 
-              </select>
+                    <option value="recover-ghosted">
+                      Recover old / ghosted leads
+                    </option>
 
-            </div>
+                  </select>
 
-            <div
-              class="feedback-status"
-              id="feedbackStatus"
-            >
-              Thanks — your feedback was recorded.
+                </div>
+
+
+                <div
+                  class="feedback-status"
+                  id="feedbackStatus"
+                >
+                  Thanks — your feedback was recorded.
+                </div>
+
+              </div>
+
             </div>
 
           </div>
@@ -2580,1149 +2456,1251 @@
 
       </div>
 
-    </div>
-
-  </div>
-
-</section>
+    </section>
 
 
-<section class="section white">
+    <!-- =========================================
+         AUDIENCE
+    ========================================== -->
 
-  <div class="container">
+    <section class="section white">
 
-    <div class="section-head heading">
+      <div class="container">
 
-      <div class="section-kicker">
-        Built for
-      </div>
+        <div class="section-head">
 
-      <h2>
-        A focused tool for people managing real opportunities.
-      </h2>
+          <div class="section-kicker">
+            Built for
+          </div>
 
-      <p>
-        Use the calculator when your CRM or spreadsheet gives you a list,
-        but you still need to decide where to spend your attention first.
-      </p>
+          <h2>
+            A focused tool for people managing real opportunities.
+          </h2>
 
-    </div>
+          <p>
+            Use FollowUp Engine when your CRM or spreadsheet gives you a list,
+            but you still need to decide where to spend your attention first.
+          </p>
 
-    <div class="audience">
-
-      <article class="audience-card">
-
-        <div class="audience-icon">
-          F
         </div>
 
-        <h3>
-          Freelancers
-        </h3>
 
-        <p>
-          Prioritize proposals, prospects and follow-ups.
-        </p>
+        <div class="audience">
 
-      </article>
+          <article class="audience-card">
 
-      <article class="audience-card">
-
-        <div class="audience-icon">
-          A
-        </div>
-
-        <h3>
-          Agencies
-        </h3>
-
-        <p>
-          Keep important opportunities from going quiet.
-        </p>
-
-      </article>
-
-      <article class="audience-card">
-
-        <div class="audience-icon">
-          S
-        </div>
-
-        <h3>
-          Salespeople
-        </h3>
-
-        <p>
-          Turn lead lists into practical next actions.
-        </p>
-
-      </article>
-
-      <article class="audience-card">
-
-        <div class="audience-icon">
-          C
-        </div>
-
-        <h3>
-          Consultants
-        </h3>
-
-        <p>
-          Focus follow-up time where it matters most.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section" id="how">
-
-  <div class="container">
-
-    <div class="section-head heading">
-
-      <div class="section-kicker">
-        How it works
-      </div>
-
-      <h2>
-        From a messy lead list to one clear next move.
-      </h2>
-
-      <p>
-        FollowUp Engine keeps the decision simple instead of trying to become another full CRM.
-      </p>
-
-    </div>
-
-    <div class="features">
-
-      <article class="feature">
-
-        <div class="feature-number">
-          01
-        </div>
-
-        <h3>
-          Prioritize
-        </h3>
-
-        <p>
-          Combine deal value, time since contact,
-          buying signals and deadline pressure.
-        </p>
-
-      </article>
-
-      <article class="feature">
-
-        <div class="feature-number">
-          02
-        </div>
-
-        <h3>
-          Decide
-        </h3>
-
-        <p>
-          Turn the score into a practical next action
-          instead of staring at a long lead list.
-        </p>
-
-      </article>
-
-      <article class="feature">
-
-        <div class="feature-number">
-          03
-        </div>
-
-        <h3>
-          Protect momentum
-        </h3>
-
-        <p>
-          Identify opportunities that deserve attention
-          before they drift further down the pipeline.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section">
-
-  <div class="container">
-
-    <div class="dark-wrap">
-
-      <div class="dark-section">
-
-        <div class="dark-grid">
-
-          <div>
-
-            <div class="eyebrow">
-              FollowUp Engine Pro
+            <div class="audience-icon">
+              F
             </div>
 
-            <h2>
-              Turn follow-ups into a daily action queue.
-            </h2>
+            <h3>
+              Freelancers
+            </h3>
 
             <p>
-              The planned Pro version expands the same decision engine
-              into a workflow for managing and organizing follow-ups.
+              Prioritize proposals, prospects and follow-ups.
             </p>
 
+          </article>
+
+
+          <article class="audience-card">
+
+            <div class="audience-icon">
+              A
+            </div>
+
+            <h3>
+              Agencies
+            </h3>
+
+            <p>
+              Keep valuable opportunities from going quiet.
+            </p>
+
+          </article>
+
+
+          <article class="audience-card">
+
+            <div class="audience-icon">
+              S
+            </div>
+
+            <h3>
+              Salespeople
+            </h3>
+
+            <p>
+              Turn lead lists into practical next actions.
+            </p>
+
+          </article>
+
+
+          <article class="audience-card">
+
+            <div class="audience-icon">
+              C
+            </div>
+
+            <h3>
+              Consultants
+            </h3>
+
+            <p>
+              Focus follow-up time where it matters most.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         HOW IT WORKS
+    ========================================== -->
+
+    <section
+      class="section"
+      id="how"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div class="section-kicker">
+            How it works
           </div>
 
-          <div>
+          <h2>
+            From a messy lead list to one clear next move.
+          </h2>
 
-            <ul class="list">
+          <p>
+            FollowUp Engine keeps the decision simple instead of trying
+            to become another complicated CRM.
+          </p>
 
-              <li>Lead tracker</li>
-              <li>Follow-up priority engine</li>
-              <li>Daily action queue</li>
-              <li>Ghosted lead recovery</li>
-              <li>Revenue dashboard</li>
-              <li>Follow-up message prompts</li>
-              <li>Simple sales workflow</li>
+        </div>
 
+
+        <div class="features">
+
+          <article class="feature">
+
+            <div class="feature-number">
+              01
+            </div>
+
+            <h3>
+              Prioritize
+            </h3>
+
+            <p>
+              Combine deal value, time since contact,
+              buying signals and deadline pressure.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-number">
+              02
+            </div>
+
+            <h3>
+              Decide
+            </h3>
+
+            <p>
+              Turn the score into a practical next action
+              instead of staring at a long lead list.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-number">
+              03
+            </div>
+
+            <h3>
+              Protect momentum
+            </h3>
+
+            <p>
+              Identify opportunities that deserve attention
+              before they drift further down the pipeline.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PRO
+    ========================================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="dark-wrap">
+
+          <div class="dark-section">
+
+            <div class="dark-grid">
+
+              <div>
+
+                <div class="eyebrow">
+                  FollowUp Engine Pro
+                </div>
+
+                <h2>
+                  Turn follow-ups into a daily action queue.
+                </h2>
+
+                <p>
+                  The planned Pro version expands the same decision engine
+                  into a simple workflow for managing and organizing follow-ups.
+                </p>
+
+              </div>
+
+
+              <div>
+
+                <ul class="list">
+
+                  <li>Lead tracker</li>
+                  <li>Follow-up priority engine</li>
+                  <li>Daily action queue</li>
+                  <li>Ghosted lead recovery</li>
+                  <li>Revenue dashboard</li>
+                  <li>Follow-up message prompts</li>
+                  <li>Simple sales workflow</li>
+
+                </ul>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PRICING
+    ========================================== -->
+
+    <section
+      class="section white"
+      id="product"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div class="section-kicker">
+            Pricing
+          </div>
+
+          <h2>
+            Start free. Join the launch list for Pro.
+          </h2>
+
+          <p>
+            There is no payment today. The paid product is being validated
+            before checkout is enabled.
+          </p>
+
+        </div>
+
+
+        <div class="pricing">
+
+          <!-- FREE -->
+
+          <div class="price-card">
+
+            <h3>
+              Free Calculator
+            </h3>
+
+            <div class="price">
+              $0
+            </div>
+
+            <p class="price-sub">
+              Try the core decision engine.
+            </p>
+
+            <ul>
+              <li>Priority score</li>
+              <li>Reason for priority</li>
+              <li>Recommended action</li>
+              <li>No signup</li>
             </ul>
 
+            <a
+              href="#calculator"
+              class="btn secondary"
+              style="width:100%;"
+            >
+              Use Free Tool
+            </a>
+
+          </div>
+
+
+          <!-- PRO -->
+
+          <div class="price-card pro">
+
+            <h3>
+              FollowUp Engine Pro
+            </h3>
+
+            <div class="price">
+              $19
+            </div>
+
+            <p class="price-sub">
+              Planned one-time purchase.
+            </p>
+
+            <ul>
+              <li>Lead tracker</li>
+              <li>Priority engine</li>
+              <li>Daily follow-up queue</li>
+              <li>Ghosted lead recovery</li>
+              <li>Message prompts</li>
+              <li>Revenue dashboard</li>
+            </ul>
+
+            <a
+              class="btn primary"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSelZTSsz2qZtRo-17Z_XD2KBfvdI1huM8EQu05o21sDgYK_RA/viewform?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="trackLaunchListClick()"
+              style="width:100%;"
+            >
+              Join the Early Access List
+              <span aria-hidden="true">→</span>
+            </a>
+
+            <div class="launch-note">
+              Free to join. No payment today.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="privacy-note">
+          <strong>Your privacy matters.</strong>
+          Calculator inputs and scores are processed in your browser.
+          Your email is only requested if you choose to join the Pro early access list.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FAQ
+    ========================================== -->
+
+    <section
+      class="section"
+      id="faq"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div class="section-kicker">
+            FAQ
+          </div>
+
+          <h2>
+            Frequently asked questions
+          </h2>
+
+        </div>
+
+
+        <div class="faq">
+
+          <details>
+            <summary>
+              Is the calculator free?
+            </summary>
+
+            <p>
+              Yes. The core calculator is free and does not require an account.
+            </p>
+          </details>
+
+
+          <details>
+            <summary>
+              Does FollowUp Engine replace a CRM?
+            </summary>
+
+            <p>
+              No. It is intentionally focused on follow-up prioritization
+              rather than trying to replace a full CRM.
+            </p>
+          </details>
+
+
+          <details>
+            <summary>
+              Who is FollowUp Engine for?
+            </summary>
+
+            <p>
+              It is designed for freelancers, consultants, agencies,
+              salespeople, coaches and small service businesses managing
+              sales opportunities.
+            </p>
+          </details>
+
+
+          <details>
+            <summary>
+              Is my calculator data uploaded?
+            </summary>
+
+            <p>
+              No. Your calculator inputs and score are calculated locally
+              in your browser. Optional feedback is submitted separately
+              when you choose to provide it.
+            </p>
+          </details>
+
+
+          <details>
+            <summary>
+              What is FollowUp Engine Pro?
+            </summary>
+
+            <p>
+              Pro is a planned one-time $19 product designed to expand
+              the free calculator into a more complete follow-up workflow.
+            </p>
+          </details>
+
+
+          <details>
+            <summary>
+              Is Pro a monthly subscription?
+            </summary>
+
+            <p>
+              No. The current plan is a one-time purchase of $19.
+              The product is currently in the validation and pre-launch stage.
+            </p>
+          </details>
+
+
+          <details>
+            <summary>
+              How do I join the Pro early access list?
+            </summary>
+
+            <p>
+              Click the early access button, enter your email in the form,
+              and you will be notified when FollowUp Engine Pro becomes available.
+            </p>
+          </details>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FINAL CTA
+    ========================================== -->
+
+    <section class="final-cta">
+
+      <div class="container">
+
+        <div class="final-cta-card">
+
+          <h2>
+            Stop guessing. Start with one lead.
+          </h2>
+
+          <p>
+            Find out who deserves your attention today,
+            then join the Pro early access list if you want
+            a more complete follow-up workflow.
+          </p>
+
+          <div class="buttons">
+
+            <a
+              href="#calculator"
+              class="btn secondary"
+              onclick="trackEvent('final_free_tool_clicked')"
+            >
+              Try the Free Tool
+            </a>
+
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSelZTSsz2qZtRo-17Z_XD2KBfvdI1huM8EQu05o21sDgYK_RA/viewform?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn secondary"
+              onclick="trackLaunchListClick()"
+            >
+              Join Pro Early Access
+              <span aria-hidden="true">→</span>
+            </a>
+
           </div>
 
         </div>
 
       </div>
 
-    </div>
+    </section>
 
-  </div>
-
-</section>
+  </main>
 
 
-<section class="section white" id="product">
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
 
-  <div class="container">
+  <footer>
 
-    <div class="section-head heading">
+    <div class="container footer-row">
 
-      <div class="section-kicker">
-        Pricing
-      </div>
+      <div>
 
-      <h2>
-        Start free. Join the launch list for Pro.
-      </h2>
-
-      <p>
-        There is no payment today. The paid product is being validated before checkout is enabled.
-      </p>
-
-    </div>
-
-    <div class="pricing">
-
-      <div class="price-card">
-
-        <h3>
-          Free Calculator
-        </h3>
-
-        <div class="price">
-          $0
+        <div class="footer-brand">
+          FollowUp Engine
         </div>
 
-        <p class="price-sub">
-          Try the core decision engine.
-        </p>
-
-        <ul>
-
-          <li>Priority score</li>
-          <li>Reason for priority</li>
-          <li>Recommended action</li>
-          <li>No signup</li>
-
-        </ul>
-
-        <a
-          href="#calculator"
-          class="btn secondary"
-          style="width:100%;"
-        >
-          Use Free Tool
-        </a>
-
-      </div>
-
-
-      <div class="price-card pro">
-
-        <h3>
-          FollowUp Engine Pro
-        </h3>
-
-        <div class="price">
-          $19
-        </div>
-
-        <p class="price-sub">
-          Planned one-time product.
-        </p>
-
-        <ul>
-
-          <li>Lead tracker</li>
-          <li>Priority engine</li>
-          <li>Daily follow-up queue</li>
-          <li>Ghosted lead recovery</li>
-          <li>Message prompts</li>
-          <li>Revenue dashboard</li>
-
-        </ul>
-
-        <a
-          class="btn primary"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSelZTSsz2qZtRo-17Z_XD2KBfvdI1huM8EQu05o21sDgYK_RA/viewform?hl=en"
-          target="_blank"
-          rel="noopener noreferrer"
-          onclick="trackLaunchListClick()"
-          style="width:100%;"
-        >
-          Join the Launch List
-          <span aria-hidden="true">→</span>
-        </a>
-
-        <div class="launch-note">
-          Free to join. No payment today.
+        <div class="footer-note">
+          A simple decision tool for sales follow-ups.
         </div>
 
       </div>
 
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section" id="faq">
-
-  <div class="container">
-
-    <div class="section-head heading">
-
-      <div class="section-kicker">
-        FAQ
-      </div>
-
-      <h2>
-        Frequently asked questions
-      </h2>
-
-    </div>
-
-    <div class="faq">
-
-      <details>
-
-        <summary>
-          Is the calculator free?
-        </summary>
-
-        <p>
-          Yes. The core calculator is free and does not require an account.
-        </p>
-
-      </details>
-
-      <details>
-
-        <summary>
-          Does this replace a CRM?
-        </summary>
-
-        <p>
-          No. It is intentionally focused on follow-up prioritization
-          rather than trying to replace a full CRM.
-        </p>
-
-      </details>
-
-      <details>
-
-        <summary>
-          Who is it for?
-        </summary>
-
-        <p>
-          Freelancers, consultants, agencies, coaches and small
-          service businesses managing sales opportunities.
-        </p>
-
-      </details>
-
-      <details>
-
-        <summary>
-          Is my calculator data uploaded?
-        </summary>
-
-        <p>
-          No. Your calculator inputs and score are calculated locally
-          in your browser. Feedback choices are sent separately
-          when you submit feedback.
-        </p>
-
-      </details>
-
-      <details>
-
-        <summary>
-          What is FollowUp Engine Pro?
-        </summary>
-
-        <p>
-          Pro is a planned one-time $19 product designed to expand
-          the free calculator into a more complete follow-up workflow.
-        </p>
-
-      </details>
-
-      <details>
-
-        <summary>
-          How do I join the Pro launch list?
-        </summary>
-
-        <p>
-          Click “Join the Launch List”, enter your email in the Google Form,
-          and you will be added to the launch list.
-        </p>
-
-      </details>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="final-cta">
-
-  <div class="container">
-
-    <div class="final-cta-card">
-
-      <h2>
-        Start with one lead.
-      </h2>
-
-      <p>
-        Find out who deserves your attention today,
-        then tell us what would make the workflow even more useful.
-      </p>
-
-      <div
-        class="buttons"
-        style="justify-content:center;"
-      >
-
-        <a
-          href="#calculator"
-          class="btn secondary"
-          onclick="trackEvent('final_free_tool_clicked')"
-        >
-          Try the Free Tool
-        </a>
-
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSelZTSsz2qZtRo-17Z_XD2KBfvdI1huM8EQu05o21sDgYK_RA/viewform?hl=en"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn secondary"
-          onclick="trackLaunchListClick()"
-        >
-          Join Pro Launch List
-        </a>
-
+      <div>
+        © 2026 FollowUp Engine.
       </div>
 
     </div>
 
-  </div>
+  </footer>
 
-</section>
 
-</main>
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================== -->
 
+  <script>
 
-<footer>
+    /* =========================================
+       ANALYTICS
+    ========================================== */
 
-  <div class="container footer-row">
+    function trackEvent(name, params = {}) {
 
-    <div>
+      if (typeof gtag === "function") {
 
-      <div class="footer-brand">
-        FollowUp Engine
-      </div>
+        gtag("event", name, {
+          ...params,
+          send_to: "G-N84BKSSSPZ",
+          debug_mode: true
+        });
 
-      <div class="footer-note">
-        A simple decision tool for sales follow-ups.
-      </div>
+      }
 
-    </div>
-
-    <div>
-      © 2026 FollowUp Engine.
-    </div>
-
-  </div>
-
-</footer>
-
-
-<script>
-
-function trackEvent(name, params = {}) {
-
-  if (typeof gtag === "function") {
-
-    gtag("event", name, {
-      ...params,
-      send_to: "G-N84BKSSSPZ",
-      debug_mode: true
-    });
-
-  }
-
-}
-
-
-function trackLaunchListClick() {
-
-  trackEvent("launch_list_clicked", {
-    destination: "google_form"
-  });
-
-}
-
-
-/* =========================================
-   CORE PRIORITY ENGINE
-   Single source of truth for:
-   - Calculator result
-   - Live Example Result card
-========================================= */
-
-function getPriorityData() {
-
-  const deal =
-    Number(document.getElementById("dealValue").value) || 0;
-
-  const days =
-    Number(document.getElementById("days").value) || 0;
-
-  const temperature =
-    Number(document.getElementById("temperature").value) || 0;
-
-  const reply =
-    Number(document.getElementById("reply").value) || 0;
-
-  const deadline =
-    Number(document.getElementById("deadline").value) || 0;
-
-
-  let score = 0;
-
-
-  /* Deal value */
-
-  if (deal >= 10000) {
-
-    score += 25;
-
-  } else if (deal >= 5000) {
-
-    score += 20;
-
-  } else if (deal >= 2500) {
-
-    score += 15;
-
-  } else if (deal >= 1000) {
-
-    score += 10;
-
-  } else if (deal > 0) {
-
-    score += 5;
-
-  }
-
-
-  /* Days since contact */
-
-  if (days >= 30) {
-
-    score += 25;
-
-  } else if (days >= 14) {
-
-    score += 21;
-
-  } else if (days >= 7) {
-
-    score += 16;
-
-  } else if (days >= 3) {
-
-    score += 10;
-
-  } else {
-
-    score += 4;
-
-  }
-
-
-  /* Lead temperature */
-
-  score += temperature * 5;
-
-
-  /* Buying signal */
-
-  if (reply === 5) {
-
-    score += 20;
-
-  } else if (reply === 4) {
-
-    score += 17;
-
-  } else if (reply === 3) {
-
-    score += 14;
-
-  } else if (reply === 2) {
-
-    score += 9;
-
-  } else {
-
-    score += 3;
-
-  }
-
-
-  /* Deadline */
-
-  score += deadline * 5;
-
-
-  score = Math.min(score, 100);
-
-
-  let priority;
-  let reason;
-  let action;
-
-
-  if (score >= 75) {
-
-    priority = "FOLLOW UP TODAY";
-
-    reason =
-      "This opportunity has strong value, buying intent, inactivity, or deadline pressure.";
-
-    action =
-      "Send a short and specific follow-up today. Reference the previous conversation and give one clear next step.";
-
-  } else if (score >= 50) {
-
-    priority = "HIGH PRIORITY";
-
-    reason =
-      "The opportunity has enough potential that delaying the next contact may reduce momentum.";
-
-    action =
-      "Follow up within 24–48 hours and add something useful: clarification, recommendation, example, or next step.";
-
-  } else if (score >= 30) {
-
-    priority = "MEDIUM PRIORITY";
-
-    reason =
-      "There is potential, but the current signals do not make this an urgent opportunity.";
-
-    action =
-      "Schedule the next follow-up and avoid repeatedly contacting the lead without providing new value.";
-
-  } else {
-
-    priority = "LOW PRIORITY";
-
-    reason =
-      "Current signals are weak or the opportunity is not currently urgent.";
-
-    action =
-      "Keep the lead in your pipeline and spend your immediate selling time on higher-priority opportunities.";
-
-  }
-
-
-  return {
-    score,
-    priority,
-    reason,
-    action
-  };
-
-}
-
-
-/* =========================================
-   UPDATE EXAMPLE RESULT CARD
-========================================= */
-
-function updatePreviewCard(data) {
-
-  const previewScore =
-    document.getElementById("previewScore");
-
-  const previewPriority =
-    document.getElementById("previewPriority");
-
-  const previewProgress =
-    document.getElementById("previewProgress");
-
-  const previewAction =
-    document.getElementById("previewAction");
-
-
-  if (
-    !previewScore ||
-    !previewPriority ||
-    !previewProgress ||
-    !previewAction
-  ) {
-
-    return;
-
-  }
-
-
-  previewScore.textContent =
-    data.score + "/100";
-
-
-  previewPriority.textContent =
-    data.priority;
-
-
-  previewProgress.style.width =
-    data.score + "%";
-
-
-  previewAction.textContent =
-    data.action;
-
-
-  /* Change the indicator color according to priority */
-
-  if (data.score >= 75) {
-
-    previewPriority.style.color = "#087f5b";
-
-    previewProgress.style.background =
-      "linear-gradient(90deg,#34d399,#10b981)";
-
-  } else if (data.score >= 50) {
-
-    previewPriority.style.color = "#175cd3";
-
-    previewProgress.style.background =
-      "linear-gradient(90deg,#60a5fa,#175cd3)";
-
-  } else if (data.score >= 30) {
-
-    previewPriority.style.color = "#b54708";
-
-    previewProgress.style.background =
-      "linear-gradient(90deg,#fbbf24,#f59e0b)";
-
-  } else {
-
-    previewPriority.style.color = "#667085";
-
-    previewProgress.style.background =
-      "linear-gradient(90deg,#94a3b8,#64748b)";
-
-  }
-
-}
-
-
-/* =========================================
-   LIVE PREVIEW
-   Updates while user changes fields
-========================================= */
-
-function updatePreviewFromFields() {
-
-  const data =
-    getPriorityData();
-
-  updatePreviewCard(data);
-
-}
-
-
-/* =========================================
-   MAIN CALCULATOR
-========================================= */
-
-function calculatePriority() {
-
-  const data =
-    getPriorityData();
-
-
-  document.getElementById("score").textContent =
-    data.score + "/100";
-
-
-  document.getElementById("priority").textContent =
-    data.priority;
-
-
-  document.getElementById("reason").textContent =
-    data.reason;
-
-
-  document.getElementById("action").textContent =
-    data.action;
-
-
-  document.getElementById("result").style.display =
-    "block";
-
-
-  /* Update the example card too */
-
-  updatePreviewCard(data);
-
-
-  trackEvent("calculator_completed", {
-
-    score:
-      data.score,
-
-    priority:
-      data.priority
-
-  });
-
-
-  document
-    .getElementById("feedbackYes")
-    .classList
-    .remove("selected");
-
-
-  document
-    .getElementById("feedbackNo")
-    .classList
-    .remove("selected");
-
-
-  document.getElementById("nextQuestion").style.display =
-    "none";
-
-
-  document.getElementById("feedbackStatus").style.display =
-    "none";
-
-
-  document.getElementById("nextNeed").value =
-    "";
-
-}
-
-
-/* =========================================
-   LIVE INPUT LISTENERS
-========================================= */
-
-function bindLivePreview() {
-
-  const fieldIds = [
-
-    "dealValue",
-    "days",
-    "temperature",
-    "reply",
-    "deadline"
-
-  ];
-
-
-  fieldIds.forEach(function(id) {
-
-    const element =
-      document.getElementById(id);
-
-
-    if (!element) {
-      return;
     }
 
 
-    element.addEventListener(
-      "input",
-      updatePreviewFromFields
-    );
+    function trackLaunchListClick() {
 
+      trackEvent("launch_list_clicked", {
+        destination: "google_form"
+      });
 
-    element.addEventListener(
-      "change",
-      updatePreviewFromFields
-    );
-
-  });
-
-}
-
-
-/* =========================================
-   INITIALIZE
-========================================= */
-
-document.addEventListener(
-  "DOMContentLoaded",
-  function() {
-
-    bindLivePreview();
-
-    updatePreviewFromFields();
-
-  }
-);
-
-
-/* =========================================
-   FEEDBACK
-========================================= */
-
-function submitFeedback(value) {
-
-  const feedbackData = {
-
-    usefulness: value,
-
-    score:
-      document.getElementById("score").textContent,
-
-    priority:
-      document.getElementById("priority").textContent,
-
-    timestamp:
-      new Date().toISOString()
-
-  };
-
-
-  localStorage.setItem(
-    "followupEngineFeedback",
-    JSON.stringify(feedbackData)
-  );
-
-
-  document
-    .getElementById("feedbackYes")
-    .classList
-    .toggle(
-      "selected",
-      value === "yes"
-    );
-
-
-  document
-    .getElementById("feedbackNo")
-    .classList
-    .toggle(
-      "selected",
-      value === "no"
-    );
-
-
-  document.getElementById("nextQuestion").style.display =
-    "block";
-
-
-  trackEvent(
-    value === "yes"
-      ? "feedback_useful"
-      : "feedback_not_useful",
-    {
-      score:
-        document.getElementById("score").textContent,
-
-      priority:
-        document.getElementById("priority").textContent
     }
-  );
 
 
-  document.getElementById("feedbackStatus").style.display =
-    "none";
+    /* =========================================
+       CORE PRIORITY ENGINE
+    ========================================== */
 
-}
+    function getPriorityData() {
+
+      const deal =
+        Math.max(
+          0,
+          Number(document.getElementById("dealValue").value) || 0
+        );
+
+      const days =
+        Math.max(
+          0,
+          Number(document.getElementById("days").value) || 0
+        );
+
+      const temperature =
+        Number(document.getElementById("temperature").value) || 0;
+
+      const reply =
+        Number(document.getElementById("reply").value) || 0;
+
+      const deadline =
+        Number(document.getElementById("deadline").value) || 0;
 
 
-/* =========================================
-   NEXT FEATURE REQUEST
-========================================= */
-
-function saveNextNeed() {
-
-  const nextNeed =
-    document.getElementById("nextNeed").value;
+      let score = 0;
 
 
-  if (!nextNeed) {
-    return;
-  }
+      /* Deal value */
+
+      if (deal >= 10000) {
+
+        score += 25;
+
+      } else if (deal >= 5000) {
+
+        score += 20;
+
+      } else if (deal >= 2500) {
+
+        score += 15;
+
+      } else if (deal >= 1000) {
+
+        score += 10;
+
+      } else if (deal > 0) {
+
+        score += 5;
+
+      }
 
 
-  const existingFeedback =
-    JSON.parse(
-      localStorage.getItem(
-        "followupEngineFeedback"
-      ) || "{}"
+      /* Days since last contact */
+
+      if (days >= 30) {
+
+        score += 25;
+
+      } else if (days >= 14) {
+
+        score += 21;
+
+      } else if (days >= 7) {
+
+        score += 16;
+
+      } else if (days >= 3) {
+
+        score += 10;
+
+      } else {
+
+        score += 4;
+
+      }
+
+
+      /* Lead temperature */
+
+      score += temperature * 5;
+
+
+      /* Buying signal */
+
+      if (reply === 5) {
+
+        score += 20;
+
+      } else if (reply === 4) {
+
+        score += 17;
+
+      } else if (reply === 3) {
+
+        score += 14;
+
+      } else if (reply === 2) {
+
+        score += 9;
+
+      } else {
+
+        score += 3;
+
+      }
+
+
+      /* Deadline pressure */
+
+      score += deadline * 5;
+
+
+      score = Math.min(
+        Math.max(score, 0),
+        100
+      );
+
+
+      let priority;
+      let reason;
+      let action;
+
+
+      if (score >= 75) {
+
+        priority = "FOLLOW UP TODAY";
+
+        reason =
+          "This opportunity has strong value, buying intent, inactivity, or deadline pressure.";
+
+        action =
+          "Send a short and specific follow-up today. Reference the previous conversation and give one clear next step.";
+
+      } else if (score >= 50) {
+
+        priority = "HIGH PRIORITY";
+
+        reason =
+          "The opportunity has enough potential that delaying the next contact may reduce momentum.";
+
+        action =
+          "Follow up within 24–48 hours and add something useful: clarification, recommendation, example, or next step.";
+
+      } else if (score >= 30) {
+
+        priority = "MEDIUM PRIORITY";
+
+        reason =
+          "There is potential, but the current signals do not make this an urgent opportunity.";
+
+        action =
+          "Schedule the next follow-up and avoid repeatedly contacting the lead without providing new value.";
+
+      } else {
+
+        priority = "LOW PRIORITY";
+
+        reason =
+          "Current signals are weak or the opportunity is not currently urgent.";
+
+        action =
+          "Keep the lead in your pipeline and spend your immediate selling time on higher-priority opportunities.";
+
+      }
+
+
+      return {
+        score,
+        priority,
+        reason,
+        action
+      };
+
+    }
+
+
+    /* =========================================
+       PREVIEW CARD
+    ========================================== */
+
+    function updatePreviewCard(data) {
+
+      const previewScore =
+        document.getElementById("previewScore");
+
+      const previewPriority =
+        document.getElementById("previewPriority");
+
+      const previewProgress =
+        document.getElementById("previewProgress");
+
+      const previewAction =
+        document.getElementById("previewAction");
+
+
+      if (
+        !previewScore ||
+        !previewPriority ||
+        !previewProgress ||
+        !previewAction
+      ) {
+
+        return;
+
+      }
+
+
+      previewScore.textContent =
+        data.score + "/100";
+
+      previewPriority.textContent =
+        data.priority;
+
+      previewProgress.style.width =
+        data.score + "%";
+
+      previewAction.textContent =
+        data.action;
+
+
+      if (data.score >= 75) {
+
+        previewPriority.style.color =
+          "#087f5b";
+
+        previewProgress.style.background =
+          "linear-gradient(90deg,#34d399,#10b981)";
+
+      } else if (data.score >= 50) {
+
+        previewPriority.style.color =
+          "#175cd3";
+
+        previewProgress.style.background =
+          "linear-gradient(90deg,#60a5fa,#175cd3)";
+
+      } else if (data.score >= 30) {
+
+        previewPriority.style.color =
+          "#b54708";
+
+        previewProgress.style.background =
+          "linear-gradient(90deg,#fbbf24,#f59e0b)";
+
+      } else {
+
+        previewPriority.style.color =
+          "#667085";
+
+        previewProgress.style.background =
+          "linear-gradient(90deg,#94a3b8,#64748b)";
+
+      }
+
+    }
+
+
+    /* =========================================
+       LIVE PREVIEW
+    ========================================== */
+
+    function updatePreviewFromFields() {
+
+      const data =
+        getPriorityData();
+
+      updatePreviewCard(data);
+
+    }
+
+
+    /* =========================================
+       MAIN CALCULATOR
+    ========================================== */
+
+    function calculatePriority() {
+
+      const data =
+        getPriorityData();
+
+
+      document.getElementById("score").textContent =
+        data.score + "/100";
+
+      document.getElementById("priority").textContent =
+        data.priority;
+
+      document.getElementById("reason").textContent =
+        data.reason;
+
+      document.getElementById("action").textContent =
+        data.action;
+
+
+      const result =
+        document.getElementById("result");
+
+      result.style.display =
+        "block";
+
+
+      updatePreviewCard(data);
+
+
+      trackEvent("calculator_completed", {
+        score: data.score,
+        priority: data.priority
+      });
+
+
+      document
+        .getElementById("feedbackYes")
+        .classList
+        .remove("selected");
+
+      document
+        .getElementById("feedbackNo")
+        .classList
+        .remove("selected");
+
+
+      document.getElementById("nextQuestion").style.display =
+        "none";
+
+      document.getElementById("feedbackStatus").style.display =
+        "none";
+
+      document.getElementById("nextNeed").value =
+        "";
+
+
+      /* Smoothly bring the result into view */
+
+      setTimeout(function() {
+
+        result.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+
+      }, 50);
+
+    }
+
+
+    /* =========================================
+       LIVE INPUT LISTENERS
+    ========================================== */
+
+    function bindLivePreview() {
+
+      const fieldIds = [
+        "dealValue",
+        "days",
+        "temperature",
+        "reply",
+        "deadline"
+      ];
+
+
+      fieldIds.forEach(function(id) {
+
+        const element =
+          document.getElementById(id);
+
+
+        if (!element) {
+          return;
+        }
+
+
+        element.addEventListener(
+          "input",
+          updatePreviewFromFields
+        );
+
+
+        element.addEventListener(
+          "change",
+          updatePreviewFromFields
+        );
+
+      });
+
+    }
+
+
+    /* =========================================
+       INITIALIZE
+    ========================================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
+
+        bindLivePreview();
+
+        updatePreviewFromFields();
+
+      }
     );
 
 
-  if (
-    existingFeedback.usefulness !== "yes" &&
-    existingFeedback.usefulness !== "no"
-  ) {
+    /* =========================================
+       FEEDBACK
+    ========================================== */
 
-    document.getElementById("feedbackStatus").textContent =
-      "Please choose whether the recommendation was useful first.";
+    function submitFeedback(value) {
 
-    document.getElementById("feedbackStatus").style.display =
-      "block";
+      const score =
+        document.getElementById("score").textContent;
 
-    return;
-  }
+      const priority =
+        document.getElementById("priority").textContent;
 
 
-  existingFeedback.nextNeed =
-    nextNeed;
+      const feedbackData = {
+
+        usefulness: value,
+
+        score: score,
+
+        priority: priority,
+
+        timestamp:
+          new Date().toISOString()
+
+      };
 
 
-  existingFeedback.timestamp =
-    new Date().toISOString();
+      try {
+
+        localStorage.setItem(
+          "followupEngineFeedback",
+          JSON.stringify(feedbackData)
+        );
+
+      } catch (error) {
+
+        /* Continue even if localStorage is unavailable */
+
+      }
 
 
-  localStorage.setItem(
-    "followupEngineFeedback",
-    JSON.stringify(existingFeedback)
-  );
+      document
+        .getElementById("feedbackYes")
+        .classList
+        .toggle(
+          "selected",
+          value === "yes"
+        );
 
 
-  const usefulness =
-    existingFeedback.usefulness === "yes"
-      ? "Yes"
-      : "Not really";
+      document
+        .getElementById("feedbackNo")
+        .classList
+        .toggle(
+          "selected",
+          value === "no"
+        );
 
 
-  const nextNeedMap = {
-
-    "generate-message":
-      "Generate the message",
-
-    "track-followups":
-      "Track all my follow-ups",
-
-    "daily-priority":
-      "Tell me who to contact today",
-
-    "recover-ghosted":
-      "Recover old / ghosted leads"
-
-  };
+      document.getElementById("nextQuestion").style.display =
+        "block";
 
 
-  const nextNeedText =
-    nextNeedMap[nextNeed];
+      trackEvent(
+        value === "yes"
+          ? "feedback_useful"
+          : "feedback_not_useful",
+        {
+          score: score,
+          priority: priority
+        }
+      );
 
 
-  if (!nextNeedText) {
-    return;
-  }
+      document.getElementById("feedbackStatus").style.display =
+        "none";
+
+    }
 
 
-  document.getElementById(
-    "feedbackUsefulness"
-  ).value =
-    usefulness;
+    /* =========================================
+       NEXT FEATURE REQUEST
+    ========================================== */
+
+    function saveNextNeed() {
+
+      const nextNeed =
+        document.getElementById("nextNeed").value;
 
 
-  document.getElementById(
-    "feedbackNextNeed"
-  ).value =
-    nextNeedText;
+      if (!nextNeed) {
+        return;
+      }
 
 
-  trackEvent("feature_requested", {
-
-    feature:
-      nextNeedText,
-
-    usefulness:
-      usefulness
-
-  });
+      let existingFeedback = {};
 
 
-  document.getElementById(
-    "feedbackForm"
-  ).submit();
+      try {
+
+        existingFeedback =
+          JSON.parse(
+            localStorage.getItem(
+              "followupEngineFeedback"
+            ) || "{}"
+          );
+
+      } catch (error) {
+
+        existingFeedback = {};
+
+      }
 
 
-  document.getElementById(
-    "feedbackStatus"
-  ).textContent =
-    "Thanks — your feedback was submitted.";
+      if (
+        existingFeedback.usefulness !== "yes" &&
+        existingFeedback.usefulness !== "no"
+      ) {
+
+        const status =
+          document.getElementById("feedbackStatus");
+
+        status.textContent =
+          "Please choose whether the recommendation was useful first.";
+
+        status.style.display =
+          "block";
+
+        return;
+
+      }
 
 
-  document.getElementById(
-    "feedbackStatus"
-  ).style.display =
-    "block";
+      existingFeedback.nextNeed =
+        nextNeed;
 
-}
+      existingFeedback.timestamp =
+        new Date().toISOString();
 
-</script>
+
+      try {
+
+        localStorage.setItem(
+          "followupEngineFeedback",
+          JSON.stringify(existingFeedback)
+        );
+
+      } catch (error) {
+
+        /* Continue even if localStorage is unavailable */
+
+      }
+
+
+      const usefulness =
+        existingFeedback.usefulness === "yes"
+          ? "Yes"
+          : "Not really";
+
+
+      const nextNeedMap = {
+
+        "generate-message":
+          "Generate the message",
+
+        "track-followups":
+          "Track all my follow-ups",
+
+        "daily-priority":
+          "Tell me who to contact today",
+
+        "recover-ghosted":
+          "Recover old / ghosted leads"
+
+      };
+
+
+      const nextNeedText =
+        nextNeedMap[nextNeed];
+
+
+      if (!nextNeedText) {
+        return;
+      }
+
+
+      document.getElementById(
+        "feedbackUsefulness"
+      ).value =
+        usefulness;
+
+
+      document.getElementById(
+        "feedbackNextNeed"
+      ).value =
+        nextNeedText;
+
+
+      trackEvent(
+        "feature_requested",
+        {
+          feature: nextNeedText,
+          usefulness: usefulness
+        }
+      );
+
+
+      const form =
+        document.getElementById("feedbackForm");
+
+
+      if (form) {
+        form.submit();
+      }
+
+
+      const status =
+        document.getElementById("feedbackStatus");
+
+
+      status.textContent =
+        "Thanks — your feedback was submitted.";
+
+      status.style.display =
+        "block";
+
+    }
+
+  </script>
 
 </body>
 </html>
