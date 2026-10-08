@@ -11,7 +11,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-N84BKSSSPZ');
   </script>
 
@@ -130,7 +129,7 @@
       overflow-x:hidden;
     }
 
-    body::selection {
+    ::selection {
       background:#dbeafe;
       color:#0f172a;
     }
@@ -195,6 +194,7 @@
       height:7px;
       border-radius:50%;
       background:#7dd3fc;
+
       box-shadow:
         0 0 0 5px rgba(125,211,252,.08),
         0 0 18px rgba(125,211,252,.45);
@@ -220,6 +220,7 @@
 
     .nav {
       min-height:72px;
+
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -234,12 +235,14 @@
       font-size:19px;
       font-weight:850;
       letter-spacing:-.45px;
+
       white-space:nowrap;
     }
 
     .brand-mark {
       width:37px;
       height:37px;
+
       border-radius:12px;
 
       display:grid;
@@ -284,6 +287,7 @@
 
     .nav-links a::after {
       content:"";
+
       position:absolute;
       left:0;
       right:0;
@@ -292,14 +296,16 @@
       height:2px;
       border-radius:2px;
 
-      background:linear-gradient(
-        90deg,
-        var(--blue),
-        var(--purple)
-      );
+      background:
+        linear-gradient(
+          90deg,
+          var(--blue),
+          var(--purple)
+        );
 
       transform:scaleX(0);
       transform-origin:center;
+
       transition:transform .18s ease;
     }
 
@@ -313,6 +319,7 @@
 
     .nav-cta {
       padding:11px 16px;
+
       border-radius:11px;
 
       background:var(--dark);
@@ -332,6 +339,7 @@
 
     .nav-cta:hover {
       transform:translateY(-1px);
+
       box-shadow:
         0 13px 30px rgba(8,11,20,.22),
         inset 0 1px 0 rgba(255,255,255,.08);
@@ -344,11 +352,13 @@
     .hero {
       position:relative;
       overflow:hidden;
+
       padding:86px 0 78px;
     }
 
     .hero::before {
       content:"";
+
       position:absolute;
 
       width:760px;
@@ -372,6 +382,7 @@
 
     .hero::after {
       content:"";
+
       position:absolute;
 
       width:480px;
@@ -394,9 +405,13 @@
 
     .hero-grid {
       display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(430px,520px);
+
+      grid-template-columns:
+        minmax(0,1fr)
+        minmax(430px,520px);
 
       gap:64px;
+
       align-items:center;
 
       position:relative;
@@ -441,7 +456,9 @@
 
     h1 {
       font-size:clamp(48px,6vw,76px);
+
       line-height:.96;
+
       letter-spacing:-4.8px;
 
       margin:0 0 25px;
@@ -461,6 +478,7 @@
 
       -webkit-background-clip:text;
       background-clip:text;
+
       color:transparent;
     }
 
@@ -533,7 +551,8 @@
       border:1px solid var(--border);
       color:var(--text);
 
-      box-shadow:0 5px 18px rgba(16,24,40,.03);
+      box-shadow:
+        0 5px 18px rgba(16,24,40,.03);
     }
 
     .btn.secondary:hover {
@@ -607,7 +626,9 @@
 
     .proof-chip:hover {
       transform:translateY(-3px);
+
       box-shadow:var(--shadow-md);
+
       border-color:#d4dae3;
     }
 
@@ -615,6 +636,7 @@
       display:block;
 
       font-size:13px;
+
       margin-bottom:3px;
     }
 
@@ -622,71 +644,78 @@
       color:var(--muted);
 
       font-size:12px;
+
       line-height:1.45;
     }
 
     /* =========================================
        HERO TOOL AREA
+       FINAL FIX FOR EXAMPLE RESULT CARD
     ========================================= */
 
     .hero-side {
-      position:relative !important;
+      position:relative;
 
-      display:flex !important;
-      flex-direction:column !important;
-      align-items:stretch !important;
+      width:100%;
+      max-width:520px;
 
-      width:100% !important;
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+
+      gap:18px;
+
+      margin:0 auto;
     }
 
     /*
-      Important:
-      Example result is intentionally STATIC.
-      No rotation, no absolute positioning,
-      no transform and no floating tilt.
+      Example Result:
+      - No absolute positioning
+      - No rotation
+      - No negative margin
+      - No overlap
+      - Full readable text
+      - Independent card above calculator
     */
 
     .preview-card {
-      position:relative !important;
+      position:relative;
 
-      top:auto !important;
-      right:auto !important;
-      bottom:auto !important;
-      left:auto !important;
-      inset:auto !important;
+      width:min(330px,100%);
 
-      display:block !important;
+      align-self:flex-end;
 
-      width:min(285px,100%) !important;
+      margin:0;
 
-      align-self:flex-end !important;
-
-      margin:0 18px -1px 0 !important;
+      padding:20px 20px 19px;
 
       background:
         linear-gradient(
           180deg,
-          rgba(255,255,255,.99),
-          rgba(249,251,255,.98)
+          #ffffff 0%,
+          #fbfcff 100%
         );
 
-      border:1px solid rgba(214,220,230,.96);
+      border:1px solid #dfe4ec;
 
-      border-radius:18px 18px 14px 14px;
-
-      padding:17px 18px 16px;
+      border-radius:18px;
 
       box-shadow:
-        0 18px 45px rgba(16,24,40,.10),
-        0 5px 15px rgba(16,24,40,.04);
+        0 20px 50px rgba(16,24,40,.10),
+        0 6px 18px rgba(16,24,40,.04);
 
-      z-index:3 !important;
+      overflow:hidden;
 
-      transform:none !important;
-      rotate:none !important;
-      translate:none !important;
-      scale:1 !important;
-      float:none !important;
+      z-index:2;
+
+      transform:none;
+      rotate:0deg;
+      translate:none;
+      scale:1;
+
+      float:none;
+
+      isolation:isolate;
     }
 
     .preview-card::before {
@@ -695,63 +724,113 @@
       position:absolute;
 
       top:0;
-      left:18px;
-      right:18px;
+      left:20px;
+      right:20px;
 
-      height:1px;
+      height:2px;
+
+      border-radius:0 0 3px 3px;
 
       background:
         linear-gradient(
           90deg,
-          transparent,
-          rgba(23,92,211,.45),
-          rgba(122,90,248,.45),
-          transparent
+          #175cd3 0%,
+          #7a5af8 100%
         );
+
+      opacity:.85;
+    }
+
+    .preview-card::after {
+      content:"";
+
+      position:absolute;
+
+      width:130px;
+      height:130px;
+
+      top:-75px;
+      right:-55px;
+
+      border-radius:50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(23,92,211,.08),
+          transparent 68%
+        );
+
+      pointer-events:none;
+
+      z-index:-1;
     }
 
     .preview-label {
-      color:var(--muted);
+      color:#667085;
 
       font-size:10px;
       font-weight:850;
 
       text-transform:uppercase;
-      letter-spacing:.1em;
+      letter-spacing:.11em;
 
-      margin-bottom:7px;
+      margin:0 0 8px;
     }
 
     .preview-score {
-      font-size:37px;
+      color:#0f172a;
 
+      font-size:39px;
       font-weight:900;
+
       line-height:1;
 
-      letter-spacing:-1.8px;
+      letter-spacing:-2px;
 
-      color:#0f172a;
+      margin:0;
     }
 
     .preview-priority {
-      margin-top:7px;
+      display:inline-flex;
+      align-items:center;
+
+      margin-top:8px;
+
+      color:#087f5b;
 
       font-size:11px;
       font-weight:900;
 
-      letter-spacing:.04em;
+      letter-spacing:.045em;
+      line-height:1.3;
+    }
 
-      color:var(--green);
+    .preview-priority::before {
+      content:"";
+
+      width:6px;
+      height:6px;
+
+      margin-right:7px;
+
+      border-radius:50%;
+
+      background:#10b981;
+
+      box-shadow:
+        0 0 0 4px rgba(16,185,129,.10);
     }
 
     .preview-line {
+      width:100%;
       height:7px;
 
       border-radius:999px;
 
-      background:#eef2f6;
+      background:#edf1f5;
 
-      margin-top:13px;
+      margin-top:14px;
 
       overflow:hidden;
     }
@@ -773,12 +852,22 @@
     }
 
     .preview-action {
-      margin-top:12px;
+      margin-top:13px;
 
-      font-size:12px;
       color:#475467;
 
-      line-height:1.5;
+      font-size:12.5px;
+
+      line-height:1.6;
+
+      font-weight:500;
+
+      max-width:100%;
+
+      overflow:visible;
+      white-space:normal;
+      word-break:normal;
+      overflow-wrap:break-word;
     }
 
     /* =========================================
@@ -837,6 +926,7 @@
       content:"";
 
       position:absolute;
+
       inset:0;
 
       border-radius:26px;
@@ -853,11 +943,14 @@
 
     .tool-header {
       position:relative;
+
       z-index:1;
 
       display:flex;
       justify-content:space-between;
+
       gap:18px;
+
       align-items:flex-start;
 
       margin-bottom:23px;
@@ -867,7 +960,9 @@
       margin:0 0 5px;
 
       font-size:25px;
+
       letter-spacing:-.8px;
+
       line-height:1.2;
     }
 
@@ -962,6 +1057,7 @@
 
     .calculator-button {
       position:relative;
+
       z-index:1;
 
       width:100%;
@@ -994,6 +1090,7 @@
       border:1px solid var(--green-border);
 
       position:relative;
+
       z-index:1;
 
       box-shadow:
@@ -1023,6 +1120,7 @@
       font-size:50px;
 
       font-weight:900;
+
       line-height:1;
 
       letter-spacing:-2px;
@@ -1042,6 +1140,7 @@
       color:#344054;
 
       font-size:14px;
+
       line-height:1.6;
     }
 
@@ -1088,6 +1187,7 @@
       display:flex;
 
       gap:8px;
+
       flex-wrap:wrap;
     }
 
@@ -1117,12 +1217,15 @@
 
     .feedback-btn.selected {
       background:var(--dark);
+
       color:#fff;
+
       border-color:var(--dark);
     }
 
     .next-question {
       display:none;
+
       margin-top:16px;
     }
 
@@ -1151,8 +1254,7 @@
     }
 
     .white {
-      background:
-        rgba(255,255,255,.88);
+      background:rgba(255,255,255,.88);
 
       border-top:1px solid var(--border);
       border-bottom:1px solid var(--border);
@@ -1735,6 +1837,7 @@
 
     .final-cta-card h2 {
       position:relative;
+
       z-index:1;
 
       margin:0 0 10px;
@@ -1748,6 +1851,7 @@
 
     .final-cta-card p {
       position:relative;
+
       z-index:1;
 
       color:#c7ced9;
@@ -1763,6 +1867,7 @@
 
     .final-cta-card .buttons {
       position:relative;
+
       z-index:1;
     }
 
@@ -1820,6 +1925,10 @@
         font-size:clamp(46px,6vw,68px);
       }
 
+      .hero-side {
+        max-width:480px;
+      }
+
     }
 
     @media(max-width:1000px) {
@@ -1832,8 +1941,13 @@
         max-width:800px;
       }
 
+      /*
+        On smaller screens the preview is removed
+        so the calculator remains clean and focused.
+      */
+
       .preview-card {
-        display:none !important;
+        display:none;
       }
 
       .hero-side {
@@ -1938,6 +2052,7 @@
 
       .tool {
         padding:21px;
+
         border-radius:20px;
       }
 
@@ -2025,7 +2140,9 @@
 <div class="topbar">
   <div class="container topbar-inner">
     <span class="topbar-dot"></span>
-    <span>Free tool. No signup. Built to help you decide who to contact next.</span>
+    <span>
+      Free tool. No signup. Built to help you decide who to contact next.
+    </span>
   </div>
 </div>
 
@@ -2050,6 +2167,7 @@
 </form>
 
 <header>
+
   <div class="container nav">
 
     <a class="brand" href="#">
@@ -2079,6 +2197,7 @@
     </div>
 
   </div>
+
 </header>
 
 <main>
@@ -2152,6 +2271,7 @@
 
     <div class="hero-side">
 
+      <!-- Clean standalone example result card -->
       <div class="preview-card">
 
         <div class="preview-label">
@@ -2176,11 +2296,13 @@
 
       </div>
 
+      <!-- Calculator -->
       <div class="tool" id="calculator">
 
         <div class="tool-header">
 
           <div>
+
             <h2>
               Follow-Up Priority Calculator
             </h2>
@@ -2188,6 +2310,7 @@
             <p class="tool-sub">
               Test one opportunity in less than a minute.
             </p>
+
           </div>
 
           <div class="tool-badge">
@@ -2328,6 +2451,7 @@
           <div class="result-top">
 
             <div>
+
               <div class="result-label">
                 Priority score
               </div>
@@ -2339,6 +2463,7 @@
               <div class="priority" id="priority">
                 —
               </div>
+
             </div>
 
           </div>
@@ -2901,7 +3026,10 @@
         then tell us what would make the workflow even more useful.
       </p>
 
-      <div class="buttons" style="justify-content:center;">
+      <div
+        class="buttons"
+        style="justify-content:center;"
+      >
 
         <a
           href="#calculator"
@@ -2937,6 +3065,7 @@
   <div class="container footer-row">
 
     <div>
+
       <div class="footer-brand">
         FollowUp Engine
       </div>
@@ -2944,6 +3073,7 @@
       <div class="footer-note">
         A simple decision tool for sales follow-ups.
       </div>
+
     </div>
 
     <div>
