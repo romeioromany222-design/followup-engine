@@ -650,7 +650,6 @@
 
     /* =========================================
        HERO TOOL AREA
-       FINAL FIX FOR EXAMPLE RESULT CARD
     ========================================= */
 
     .hero-side {
@@ -668,15 +667,9 @@
       margin:0 auto;
     }
 
-    /*
-      Example Result:
-      - No absolute positioning
-      - No rotation
-      - No negative margin
-      - No overlap
-      - Full readable text
-      - Independent card above calculator
-    */
+    /* =========================================
+       DYNAMIC EXAMPLE RESULT CARD
+    ========================================= */
 
     .preview-card {
       position:relative;
@@ -789,6 +782,10 @@
       letter-spacing:-2px;
 
       margin:0;
+
+      transition:
+        opacity .18s ease,
+        transform .18s ease;
     }
 
     .preview-priority {
@@ -804,6 +801,10 @@
 
       letter-spacing:.045em;
       line-height:1.3;
+
+      transition:
+        color .18s ease,
+        opacity .18s ease;
     }
 
     .preview-priority::before {
@@ -820,6 +821,8 @@
 
       box-shadow:
         0 0 0 4px rgba(16,185,129,.10);
+
+      flex:0 0 auto;
     }
 
     .preview-line {
@@ -838,7 +841,7 @@
     .preview-line span {
       display:block;
 
-      width:87%;
+      width:0%;
       height:100%;
 
       border-radius:inherit;
@@ -849,6 +852,10 @@
           #34d399,
           #10b981
         );
+
+      transition:
+        width .35s ease,
+        background .25s ease;
     }
 
     .preview-action {
@@ -868,6 +875,8 @@
       white-space:normal;
       word-break:normal;
       overflow-wrap:break-word;
+
+      transition:opacity .18s ease;
     }
 
     /* =========================================
@@ -1941,11 +1950,6 @@
         max-width:800px;
       }
 
-      /*
-        On smaller screens the preview is removed
-        so the calculator remains clean and focused.
-      */
-
       .preview-card {
         display:none;
       }
@@ -2271,27 +2275,36 @@
 
     <div class="hero-side">
 
-      <!-- Clean standalone example result card -->
+      <!-- Dynamic Example Result Card -->
       <div class="preview-card">
 
         <div class="preview-label">
-          Example result
+          Live example result
         </div>
 
-        <div class="preview-score">
-          87/100
+        <div
+          class="preview-score"
+          id="previewScore"
+        >
+          39/100
         </div>
 
-        <div class="preview-priority">
-          FOLLOW UP TODAY
+        <div
+          class="preview-priority"
+          id="previewPriority"
+        >
+          MEDIUM PRIORITY
         </div>
 
         <div class="preview-line">
-          <span></span>
+          <span id="previewProgress"></span>
         </div>
 
-        <div class="preview-action">
-          Send a short, specific follow-up with one clear next step.
+        <div
+          class="preview-action"
+          id="previewAction"
+        >
+          Schedule the next follow-up and avoid repeatedly contacting the lead without providing new value.
         </div>
 
       </div>
@@ -3111,7 +3124,14 @@ function trackLaunchListClick() {
 }
 
 
-function calculatePriority() {
+/* =========================================
+   CORE PRIORITY ENGINE
+   Single source of truth for:
+   - Calculator result
+   - Live Example Result card
+========================================= */
+
+function getPriorityData() {
 
   const deal =
     Number(document.getElementById("dealValue").value) || 0;
@@ -3120,17 +3140,19 @@ function calculatePriority() {
     Number(document.getElementById("days").value) || 0;
 
   const temperature =
-    Number(document.getElementById("temperature").value);
+    Number(document.getElementById("temperature").value) || 0;
 
   const reply =
-    Number(document.getElementById("reply").value);
+    Number(document.getElementById("reply").value) || 0;
 
   const deadline =
-    Number(document.getElementById("deadline").value);
+    Number(document.getElementById("deadline").value) || 0;
 
 
   let score = 0;
 
+
+  /* Deal value */
 
   if (deal >= 10000) {
 
@@ -3155,6 +3177,8 @@ function calculatePriority() {
   }
 
 
+  /* Days since contact */
+
   if (days >= 30) {
 
     score += 25;
@@ -3178,8 +3202,12 @@ function calculatePriority() {
   }
 
 
+  /* Lead temperature */
+
   score += temperature * 5;
 
+
+  /* Buying signal */
 
   if (reply === 5) {
 
@@ -3204,14 +3232,12 @@ function calculatePriority() {
   }
 
 
+  /* Deadline */
+
   score += deadline * 5;
 
 
-  if (score > 100) {
-
-    score = 100;
-
-  }
+  score = Math.min(score, 100);
 
 
   let priority;
@@ -3262,25 +3288,156 @@ function calculatePriority() {
   }
 
 
+  return {
+    score,
+    priority,
+    reason,
+    action
+  };
+
+}
+
+
+/* =========================================
+   UPDATE EXAMPLE RESULT CARD
+========================================= */
+
+function updatePreviewCard(data) {
+
+  const previewScore =
+    document.getElementById("previewScore");
+
+  const previewPriority =
+    document.getElementById("previewPriority");
+
+  const previewProgress =
+    document.getElementById("previewProgress");
+
+  const previewAction =
+    document.getElementById("previewAction");
+
+
+  if (
+    !previewScore ||
+    !previewPriority ||
+    !previewProgress ||
+    !previewAction
+  ) {
+
+    return;
+
+  }
+
+
+  previewScore.textContent =
+    data.score + "/100";
+
+
+  previewPriority.textContent =
+    data.priority;
+
+
+  previewProgress.style.width =
+    data.score + "%";
+
+
+  previewAction.textContent =
+    data.action;
+
+
+  /* Change the indicator color according to priority */
+
+  if (data.score >= 75) {
+
+    previewPriority.style.color = "#087f5b";
+
+    previewProgress.style.background =
+      "linear-gradient(90deg,#34d399,#10b981)";
+
+  } else if (data.score >= 50) {
+
+    previewPriority.style.color = "#175cd3";
+
+    previewProgress.style.background =
+      "linear-gradient(90deg,#60a5fa,#175cd3)";
+
+  } else if (data.score >= 30) {
+
+    previewPriority.style.color = "#b54708";
+
+    previewProgress.style.background =
+      "linear-gradient(90deg,#fbbf24,#f59e0b)";
+
+  } else {
+
+    previewPriority.style.color = "#667085";
+
+    previewProgress.style.background =
+      "linear-gradient(90deg,#94a3b8,#64748b)";
+
+  }
+
+}
+
+
+/* =========================================
+   LIVE PREVIEW
+   Updates while user changes fields
+========================================= */
+
+function updatePreviewFromFields() {
+
+  const data =
+    getPriorityData();
+
+  updatePreviewCard(data);
+
+}
+
+
+/* =========================================
+   MAIN CALCULATOR
+========================================= */
+
+function calculatePriority() {
+
+  const data =
+    getPriorityData();
+
+
   document.getElementById("score").textContent =
-    score + "/100";
+    data.score + "/100";
+
 
   document.getElementById("priority").textContent =
-    priority;
+    data.priority;
+
 
   document.getElementById("reason").textContent =
-    reason;
+    data.reason;
+
 
   document.getElementById("action").textContent =
-    action;
+    data.action;
+
 
   document.getElementById("result").style.display =
     "block";
 
 
+  /* Update the example card too */
+
+  updatePreviewCard(data);
+
+
   trackEvent("calculator_completed", {
-    score: score,
-    priority: priority
+
+    score:
+      data.score,
+
+    priority:
+      data.priority
+
   });
 
 
@@ -3289,22 +3446,90 @@ function calculatePriority() {
     .classList
     .remove("selected");
 
+
   document
     .getElementById("feedbackNo")
     .classList
     .remove("selected");
 
+
   document.getElementById("nextQuestion").style.display =
     "none";
 
+
   document.getElementById("feedbackStatus").style.display =
     "none";
+
 
   document.getElementById("nextNeed").value =
     "";
 
 }
 
+
+/* =========================================
+   LIVE INPUT LISTENERS
+========================================= */
+
+function bindLivePreview() {
+
+  const fieldIds = [
+
+    "dealValue",
+    "days",
+    "temperature",
+    "reply",
+    "deadline"
+
+  ];
+
+
+  fieldIds.forEach(function(id) {
+
+    const element =
+      document.getElementById(id);
+
+
+    if (!element) {
+      return;
+    }
+
+
+    element.addEventListener(
+      "input",
+      updatePreviewFromFields
+    );
+
+
+    element.addEventListener(
+      "change",
+      updatePreviewFromFields
+    );
+
+  });
+
+}
+
+
+/* =========================================
+   INITIALIZE
+========================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    bindLivePreview();
+
+    updatePreviewFromFields();
+
+  }
+);
+
+
+/* =========================================
+   FEEDBACK
+========================================= */
 
 function submitFeedback(value) {
 
@@ -3372,6 +3597,10 @@ function submitFeedback(value) {
 }
 
 
+/* =========================================
+   NEXT FEATURE REQUEST
+========================================= */
+
 function saveNextNeed() {
 
   const nextNeed =
@@ -3408,6 +3637,7 @@ function saveNextNeed() {
 
   existingFeedback.nextNeed =
     nextNeed;
+
 
   existingFeedback.timestamp =
     new Date().toISOString();
@@ -3464,8 +3694,13 @@ function saveNextNeed() {
 
 
   trackEvent("feature_requested", {
-    feature: nextNeedText,
-    usefulness: usefulness
+
+    feature:
+      nextNeedText,
+
+    usefulness:
+      usefulness
+
   });
 
 
@@ -3478,6 +3713,7 @@ function saveNextNeed() {
     "feedbackStatus"
   ).textContent =
     "Thanks — your feedback was submitted.";
+
 
   document.getElementById(
     "feedbackStatus"
